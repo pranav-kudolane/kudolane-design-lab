@@ -172,6 +172,89 @@
 .dt-neum .dt-pills span{width:13cqi;height:3.6cqi;border-radius:100px;background:#E4E9F2;
   box-shadow:inset .45cqi .45cqi .9cqi #c2c8d4,inset -.45cqi -.45cqi .9cqi #fff}
 
+
+/* --- scrapbook --- */
+.dt-scrap{background:#EFE3CC;
+  background-image:linear-gradient(rgba(120,95,60,.07) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(120,95,60,.07) 1px,transparent 1px);
+  background-size:6cqi 6cqi}
+.dt-scrap .dt-polaroid{position:absolute;right:7cqi;top:14cqi;width:26cqi;height:24cqi;rotate:6deg;
+  background:#FCFAF3;padding:1.6cqi;box-shadow:0 2cqi 4cqi rgba(80,60,35,.28)}
+.dt-scrap .dt-polaroid::after{content:"";position:absolute;inset:1.6cqi 1.6cqi 5cqi;
+  background:linear-gradient(160deg,#9FB8A6,#5E7F72)}
+.dt-scrap .dt-tape{position:absolute;background:rgba(240,222,150,.72);box-shadow:0 .3cqi .6cqi rgba(80,60,35,.14)}
+.dt-scrap .dt-tape.t1{width:12cqi;height:3.6cqi;right:16cqi;top:11cqi;rotate:-14deg}
+.dt-scrap .dt-tape.t2{width:9cqi;height:3.2cqi;right:5cqi;top:35cqi;rotate:9deg}
+.dt-scrap .dt-mark{width:13cqi;height:2.6cqi;background:#3B2E1D;border-radius:1px}
+.dt-scrap .dt-nav i{width:5cqi;height:1cqi;background:#6B5636;border-radius:1px}
+.dt-scrap .dt-nav i:first-of-type{margin-left:auto}
+.dt-scrap .dt-hero{margin-top:6cqi;gap:1.8cqi}
+.dt-scrap .dt-h{width:42%;height:4.6cqi;background:#3B2E1D;border-radius:1px}
+.dt-scrap .dt-scribble{width:24cqi;height:2.4cqi;border-bottom:.6cqi solid #C0472F;border-radius:0 0 50% 50%;rotate:-2deg}
+.dt-scrap .dt-l{width:30%;height:1.4cqi;background:#6B5636;opacity:.55;border-radius:1px}
+.dt-scrap .dt-stamp{position:absolute;left:6cqi;bottom:5cqi;width:11cqi;height:9cqi;rotate:-7deg;
+  background:#C0472F;opacity:.85;border:.5cqi dashed #EFE3CC}
+
+/* --- glassmorphism --- */
+.dt-glass{background:linear-gradient(140deg,#2B1B6B,#5B2C8F 45%,#123A6B);overflow:hidden}
+.dt-glass .dt-blob{position:absolute;border-radius:50%;filter:blur(7cqi)}
+.dt-glass .b1{width:36cqi;height:36cqi;background:#FF4FA3;top:-8cqi;left:-4cqi}
+.dt-glass .b2{width:30cqi;height:30cqi;background:#3AC7FF;bottom:-8cqi;right:6cqi}
+.dt-glass .b3{width:24cqi;height:24cqi;background:#7CFFC4;bottom:6cqi;left:22cqi;opacity:.75}
+.dt-glass .dt-mark{width:11cqi;height:2.4cqi;border-radius:100px;background:rgba(255,255,255,.5);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+.dt-glass .dt-nav i{width:5cqi;height:1.6cqi;border-radius:100px;background:rgba(255,255,255,.32)}
+.dt-glass .dt-nav i:first-of-type{margin-left:auto}
+.dt-glass .dt-pane{position:absolute;left:5.5cqi;right:5.5cqi;top:16cqi;height:30cqi;border-radius:3.4cqi;
+  padding:3.4cqi;display:flex;flex-direction:column;gap:2cqi;
+  background:linear-gradient(135deg,rgba(255,255,255,.28),rgba(255,255,255,.08));
+  border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(3cqi);-webkit-backdrop-filter:blur(3cqi);
+  box-shadow:0 2cqi 5cqi rgba(10,5,40,.35),inset 0 1px 0 rgba(255,255,255,.6)}
+.dt-glass .dt-pane .l1{width:56%;height:3.4cqi;border-radius:1cqi;background:rgba(255,255,255,.82)}
+.dt-glass .dt-pane .l2{width:38%;height:1.6cqi;border-radius:1cqi;background:rgba(255,255,255,.5)}
+.dt-glass .dt-pane .pill{width:20cqi;height:4.4cqi;border-radius:100px;margin-top:auto;
+  background:rgba(255,255,255,.9)}
+.dt-glass .dt-chip{position:absolute;right:7cqi;top:9cqi;width:13cqi;height:5cqi;border-radius:100px;
+  background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);
+  backdrop-filter:blur(2cqi);-webkit-backdrop-filter:blur(2cqi)}
+
+/* --- claymorphism --- */
+.dt-clay{background:linear-gradient(160deg,#F5E9FF,#FFE6E0)}
+.dt-clay .dt-mark{width:12cqi;height:3.4cqi;border-radius:100px;background:#B49BFF;
+  box-shadow:inset .5cqi .5cqi 1cqi rgba(255,255,255,.7),inset -.5cqi -.6cqi 1.2cqi rgba(90,60,150,.35),
+             0 1.2cqi 2cqi -.6cqi rgba(90,60,150,.4)}
+.dt-clay .dt-nav i{width:5.4cqi;height:2.6cqi;border-radius:100px;background:#FFD5C8;
+  box-shadow:inset .3cqi .3cqi .7cqi rgba(255,255,255,.8),inset -.3cqi -.4cqi .8cqi rgba(160,90,70,.3)}
+.dt-clay .dt-nav i:first-of-type{margin-left:auto}
+.dt-clay .dt-hero{margin-top:5cqi;gap:2cqi}
+.dt-clay .dt-h{width:48%;height:4.6cqi;border-radius:2cqi;background:#6B4FA8;opacity:.9}
+.dt-clay .dt-l{width:33%;height:1.6cqi;border-radius:2cqi;background:#6B4FA8;opacity:.4}
+.dt-clay .dt-btn{width:21cqi;height:6cqi;border-radius:2.6cqi;background:#FF9E7A;margin-top:1.2cqi;
+  box-shadow:inset .6cqi .6cqi 1.2cqi rgba(255,255,255,.65),inset -.6cqi -.8cqi 1.4cqi rgba(170,80,50,.4),
+             0 1.6cqi 2.6cqi -.8cqi rgba(150,80,60,.5)}
+.dt-clay .dt-ball{position:absolute;right:9cqi;top:16cqi;width:19cqi;height:19cqi;border-radius:50%;background:#8FE3C8;
+  box-shadow:inset 1cqi 1cqi 2cqi rgba(255,255,255,.75),inset -1.2cqi -1.4cqi 2.4cqi rgba(40,130,110,.45),
+             0 2.4cqi 3.4cqi -1cqi rgba(40,130,110,.45)}
+.dt-clay .dt-boxes{position:absolute;right:6cqi;bottom:5cqi;display:flex;gap:2.4cqi}
+.dt-clay .dt-boxes span{width:10cqi;height:8cqi;border-radius:2.4cqi;
+  box-shadow:inset .5cqi .5cqi 1cqi rgba(255,255,255,.7),inset -.5cqi -.7cqi 1.2cqi rgba(120,70,140,.32),
+             0 1.4cqi 2.2cqi -.8cqi rgba(120,70,140,.4)}
+.dt-clay .dt-boxes .b1{background:#FFD98E}
+.dt-clay .dt-boxes .b2{background:#9FD4FF}
+
+/* --- bento --- */
+.dt-bento{background:#0D0D11}
+.dt-bento .dt-mark{width:11cqi;height:2.2cqi;background:#F2F2F6;border-radius:1px}
+.dt-bento .dt-nav i{width:5cqi;height:1.2cqi;background:#5A5A66;border-radius:1px}
+.dt-bento .dt-nav i:first-of-type{margin-left:auto}
+.dt-bento .dt-tiles{position:absolute;left:5.5cqi;right:5.5cqi;top:14cqi;bottom:5cqi;
+  display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:1.8cqi}
+.dt-bento .dt-tiles span{border-radius:2cqi;background:#22222E;border:1px solid rgba(255,255,255,.14)}
+.dt-bento .dt-tiles .big{grid-column:span 2;grid-row:span 2;
+  background:linear-gradient(150deg,#3A3152,#22222E)}
+.dt-bento .dt-tiles .tall{grid-column:span 2;grid-row:span 1;background:linear-gradient(120deg,#263A47,#22222E)}
+.dt-bento .dt-tiles .wide{grid-column:span 4}
+
 /* ==========================================================================
    DETAIL ROUTE  (#/design/<id>)
    ========================================================================== */

@@ -166,3 +166,81 @@ export function NeumorphismThumb() {
     </div>
   );
 }
+
+export function ScrapbookThumb() {
+  return (
+    <div className="dt dt-scrap" role="img" aria-label="Miniature scrapbook website: kraft paper, taped polaroid, handwriting">
+      <span className="dt-polaroid" />
+      <span className="dt-tape t1" />
+      <span className="dt-tape t2" />
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-scribble" />
+        <span className="dt-l" />
+      </div>
+      <span className="dt-stamp" />
+    </div>
+  );
+}
+
+export function GlassmorphismThumb() {
+  return (
+    <div className="dt dt-glass" role="img" aria-label="Miniature glassmorphic website: frosted panels over a vivid gradient">
+      <span className="dt-blob b1" />
+      <span className="dt-blob b2" />
+      <span className="dt-blob b3" />
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <span className="dt-pane">
+        <i className="l1" />
+        <i className="l2" />
+        <i className="pill" />
+      </span>
+      <span className="dt-chip" />
+    </div>
+  );
+}
+
+export function ClaymorphismThumb() {
+  return (
+    <div className="dt dt-clay" role="img" aria-label="Miniature claymorphic website: puffy pastel 3D shapes">
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-l" />
+        <span className="dt-btn" />
+      </div>
+      <span className="dt-ball" />
+      <div className="dt-boxes">
+        <span className="b1" /> <span className="b2" />
+      </div>
+    </div>
+  );
+}
+
+export function BentoThumb() {
+  return (
+    <div className="dt dt-bento" role="img" aria-label="Miniature bento-grid website: modular tiles of varying sizes">
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-tiles">
+        <span className="big" />
+        <span className="tall" />
+        <span className="sm" />
+        <span className="sm" />
+        <span className="wide" />
+      </div>
+    </div>
+  );
+}

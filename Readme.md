@@ -88,6 +88,11 @@ click-to-copy and the toast come for free.
 The card grid, the `#/design/<id>` write-up and the full-screen preview are all
 generated from that array; no component needs editing.
 
+Fonts are loaded once in `index.html` and exposed as tokens — `--display`,
+`--body`, `--mono`, and `--hand` (Caveat, used only for the scrapbook style's
+annotations). Adding a style that needs a new face means one more family on that
+existing link, not a second request.
+
 Landing pages are **container-query sized**: each root sets `container-type:
 inline-size` and every fluid value uses `cqi`, never `vw`. That is what makes a
 page look identical framed inside the write-up and filling a 4K screen — so keep

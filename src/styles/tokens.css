@@ -17,4 +17,5 @@
   --display:"Bricolage Grotesque",system-ui,sans-serif;
   --body:"Inter",system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,monospace;
+  --hand:"Caveat",ui-rounded,cursive;   /* scrapbook landing only */
 }

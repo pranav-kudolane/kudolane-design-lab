@@ -1,19 +1,27 @@
 import {
+  BentoThumb,
   BrutalismThumb,
+  ClaymorphismThumb,
+  GlassmorphismThumb,
   MaximalismThumb,
   MinimalismThumb,
   NeoBrutalismThumb,
   NeoClassicalThumb,
   NeumorphismThumb,
+  ScrapbookThumb,
   SurrealismThumb,
   SwissThumb,
 } from '../components/designThumbs';
+import { BentoLanding } from '../landings/BentoLanding';
 import { BrutalismLanding } from '../landings/BrutalismLanding';
+import { ClaymorphismLanding } from '../landings/ClaymorphismLanding';
+import { GlassmorphismLanding } from '../landings/GlassmorphismLanding';
 import { MaximalismLanding } from '../landings/MaximalismLanding';
 import { MinimalismLanding } from '../landings/MinimalismLanding';
 import { NeoBrutalismLanding } from '../landings/NeoBrutalismLanding';
 import { NeoClassicalLanding } from '../landings/NeoClassicalLanding';
 import { NeumorphismLanding } from '../landings/NeumorphismLanding';
+import { ScrapbookLanding } from '../landings/ScrapbookLanding';
 import { SurrealismLanding } from '../landings/SurrealismLanding';
 import { SwissLanding } from '../landings/SwissLanding';
 import type { DesignStyle } from '../types';
@@ -907,6 +915,437 @@ body { background: var(--bg); color: var(--ink); }
    never let the shadow be the only signal, and keep a real focus ring */
 .toggle[aria-pressed="true"] { color: var(--accent); }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }`,
+    },
+  },
+  {
+    id: 'scrapbook',
+    name: 'Scrapbook',
+    era: 'Zine culture · digital revival since 2022',
+    use: 'blog · lifestyle',
+    tagline: 'Made by hand, on purpose',
+    desc: 'Torn paper, masking tape, polaroids pinned at the wrong angle and handwriting in the margins. **The one style that looks like a person made it** rather than a design system.',
+    accent: '#C0472F',
+    Thumb: ScrapbookThumb,
+    Landing: ScrapbookLanding,
+    detail: {
+      intro:
+        'Scrapbook design imports the vocabulary of a physical notebook — tape, torn edges, instant photos, pins, ticket stubs, biro annotations — and lays it over an ordinary web page. Everything sits at a slight angle and nothing quite lines up. **The imperfection is the message:** a human assembled this, and they cared enough to stick it down themselves.',
+      origin:
+        'Its ancestors are punk zines, mail art, and the mid-2000s craft blog. The current revival arrived around 2022 as a counter-move to template culture and, later, to AI-generated polish — when everything can be generated perfectly, evidence of a hand becomes the scarce thing.',
+      principles: [
+        {
+          title: 'Rotate everything, but only slightly',
+          body: 'One to five degrees. **Anything past about eight reads as broken**, not hand-placed. Vary the direction so no two neighbours tilt the same way.',
+        },
+        {
+          title: 'Every element gets a fixing',
+          body: 'Tape, a pin, a paperclip, a torn edge. If a card floats with a neat drop shadow, it stops being a scrapbook and becomes a website with textures on it.',
+        },
+        {
+          title: 'Two voices of type',
+          body: 'A plain serif or sans for the content, **a handwriting face for the annotations** — captions, asides, jokes. Never set body copy in the handwriting.',
+        },
+        {
+          title: 'Paper, not gradient',
+          body: 'A warm off-white with grain, or a faint ruled or graph pattern. The background should feel like a surface things were placed *on*.',
+        },
+        {
+          title: 'Keep the underlying layout boring',
+          body: 'A plain grid holds it all up. **Strip the tape and rotations away and you should be left with a perfectly ordinary page** — that is what keeps it readable.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A workhorse serif for reading plus a handwriting face (`Caveat`, `Kalam`, `Patrick Hand`) for the marginalia. Mono for stamps and labels.',
+        },
+        {
+          label: 'Colour',
+          value: 'Kraft, cream and masking-tape yellow, with one saturated ink — biro blue or a felt-tip red — for annotation.',
+        },
+        {
+          label: 'Layout',
+          value: 'Collage over a hidden grid. Overlaps, torn dividers, elements that break out of their column.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Polaroid frames, cut-outs, scans, ticket stubs, receipts, maps. Photography looks snapped, not directed.',
+        },
+        {
+          label: 'Motion',
+          value: 'Objects straighten and lift slightly on hover — as if you picked them up. Nothing slides.',
+        },
+        {
+          label: 'Risk',
+          value: 'Texture files are heavy, and the charm curdles into clutter fast. It also **dates quickly** compared with the neutral styles.',
+        },
+      ],
+      bestFor: [
+        '**Personal sites, blogs and newsletters** — the style is a signature.',
+        'Clubs, communities and anything with a membership rather than customers.',
+        'Food, travel, craft and independent retail.',
+        'Event and campaign pages with a warm, informal voice.',
+      ],
+      avoidWhen: [
+        'The brand needs to look institutional, precise or expensive.',
+        'The site is a tool people use daily — the visual noise becomes exhausting.',
+        'You have long-form content. Handwriting and paper textures wear the eye out over a thousand words.',
+      ],
+      lang: 'css',
+      code: `/* Scrapbook: an ordinary grid, then tape everything down crooked. */
+:root {
+  --paper: #EFE3CC;
+  --card: #FCFAF3;
+  --tape: rgba(240,222,150,.72);
+  --biro: #C0472F;
+}
+
+body {
+  background: var(--paper);
+  /* graph paper, not a gradient — this should read as a surface */
+  background-image:
+    linear-gradient(rgba(120,95,60,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120,95,60,.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* a polaroid: white border, thick chin, hand-placed angle */
+.photo {
+  background: var(--card);
+  padding: 12px 12px 0;
+  rotate: -4deg;
+  box-shadow: 0 14px 30px rgba(80,60,35,.26);
+  transition: transform .25s ease;
+}
+.photo:hover { transform: rotate(0deg) scale(1.02); }   /* you picked it up */
+
+/* a strip of masking tape holding it to the page */
+.photo::before {
+  content: "";
+  position: absolute;
+  inset: -14px auto auto 50%;
+  translate: -50% 0;
+  width: 96px; height: 28px;
+  background: var(--tape);
+  rotate: -6deg;
+}
+
+/* a torn edge between sections, cut with a mask */
+.torn {
+  height: 26px;
+  background: var(--card);
+  mask-image: repeating-linear-gradient(90deg, #000 0 14px, transparent 14px 18px);
+}
+
+.note { font-family: "Caveat", cursive; color: var(--biro); rotate: -1deg; }`,
+    },
+  },
+  {
+    id: 'glassmorphism',
+    name: 'Glassmorphism',
+    era: 'iOS 7 (2013) · named on the web in 2020',
+    use: 'apps · dashboards',
+    tagline: 'Frosted panels, real depth',
+    desc: 'Translucent panels blurring whatever sits behind them, edged with a bright hairline. **Its one rule: the background must be busy** — frost over a flat colour is just a grey box.',
+    accent: '#3AC7FF',
+    Thumb: GlassmorphismThumb,
+    Landing: GlassmorphismLanding,
+    detail: {
+      intro:
+        'Glassmorphism builds hierarchy out of depth. A panel is translucent, blurs what passes behind it, and catches a highlight along its top edge — so it reads as a physical sheet floating above the page. Section 01 of this lab carries the two-line recipe; **this is what happens when the recipe becomes the entire page**, and the constraints get much stricter.',
+      origin:
+        'Apple shipped the idea at scale with iOS 7 in 2013 and hardened it in macOS Big Sur and Windows Acrylic. Michal Malewicz gave it the name “glassmorphism” in 2020, the same season he named neumorphism — but this one survived, because unlike its sibling it keeps real contrast between the panel and its content.',
+      principles: [
+        {
+          title: 'Earn the blur with a busy backdrop',
+          body: 'Mesh gradients, photography, drifting blobs — something with variation. **Glass over a flat background is a grey rectangle** and every other rule here is wasted.',
+        },
+        {
+          title: 'Blur hard, tint lightly',
+          body: '`backdrop-filter: blur(16px–40px)` with a fill around 8–20% white. Too little blur and text behind bleeds through; too much tint and you have lost the transparency entirely.',
+        },
+        {
+          title: 'A hairline edge on every pane',
+          body: 'A 1px border at roughly 30% white, plus an `inset 0 1px 0` highlight. That top-edge catch is what makes the surface read as glass rather than as fog.',
+        },
+        {
+          title: 'One or two layers of depth, no more',
+          body: 'Glass on glass on glass turns to soup. Establish a background, a panel layer, and at most one floating element above it.',
+        },
+        {
+          title: 'Contrast is measured against the worst case',
+          body: 'The backdrop moves, so your text sits on the **lightest** patch it can ever cross. Check white text against the palest part of the gradient, not the average.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A clean sans at medium-to-bold weights. Thin type dies on a moving backdrop — keep body copy at 500 and above.',
+        },
+        {
+          label: 'Colour',
+          value: 'Saturated backdrop, near-white panels and text. **Every panel colour is an alpha value**, never a solid hex.',
+        },
+        {
+          label: 'Layout',
+          value: 'Floating cards, pill navigation, generous radii (20–40px) and real gaps so the backdrop shows between panes.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Mesh gradients, aurora blobs and grain. Photography works if it is soft and low-detail.',
+        },
+        {
+          label: 'Motion',
+          value: 'Slow backdrop drift under static panes. The illusion comes from the background moving while the glass stays put.',
+        },
+        {
+          label: 'Risk',
+          value: '**Performance.** `backdrop-filter` is expensive — a dozen blurred panes on a scrolling page will drop frames on mid-range hardware.',
+        },
+      ],
+      bestFor: [
+        '**App and product landing pages**, especially anything with a dashboard or a player.',
+        'Music, sleep, wellness and other “ambient” categories.',
+        'Crypto, fintech and AI products that want a premium, futuristic read.',
+        'Overlay UI — navigation bars, modals, command palettes — even inside otherwise plain designs.',
+      ],
+      avoidWhen: [
+        'Content is dense or text-heavy. Reading a long article through frosted glass is genuinely tiring.',
+        '**Performance budgets are tight**, or a meaningful share of users are on low-end devices.',
+        'The brand has no colourful imagery to sit behind the panes, and no appetite for inventing one.',
+      ],
+      lang: 'css',
+      code: `/* Glassmorphism: the backdrop is not decoration, it is the dependency. */
+.page {
+  background: #160B36;                 /* base */
+  isolation: isolate;
+}
+.blob {                                /* the busy layer the glass frosts */
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  mix-blend-mode: screen;
+  animation: float 28s ease-in-out infinite;
+}
+
+.pane {
+  background: linear-gradient(135deg,
+    rgba(255,255,255,.22),
+    rgba(255,255,255,.06));            /* alpha, never a solid */
+  border: 1px solid rgba(255,255,255,.34);
+  border-radius: 28px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 30px 70px rgba(8,4,40,.4),
+    inset 0 1px 0 rgba(255,255,255,.5); /* the top-edge catch */
+}
+
+/* the backdrop moves, the glass does not — that is the whole illusion */
+@keyframes float { 50% { transform: translate(40px,-50px) scale(1.12); } }
+
+@media (prefers-reduced-motion: reduce) { .blob { animation: none; } }`,
+    },
+  },
+  {
+    id: 'claymorphism',
+    name: 'Claymorphism',
+    era: '2021 · 3D render culture',
+    use: 'kids · consumer apps',
+    tagline: 'Soft, puffy, squeezable',
+    desc: 'Fat rounded shapes in pastel that look pressed out of modelling clay — two inner shadows for the pinch, one long outer shadow for the drop. **Friendly to the point of being disarming.**',
+    accent: '#FF9E7A',
+    Thumb: ClaymorphismThumb,
+    Landing: ClaymorphismLanding,
+    detail: {
+      intro:
+        'Claymorphism is what happens when **Neumorphism** grows up and gets a personality. It keeps the soft, moulded feel but adds real colour, real contrast and a proper drop shadow — so shapes look like they are *sitting on* the page rather than dissolving into it. The result is warm, tactile and completely unintimidating. Section 01 carries the snippet; **this is the language built out to a whole page.**',
+      origin:
+        'It emerged around 2021 out of 3D render culture — Blender and Cinema 4D clay-material illustrations flooding Dribbble — combined with the pastel Big Sur icon palette. Michal Malewicz named this one too. Where neumorphism failed on contrast, claymorphism deliberately fixed it: colour returns, and the outer shadow separates the shape from the surface.',
+      principles: [
+        {
+          title: 'Two inners and one outer',
+          body: 'A light `inset` from the top-left, a coloured `inset` from the bottom-right, and a **large, soft, offset drop shadow**. The drop is the difference between clay and neumorphism.',
+        },
+        {
+          title: 'Radius bigger than you think',
+          body: '24–40px on cards, fully round on buttons and icons. Clay has no sharp corners because you cannot pinch one into it.',
+        },
+        {
+          title: 'Pastel fills with real ink',
+          body: 'Soft backgrounds, but text in a **saturated dark** — a deep violet or brown, not grey. This is where the style earns the accessibility neumorphism lost.',
+        },
+        {
+          title: 'Shapes should look squeezed',
+          body: 'Blobby border-radii (`42% 58% 55% 45%`), slight rotations, uneven sizes. Perfect circles and rectangles read as plastic, not clay.',
+        },
+        {
+          title: 'Press, do not glow',
+          body: 'On interaction the element moves a few pixels and the drop shadow shortens — as if pushed into the surface. No glows, no colour flashes.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A rounded or soft geometric sans in heavy weights — `Nunito`, `Poppins`, `Bricolage Grotesque`. Generous letter sizes; nothing thin.',
+        },
+        {
+          label: 'Colour',
+          value: 'Pastel lilac, peach, mint and butter over a soft gradient ground, with **one dark ink** carrying all the text.',
+        },
+        {
+          label: 'Layout',
+          value: 'Big soft cards with lots of padding, few per row. Space between elements so each one keeps its shadow.',
+        },
+        {
+          label: 'Imagery',
+          value: '3D clay renders, blobs, chunky icons, emoji. Flat line icons look wrong against the modelled surfaces.',
+        },
+        { label: 'Motion', value: 'Springy but short — a lift on hover, a press on active. 150–250ms.' },
+        {
+          label: 'Risk',
+          value: 'Reads as childish. It can undercut a serious product instantly, and 3D render assets are heavy.',
+        },
+      ],
+      bestFor: [
+        '**Products for children and families** — learning, savings, health, chores.',
+        'Consumer apps that need to feel approachable: habit trackers, wellness, budgeting.',
+        'Onboarding, empty states and error screens inside otherwise plain interfaces.',
+        'Brands with a mascot, or any product competing on friendliness.',
+      ],
+      avoidWhen: [
+        'The audience is professional or the product is expensive — clay reads as toy-like.',
+        'Information density matters. The padding and radii the style needs cost enormous space.',
+        'Finance, legal, medical or security contexts where playfulness undermines trust.',
+      ],
+      lang: 'css',
+      code: `/* Claymorphism: two inner shadows for the pinch, one outer for the drop. */
+:root {
+  --ink: #3F2E63;       /* saturated, not grey — this is the a11y fix */
+  --lilac: #B49BFF;
+  --peach: #FF9E7A;
+}
+
+.clay {
+  border-radius: 32px;
+  background: var(--peach);
+  box-shadow:
+    inset 8px 8px 16px rgba(255,255,255,.70),    /* light pinch, top-left */
+    inset -8px -10px 18px rgba(90,60,150,.24),   /* coloured pinch, bottom-right */
+    0 22px 38px -11px rgba(90,60,150,.42);       /* the drop that lifts it off */
+}
+
+/* squeezed, not stamped — asymmetric radii read as handmade */
+.blob { border-radius: 42% 58% 55% 45% / 50% 44% 56% 50%; }
+
+.clay-btn {
+  transition: transform .18s ease;
+}
+.clay-btn:hover  { transform: translateY(-5px); }
+.clay-btn:active { transform: translateY(2px); }   /* pressed into the surface */`,
+    },
+  },
+  {
+    id: 'bento-grid',
+    name: 'Bento Grid',
+    era: 'Apple keynote slides, 2022 onward',
+    use: 'saas · features',
+    tagline: 'One idea per tile',
+    desc: 'A modular grid of tiles at different sizes, each holding exactly one idea. **The dominant way to show a feature set since 2023** — and the easiest layout to fill with nothing.',
+    accent: '#9A9AAA',
+    Thumb: BentoThumb,
+    Landing: BentoLanding,
+    detail: {
+      intro:
+        'A bento grid replaces the old three-column feature row with tiles of deliberately unequal size. The size *is* the hierarchy: a big tile means an important idea, a small one means a supporting fact. It scans in any order, which makes it perfect for people who never read a page top to bottom. Section 01 has the grid snippet; **the hard part was never the CSS** — it is having enough real things to put in the boxes.',
+      origin:
+        'Named after the Japanese bento box, where a single tray is divided into compartments of different sizes. Apple made it the default for keynote and product-page feature summaries from around 2022, and by 2023 it had spread across every SaaS marketing site, portfolio and dashboard on the web.',
+      principles: [
+        {
+          title: 'One idea per tile, no exceptions',
+          body: 'A tile has a single claim and, ideally, a single visual proving it. **Two ideas in one tile means you needed two tiles** — or the second idea was not worth keeping.',
+        },
+        {
+          title: 'Size means importance',
+          body: 'Spans encode hierarchy. If every tile is the same size you have built a card grid and thrown away the only advantage bento has.',
+        },
+        {
+          title: 'Fill tiles with evidence, not decoration',
+          body: 'A mini interface, a real number, an actual screenshot. The style fails when tiles are padded out with stock icons and a line of adjectives.',
+        },
+        {
+          title: 'Keep the seams consistent',
+          body: 'One gap value, one radius, one border treatment across every tile. **The irregularity is in the spans and nowhere else** — that is what stops it looking like a broken layout.',
+        },
+        {
+          title: 'Reflow, do not shrink',
+          body: 'On narrow screens tiles become full width in reading order. Scaling a four-column grid down produces unreadable postage stamps.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A neutral sans, small mono kickers on each tile, and headings sized down inside tiles so they never compete with the page title.',
+        },
+        {
+          label: 'Colour',
+          value: 'A near-black or off-white ground with tiles one step off it, separated by a hairline border. Colour appears **inside** tiles, not as tile fills.',
+        },
+        {
+          label: 'Layout',
+          value: 'Four to twelve columns, explicit `grid-column` / `grid-row` spans, one consistent gap. Usually one hero tile at 2×2.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Cropped UI, charts, product shots — each bleeding to its tile edge. Every tile is its own small composition.',
+        },
+        {
+          label: 'Motion',
+          value: 'Restrained: a border or background lift on hover. Some tiles animate their contents on scroll into view.',
+        },
+        {
+          label: 'Risk',
+          value: '**Empty calories.** Bento makes a thin feature set look structured, and reviewers notice. It is also now extremely common.',
+        },
+      ],
+      bestFor: [
+        '**SaaS feature sections** — the format it was popularised for.',
+        'Product and hardware pages summarising specs and capabilities.',
+        'Portfolios and case-study indexes with work of varying weight.',
+        'Dashboards and reports, where the tiles are genuinely different data.',
+      ],
+      avoidWhen: [
+        'You have fewer than about five real things to say. A bento with padding in half the tiles is worse than a plain list.',
+        'The content is sequential — a process, a tutorial, an argument. Bento has no reading order.',
+        '**Differentiation matters.** By 2026 this reads as the house style of the entire software industry.',
+      ],
+      lang: 'css',
+      code: `/* Bento: fixed columns, tiles claiming spans, one consistent seam. */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;                 /* one gap value everywhere */
+}
+
+.tile {
+  background: #17171F;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 28px;       /* one radius everywhere */
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* the spans are the hierarchy — the only irregularity allowed */
+.tile.hero { grid-column: span 2; grid-row: span 2; }
+.tile.wide { grid-column: span 2; }
+.tile.tall { grid-row: span 2; }
+
+/* reflow to full width; never scale a 4-column grid down */
+@media (max-width: 720px) {
+  .bento { grid-template-columns: 1fr; }
+  .tile, .tile.hero, .tile.wide, .tile.tall { grid-column: span 1; grid-row: span 1; }
+}`,
     },
   },
 ];
