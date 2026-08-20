@@ -1,0 +1,36 @@
+{
+  "name": "kudolane-design-lab",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Kudolane Design Lab — live effects, premium palettes, a11y checklist and AI workflow.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranav-kudolane/kudolane-design-lab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pranav-kudolane/kudolane-design-lab/issues"
+  },
+  "homepage": "https://github.com/pranav-kudolane/kudolane-design-lab#readme",
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2"
+  }
+}

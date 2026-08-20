@@ -1,0 +1,48 @@
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--body);line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+
+/* subtle grain — a premium tactile layer */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.035;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* scroll-driven progress bar (real demo of animation-timeline) */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;z-index:200;
+  background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));
+  transform:scaleX(0);animation:grow linear;animation-timeline:scroll(root);
+}
+@keyframes grow{to{transform:scaleX(1)}}
+
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ---------- SECTION SHELL ---------- */
+section{padding:84px 0;position:relative}
+.sec-head{max-width:760px;margin-bottom:44px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--a2);margin-bottom:14px}
+h2{font-family:var(--display);font-weight:700;letter-spacing:-.03em;font-size:clamp(28px,4.4vw,44px);margin:0 0 14px;line-height:1.02}
+.sec-head p{color:var(--muted);font-size:16.5px;margin:0;max-width:620px}
+.divider{height:1px;background:linear-gradient(90deg,var(--line-strong),transparent);margin:0 auto;max-width:var(--maxw)}
+
+/* inline rich text (from RichText) */
+.rt-code{font-family:var(--mono);color:var(--a3);font-size:.92em}
+
+/* focus visibility — accessibility floor */
+a:focus-visible,button:focus-visible,.sw:focus-visible{outline:2px solid var(--a3);outline-offset:3px;border-radius:6px}
+
+/* skip link */
+.skip{position:absolute;left:-9999px;top:0;z-index:300;background:var(--surface-2);border:1px solid var(--a3);
+      color:var(--ink);padding:10px 16px;border-radius:0 0 10px 0;font-size:13px;text-decoration:none}
+.skip:focus{left:0}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .scroll-progress{transform:scaleX(1)}
+}

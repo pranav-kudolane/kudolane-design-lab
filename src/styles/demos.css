@@ -1,0 +1,51 @@
+/* ---- live demo tiles, one block per effect ---- */
+
+.d-glass{background:linear-gradient(135deg,var(--a1),var(--a2))}
+.d-glass .pane{position:absolute;inset:26px;border-radius:12px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:grid;place-items:center;font-weight:600;color:#fff;font-size:13px}
+
+.d-aurora{background:#0a0912;overflow:hidden}
+.d-aurora i{position:absolute;width:120px;height:120px;border-radius:50%;filter:blur(30px);mix-blend-mode:screen}
+.d-aurora .x1{background:var(--a1);top:-20px;left:10px;animation:float1 9s ease-in-out infinite}
+.d-aurora .x2{background:var(--a2);bottom:-20px;right:20px;animation:float2 11s ease-in-out infinite}
+.d-aurora .x3{background:var(--a3);top:20px;right:40px;animation:float3 13s ease-in-out infinite}
+
+.tilt3d{width:150px;height:96px;border-radius:14px;background:linear-gradient(135deg,var(--a3),var(--a1));display:grid;place-items:center;color:#0a0912;font-weight:700;font-size:13px;transition:transform .1s;transform-style:preserve-3d;box-shadow:0 20px 40px -14px rgba(0,0,0,.6)}
+
+.d-scroll .track{width:70%;height:8px;border-radius:100px;background:rgba(255,255,255,.1);overflow:hidden}
+.d-scroll .fillbar{height:100%;width:100%;transform-origin:0 50%;transform:scaleX(.2);background:linear-gradient(90deg,var(--a1),var(--a3));animation:grow linear;animation-timeline:view();animation-range:cover}
+.d-scroll small{position:absolute;bottom:14px;font-family:var(--mono);font-size:10px;color:var(--muted)}
+
+.gradtext{font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.02em;
+  background:linear-gradient(100deg,var(--a1),var(--a2),var(--a4),var(--a3));background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:slide 6s linear infinite}
+@keyframes slide{to{background-position:300% 0}}
+
+.bento{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:6px;width:170px;height:110px}
+.bento div{border-radius:8px;background:linear-gradient(135deg,rgba(124,107,255,.5),rgba(255,111,181,.5));border:1px solid rgba(255,255,255,.14)}
+.bento .big{grid-row:span 2}
+.bento .wide{grid-column:span 2}
+
+.magbtn{padding:13px 26px;border-radius:100px;border:none;font-family:var(--body);font-weight:600;font-size:14px;color:#fff;cursor:pointer;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--a1),var(--a2));transition:transform .12s}
+.magbtn .glow{position:absolute;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.4);filter:blur(28px);pointer-events:none;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s}
+.magbtn:hover .glow{opacity:1}
+
+.blob{width:110px;height:110px;background:linear-gradient(135deg,var(--a4),var(--a2));animation:morph 8s ease-in-out infinite;box-shadow:0 14px 40px -10px var(--a2)}
+@keyframes morph{0%,100%{border-radius:42% 58% 63% 37%/47% 40% 60% 53%}33%{border-radius:66% 34% 40% 60%/58% 66% 34% 42%}66%{border-radius:38% 62% 55% 45%/40% 51% 49% 60%}}
+
+.d-neu{background:#1a1826}
+.neu{width:120px;height:76px;border-radius:20px;background:#1a1826;display:grid;place-items:center;color:var(--muted);font-weight:600;font-size:13px;
+  box-shadow:6px 6px 14px #0c0b14,-6px -6px 14px #282438}
+
+.clay{width:120px;height:82px;border-radius:26px;background:linear-gradient(135deg,var(--a2),#c64d92);display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;
+  box-shadow:inset 6px 6px 12px rgba(255,255,255,.35),inset -6px -6px 14px rgba(0,0,0,.35),0 16px 30px -10px rgba(0,0,0,.5)}
+
+.marquee{width:100%;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.marquee .row{display:flex;gap:22px;width:max-content;animation:scrollx 12s linear infinite;font-family:var(--display);font-weight:700;font-size:22px;color:var(--muted)}
+.marquee .row span{color:var(--a3)}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+
+.d-noise{background:linear-gradient(135deg,var(--a1),var(--a2))}
+.d-noise::after{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)'/%3E%3C/svg%3E")}
+.d-noise b{position:relative;color:#fff;font-weight:700;font-size:14px}

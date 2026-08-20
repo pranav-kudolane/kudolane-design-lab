@@ -1,0 +1,20 @@
+/* Design tokens — the single source of truth for the whole lab.
+   Change a value here and every section follows. */
+:root{
+  --bg:#0B0A12;
+  --surface:#14121F;
+  --surface-2:#1C1930;
+  --ink:#EDEBF5;
+  --muted:#9A97B0;
+  --line:rgba(255,255,255,.08);
+  --line-strong:rgba(255,255,255,.16);
+  --a1:#7C6BFF;   /* electric indigo */
+  --a2:#FF6FB5;   /* pink */
+  --a3:#46E0C8;   /* mint */
+  --a4:#FFB84D;   /* amber */
+  --radius:18px;
+  --maxw:1180px;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Inter",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}

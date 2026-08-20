@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kudolane Design Lab — Effects, Palettes & Craft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0A12;
+    --surface:#14121F;
+    --surface-2:#1C1930;
+    --ink:#EDEBF5;
+    --muted:#9A97B0;
+    --line:rgba(255,255,255,.08);
+    --line-strong:rgba(255,255,255,.16);
+    --a1:#7C6BFF;   /* electric indigo */
+    --a2:#FF6FB5;   /* pink */
+    --a3:#46E0C8;   /* mint */
+    --a4:#FFB84D;   /* amber */
+    --radius:18px;
+    --maxw:1180px;
+    --display:"Bricolage Grotesque",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--body);line-height:1.55;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  /* subtle grain — a premium tactile layer */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.035;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* scroll-driven progress bar (real demo of animation-timeline) */
+  .scroll-progress{
+    position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;z-index:200;
+    background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));
+    transform:scaleX(0);animation:grow linear;animation-timeline:scroll(root);
+  }
+  @keyframes grow{to{transform:scaleX(1)}}
+
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:120;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    background:rgba(11,10,18,.62);border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;gap:20px;height:62px}
+  .brand{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+  .brand .dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));box-shadow:0 0 14px var(--a1)}
+  .nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+  .nav-links a{font-size:13.5px;color:var(--muted);text-decoration:none;padding:7px 12px;border-radius:9px;transition:.18s}
+  .nav-links a:hover{color:var(--ink);background:var(--surface-2)}
+  @media(max-width:720px){.nav-links{display:none}}
+
+  /* ---------- HERO ---------- */
+  header.hero{position:relative;padding:118px 0 90px;overflow:hidden}
+  .aurora{position:absolute;inset:-30% -10%;z-index:0;filter:blur(70px);opacity:.85}
+  .aurora span{position:absolute;border-radius:50%;mix-blend-mode:screen}
+  .aurora .b1{width:46vw;height:46vw;background:var(--a1);top:-8%;left:6%;animation:float1 16s ease-in-out infinite}
+  .aurora .b2{width:40vw;height:40vw;background:var(--a2);top:14%;right:2%;animation:float2 19s ease-in-out infinite}
+  .aurora .b3{width:38vw;height:38vw;background:var(--a3);bottom:-14%;left:34%;animation:float3 22s ease-in-out infinite}
+  @keyframes float1{50%{transform:translate(6%,10%) scale(1.12)}}
+  @keyframes float2{50%{transform:translate(-8%,6%) scale(.9)}}
+  @keyframes float3{50%{transform:translate(4%,-8%) scale(1.08)}}
+
+  .hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--a3);margin-bottom:22px}
+  .glass-card{
+    display:inline-block;padding:38px 40px 40px;border-radius:26px;max-width:760px;
+    background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:0 30px 80px -30px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.15);
+    backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+    transform-style:preserve-3d;transition:transform .12s ease-out;will-change:transform;
+  }
+  h1{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.98;
+     font-size:clamp(38px,7vw,74px);margin:0 0 18px}
+  h1 .grad{background:linear-gradient(100deg,var(--a1),var(--a2) 45%,var(--a4));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:560px;margin:0}
+  .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+  .chip{font-family:var(--mono);font-size:11.5px;padding:6px 12px;border-radius:100px;border:1px solid var(--line-strong);color:var(--muted)}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:84px 0;position:relative}
+  .sec-head{max-width:760px;margin-bottom:44px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--a2);margin-bottom:14px}
+  h2{font-family:var(--display);font-weight:700;letter-spacing:-.03em;font-size:clamp(28px,4.4vw,44px);margin:0 0 14px;line-height:1.02}
+  .sec-head p{color:var(--muted);font-size:16.5px;margin:0;max-width:620px}
+  .divider{height:1px;background:linear-gradient(90deg,var(--line-strong),transparent);margin:0 auto;max-width:var(--maxw)}
+
+  /* ---------- EFFECTS GRID ---------- */
+  .fx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+  .fx-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:.25s;position:relative}
+  .fx-card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+  .fx-top{display:flex;align-items:center;gap:12px;padding:16px 18px 12px}
+  .rank{font-family:var(--display);font-weight:800;font-size:15px;width:30px;height:30px;flex:none;display:grid;place-items:center;border-radius:9px;
+         background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff}
+  .fx-name{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em;line-height:1.1}
+  .fx-use{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--a3);border:1px solid var(--line);padding:4px 8px;border-radius:100px;white-space:nowrap}
+  .demo{height:150px;margin:0 18px;border-radius:14px;overflow:hidden;position:relative;display:grid;place-items:center;background:var(--surface-2)}
+  .fx-desc{padding:14px 18px 6px;font-size:13.5px;color:var(--muted)}
+  .fx-desc b{color:var(--ink);font-weight:600}
+
+  /* code block */
+  .code{margin:10px 18px 18px;position:relative}
+  pre{margin:0;background:#0a0912;border:1px solid var(--line);border-radius:12px;padding:14px 14px;overflow:auto;font-family:var(--mono);font-size:11.5px;line-height:1.6;color:#cfc9e8}
+  pre .c1{color:var(--a3)} pre .c2{color:var(--a2)} pre .c3{color:var(--a4)} pre .c4{color:#7f7aa0}
+  .copy{position:absolute;top:8px;right:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;
+        background:var(--surface-2);border:1px solid var(--line-strong);color:var(--muted);padding:5px 9px;border-radius:7px;cursor:pointer;transition:.15s}
+  .copy:hover{color:var(--ink);border-color:var(--a1)}
+  .copy.done{color:var(--a3);border-color:var(--a3)}
+
+  /* ---- individual live demos ---- */
+  .d-glass{background:linear-gradient(135deg,var(--a1),var(--a2))}
+  .d-glass .pane{position:absolute;inset:26px;border-radius:12px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:grid;place-items:center;font-weight:600;color:#fff;font-size:13px}
+
+  .d-aurora{background:#0a0912;overflow:hidden}
+  .d-aurora i{position:absolute;width:120px;height:120px;border-radius:50%;filter:blur(30px);mix-blend-mode:screen}
+  .d-aurora .x1{background:var(--a1);top:-20px;left:10px;animation:float1 9s ease-in-out infinite}
+  .d-aurora .x2{background:var(--a2);bottom:-20px;right:20px;animation:float2 11s ease-in-out infinite}
+  .d-aurora .x3{background:var(--a3);top:20px;right:40px;animation:float3 13s ease-in-out infinite}
+
+  .tilt3d{width:150px;height:96px;border-radius:14px;background:linear-gradient(135deg,var(--a3),var(--a1));display:grid;place-items:center;color:#0a0912;font-weight:700;font-size:13px;transition:transform .1s;transform-style:preserve-3d;box-shadow:0 20px 40px -14px rgba(0,0,0,.6)}
+
+  .d-scroll .track{width:70%;height:8px;border-radius:100px;background:rgba(255,255,255,.1);overflow:hidden}
+  .d-scroll .fillbar{height:100%;width:100%;transform-origin:0 50%;transform:scaleX(.2);background:linear-gradient(90deg,var(--a1),var(--a3));animation:grow linear;animation-timeline:view();animation-range:cover}
+  .d-scroll small{position:absolute;bottom:14px;font-family:var(--mono);font-size:10px;color:var(--muted)}
+
+  .gradtext{font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.02em;
+    background:linear-gradient(100deg,var(--a1),var(--a2),var(--a4),var(--a3));background-size:300% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;animation:slide 6s linear infinite}
+  @keyframes slide{to{background-position:300% 0}}
+
+  .bento{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:6px;width:170px;height:110px}
+  .bento div{border-radius:8px;background:linear-gradient(135deg,rgba(124,107,255,.5),rgba(255,111,181,.5));border:1px solid rgba(255,255,255,.14)}
+  .bento .big{grid-row:span 2}
+  .bento .wide{grid-column:span 2}
+
+  .magbtn{padding:13px 26px;border-radius:100px;border:none;font-family:var(--body);font-weight:600;font-size:14px;color:#fff;cursor:pointer;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,var(--a1),var(--a2));transition:transform .12s}
+  .magbtn .glow{position:absolute;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.4);filter:blur(28px);pointer-events:none;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s}
+  .magbtn:hover .glow{opacity:1}
+
+  .blob{width:110px;height:110px;background:linear-gradient(135deg,var(--a4),var(--a2));animation:morph 8s ease-in-out infinite;box-shadow:0 14px 40px -10px var(--a2)}
+  @keyframes morph{0%,100%{border-radius:42% 58% 63% 37%/47% 40% 60% 53%}33%{border-radius:66% 34% 40% 60%/58% 66% 34% 42%}66%{border-radius:38% 62% 55% 45%/40% 51% 49% 60%}}
+
+  .neu{width:120px;height:76px;border-radius:20px;background:#1a1826;display:grid;place-items:center;color:var(--muted);font-weight:600;font-size:13px;
+    box-shadow:6px 6px 14px #0c0b14,-6px -6px 14px #282438}
+  .d-neu{background:#1a1826}
+
+  .clay{width:120px;height:82px;border-radius:26px;background:linear-gradient(135deg,var(--a2),#c64d92);display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;
+    box-shadow:inset 6px 6px 12px rgba(255,255,255,.35),inset -6px -6px 14px rgba(0,0,0,.35),0 16px 30px -10px rgba(0,0,0,.5)}
+
+  .marquee{width:100%;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+  .marquee .row{display:flex;gap:22px;width:max-content;animation:scrollx 12s linear infinite;font-family:var(--display);font-weight:700;font-size:22px;color:var(--muted)}
+  .marquee .row span{color:var(--a3)}
+  @keyframes scrollx{to{transform:translateX(-50%)}}
+
+  .d-noise{background:linear-gradient(135deg,var(--a1),var(--a2))}
+  .d-noise::after{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)'/%3E%3C/svg%3E")}
+  .d-noise b{position:relative;color:#fff;font-weight:700;font-size:14px}
+
+  /* also-worth strip */
+  .also{margin-top:34px;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+  .also div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .also h4{font-family:var(--display);margin:0 0 4px;font-size:14px;font-weight:700}
+  .also p{margin:0;font-size:12.5px;color:var(--muted)}
+  .also code{font-family:var(--mono);color:var(--a3);font-size:11.5px}
+
+  /* ---------- PALETTES ---------- */
+  .pal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+  .pal-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .pal-head{padding:16px 18px 12px;display:flex;align-items:center;gap:11px}
+  .pal-ico{font-size:20px;width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:11px;background:var(--surface-2);border:1px solid var(--line)}
+  .pal-title{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.1}
+  .pal-title small{display:block;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+  .swatches{display:flex;height:74px}
+  .sw{flex:1;position:relative;cursor:pointer;transition:flex .25s;display:flex;align-items:flex-end;justify-content:center}
+  .sw:hover{flex:1.7}
+  .sw span{font-family:var(--mono);font-size:9.5px;padding:3px 5px;margin-bottom:6px;border-radius:5px;background:rgba(0,0,0,.42);color:#fff;opacity:0;transition:.2s;white-space:nowrap}
+  .sw:hover span{opacity:1}
+  .sw.done span{opacity:1;background:var(--a3);color:#04140f}
+  .pal-why{padding:12px 18px 18px;font-size:12.5px;color:var(--muted)}
+  .pal-why b{color:var(--ink);font-weight:600}
+
+  /* ---------- CHECKLIST ---------- */
+  .a11y-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+  .a11y-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 10px}
+  .a11y-card h3{font-family:var(--display);font-size:17px;font-weight:700;margin:0 0 4px;display:flex;align-items:center;gap:9px}
+  .a11y-card .em{font-size:18px}
+  .a11y-card ul{list-style:none;margin:16px 0 12px;padding:0}
+  .a11y-card li{display:flex;gap:11px;padding:8px 0;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);align-items:flex-start}
+  .a11y-card li:first-child{border-top:none}
+  .tick{flex:none;width:19px;height:19px;border-radius:6px;background:linear-gradient(135deg,var(--a3),var(--a1));display:grid;place-items:center;margin-top:1px}
+  .tick::after{content:"";width:5px;height:9px;border:2px solid #04140f;border-top:none;border-left:none;transform:rotate(42deg) translateY(-1px)}
+  .a11y-card li b{color:var(--ink);font-weight:600}
+
+  /* ---------- AI TIPS ---------- */
+  .ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+  .ai-card{background:linear-gradient(160deg,var(--surface),rgba(28,25,48,.6));border:1px solid var(--line);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden}
+  .ai-card::before{content:"";position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:var(--a1);filter:blur(60px);opacity:.18}
+  .ai-num{font-family:var(--mono);font-size:12px;color:var(--a4);letter-spacing:.1em;margin-bottom:12px}
+  .ai-card h3{font-family:var(--display);font-size:17px;font-weight:700;margin:0 0 9px;letter-spacing:-.01em;position:relative}
+  .ai-card p{margin:0;font-size:13.5px;color:var(--muted);position:relative}
+  .ai-card p b{color:var(--ink);font-weight:600}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:60px 0 80px;text-align:center;border-top:1px solid var(--line);margin-top:40px}
+  footer .brand{justify-content:center;margin-bottom:14px}
+  footer p{color:var(--muted);font-size:13px;max-width:520px;margin:0 auto;line-height:1.7}
+
+  /* toast */
+  .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);z-index:500;
+    background:var(--surface-2);border:1px solid var(--a3);color:var(--ink);font-size:13px;font-weight:500;
+    padding:11px 20px;border-radius:100px;box-shadow:0 16px 40px -12px rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:.25s}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .toast::before{content:"✓  ";color:var(--a3)}
+
+  /* focus visibility — accessibility floor */
+  a:focus-visible,button:focus-visible,.sw:focus-visible{outline:2px solid var(--a3);outline-offset:3px;border-radius:6px}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .scroll-progress{transform:scaleX(1)}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="brand"><span class="dot"></span>Kudolane&nbsp;Design&nbsp;Lab</div>
+    <div class="nav-links">
+      <a href="#effects">Effects</a>
+      <a href="#palettes">Palettes</a>
+      <a href="#a11y">Accessibility</a>
+      <a href="#ai">AI Workflow</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+  <div class="hero-inner">
+    <div class="eyebrow">A working toolkit for client-ready sites</div>
+    <div class="glass-card" id="heroCard">
+      <h1>Ship websites that make clients say <span class="grad">“wow.”</span></h1>
+      <p class="lede">Every modern effect running live, premium palettes sorted by industry, an accessibility checklist, and an AI build workflow — all copy-and-paste ready.</p>
+      <div class="hero-tags">
+        <span class="chip">12 live effects</span>
+        <span class="chip">10 premium palettes</span>
+        <span class="chip">a11y checklist</span>
+        <span class="chip">AI workflow</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="divider"></div>
+
+<!-- ===================== EFFECTS ===================== -->
+<section id="effects">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">01 — Modern CSS · Morphs · 3D</div>
+      <h2>Effects, ranked by how often they land in 2026</h2>
+      <p>Ordered from most-used-and-loved to more niche. Hover a card to feel it, then hit <b>Copy</b> for the core CSS. Ranking reflects current trend adoption — treat it as taste guidance, not gospel.</p>
+    </div>
+
+    <div class="fx-grid">
+
+      <!-- 1 Glassmorphism -->
+      <article class="fx-card">
+        <div class="fx-top"><span class="rank">1</span><span class="fx-name">Glassmorphism</span><span class="fx-use">UI · cards</span></div>
+        <div class="demo d-glass"><div class="pane">frosted glass</div></div>
+        <div class="fx-desc">Frosted, translucent panels that float over color. The default premium look for nav bars, cards & modals. <b>Needs a busy background behind it.</b></div>
+        <div class="code"><button class="copy">Copy</button><pre><span class="c4">.glass</span> {
+  <span class="c1">background</span>: rgba(255,255,255,<span class="c3">.1</span>);
+  <span class="c1">backdrop-filter</span>: <span class="c2">blur</span>(20px);
+  <span class="c1">border</span>: 1px solid rgba(255,255,255,<span class="c3">.25</span>);
+  <span class="c1">border-radius</span>: 18px;
+}</pre></div>
+      </article>
+
+      <!-- 2 Aurora -->
+      <article class="fx-card">
+        <div class="fx-top"><span class="rank">2</span><span class="fx-name">Aurora / Mesh Gradient</span><span class="fx-use">hero · bg</span></div>
+        <div class="demo d-aurora"><i class="x1"></i><i class="x2"></i><i class="x3"></i></div>
+        <div class="fx-desc">Soft, drifting blobs of color blurred into a living background. The go-to hero backdrop for SaaS & premium brands. <b>Blur + blend-mode does the magic.</b></div>
+        <div class="code"><button class="copy">Copy</button><pre><span class="c4">.blob</span> {
+  <span class="c1">position</span>: absolute;
+  <span class="c1">border-radius</span>: 50%;
+  <span class="c1">filter</span>: <span class="c2">blur</span>(70px);
+  <span class="c1">mix-blend-mode</span>: screen;
+  <span class="c1">animation</span>: float 18s ease-in-out infinite;
+}</pre></div>
+      </article>
+
+      <!-- 3 3D tilt -->
+      <article class="fx-card">
+        <div class="fx-top"><span class="rank">3</span><span class="fx-name">3D Tilt Card</span><span class="fx-use">products</span></div>
+        <div class="demo" id="tiltDemo"><div class="tilt3d">tilt me →</div></div>
+        <div class="fx-desc">Card rotates toward the cursor on a real 3D plane. Huge for product shots & feature cards. <b>Uses <code style="color:var(--a3)">perspective</code> + JS mouse tracking.</b></div>
+        <div class="code"><button class="copy">Copy</button><pre><span class="c4">.card</span> {
+  <span class="c1">transform-style</span>: preserve-3d;
+  <span class="c1">transition</span>: transform .1s;
+}
+<span class="c4">// JS: on mousemove →</span>
+el.style.transform =
+  <span class="c2">`rotateX(</span>${ry}deg<span class="c2">) rotateY(</span>${rx}deg<span class="c2">)`</span>;</pre></div>
+      </article>
+
+      <!-- 4 Scroll-driven -->
+      <article class="fx-card">
+        <div class="fx-top"><span class="rank">4</span><span class="fx-name">Scroll-Driven Animation</span><span class="fx-use">storytelling</span></div>
+        <div class="demo d-scroll"><div class="track"><div class="fillbar"></div></div><small>scroll — this fills with the page</small></div>
+        <div class="fx-desc">Animations tied to scroll position — no JS libraries needed anymore. Reveals, progress bars, parallax. <b>Native <code style="color:var(--a3)">animation-timeline</code>.</b></div>
+        <div class="code"><button class="copy">Copy</button><pre><span class="c4">.reveal</span> {
+  <span class="c1">animation</span>: fadeUp linear both;
+  <span class="c1">animation-timeline</span>: <span class="c2">view</span>();
+  <span class="c1">animation-range</span>: entry 0% cover 40%;
+}
+<span class="c4">/* add a JS fallback for Safari */</span></pre></div>
+      </article>
+
+      <!-- 5 Gradient text -->
+      <article class="fx-card">
+        <div class="fx-top"><span class="rank">5</span><span class="fx-name">Animated Gradient Text</span><span class="fx-use">headlines</span></div>
+        <div class="demo"><div class="gradtext">Gradient</div></div>
+        <div class="fx-desc">Flowing multi-color type for headlines & logos. Instant premium signal on any hero. <b>Clip the gradient to the text.</b></div>
+        <div class="code"><button class="copy">Copy</button><pre><span class="c4">.grad-text</span> {
+  <span class="c1">background</span>: linear-gradient(100deg,#7C6BFF,#FF6FB5,#FFB84D);
+  <span class="c1">background-size</span>: 300% 100%;
+  <span class="c1">-webkit-background-clip</span>: text;
+  <span class="c1">color</span>: transparent;
+  <span class="c1">animation</span>: slide 6s linear infinite;
+}</pre></div>
+      </article>
+
+      <!-- 6 Bento -->
+      <article class="fx-card">
+        <div class="fx-top"><span class="rank">6</span><span class="fx-name">Bento Grid</span><span class="fx-use">layout</span></div>
+        <div class="demo"><div class="bento"><div class="big"></div><div class="wide"></div><div></div></div></div>
+        <div class="fx-desc">Apple-style asymmetric tiles of varying sizes. The dominant layout for feature sections & dashboards. <b>Grid spans do all the work.</b></div>
+        <div class="code"><button class="copy">Copy</button><pre><span class="c4">.bento</span> {
+  <span class="c1">display</span>: grid;
+  <span class="c1">grid-template-columns</span>: repeat(3,1fr);
+  <span class="c1">gap</span>: 16px;
+}
+<span class="c4">.bento</span> .big  { <span class="c1">grid-row</span>: span 2; }
+<span class="c4">.bento</span> .wide { <span class="c1">grid-column</span>: span 2; }</pre></div>
+      </article>
+
+      <!-- 7 Magnetic/spotlight -->
+      <article class="fx-card">
+        <div class="fx-top"><span class="rank">7</span><span class="fx-name">Spotlight Button</span><span class="fx-use">CTAs</span></div>
+        <div class="demo"><button class="magbtn" id="magDemo">Hover me<span class="glow"></span></button></div>
+        <div class="fx-desc">A soft glow that tracks the cursor across the button. Micro-interactions like this lift perceived quality fast. <b>Follow the pointer with JS.</b></div>
+        <div class="code"><button class="copy">Copy</button><pre><span class="c4">// track pointer inside the button</span>
+btn.<span class="c2">onmousemove</span> = e => {
+  const r = btn.getBoundingClientRect();
+  glow.style.left = e.clientX - r.left + <span class="c2">'px'</span>;
+  glow.style.top  = e.clientY - r.top  + <span class="c2">'px'</span>;
+};</pre></div>
+      </article>
+
+      <!-- 8 Blob -->
+      <article class="fx-card">
+        <div class="fx-top"><span class="rank">8</span><span class="fx-name">Blob Morph</span><span class="fx-use">accents</span></div>
+        <div class="demo"><div class="blob"></div></div>
+        <div class="fx-desc">An organic shape that slowly morphs between forms. Great as a container for images or a floating accent. <b>Animate <code style="color:var(--a3)">border-radius</code>.</b></div>
+        <div class="code"><button class="copy">Copy</button><pre><span class="c1">@keyframes</span> morph {
+  0%,100% { <span class="c1">border-radius</span>: 42% 58% 63% 37% / 47% 40% 60% 53%; }
+  50%     { <span class="c1">border-radius</span>: 66% 34% 40% 60% / 58% 66% 34% 42%; }
+}
+<span class="c4">.blob</span> { <span class="c1">animation</span>: morph 8s ease-in-out infinite; }</pre></div>
+      </article>
+
+      <!-- 9 Neumorphism -->
+      <article class="fx-card">
+        <div class="fx-top"><span class="rank">9</span><span class="fx-name">Neumorphism</span><span class="fx-use">use with care</span></div>
+        <div class="demo d-neu"><div class="neu">soft UI</div></div>
+        <div class="fx-desc">Soft, extruded shapes using dual shadows. Elegant but <b>risky for contrast/accessibility</b> — best for accents, not core buttons.</div>
+        <div class="code"><button class="copy">Copy</button><pre><span class="c4">.neu</span> {
+  <span class="c1">background</span>: #1a1826;
+  <span class="c1">border-radius</span>: 20px;
+  <span class="c1">box-shadow</span>: 6px 6px 14px #0c0b14,
+             -6px -6px 14px #282438;
+}</pre></div>
+      </article>
+
+      <!-- 10 Claymorphism -->
+      <article class="fx-card">
+        <div class="fx-top"><span class="rank">10</span><span class="fx-name">Claymorphism</span><span class="fx-use">playful</span></div>
+        <div class="demo"><div class="clay">clay</div></div>
+        <div class="fx-desc">Puffy, 3D “clay” with inner + outer shadows. Friendly & fun — perfect for kids, apps, and playful brands. <b>Inset shadows sell the depth.</b></div>
+        <div class="code"><button class="copy">Copy</button><pre><span class="c4">.clay</span> {
+  <span class="c1">border-radius</span>: 26px;
+  <span class="c1">box-shadow</span>:
+    inset 6px 6px 12px rgba(255,255,255,.35),
+    inset -6px -6px 14px rgba(0,0,0,.35),
+    0 16px 30px -10px rgba(0,0,0,.5);
+}</pre></div>
+      </article>
+
+      <!-- 11 Marquee -->
+      <article class="fx-card">
+        <div class="fx-top"><span class="rank">11</span><span class="fx-name">Infinite Marquee</span><span class="fx-use">logos · social</span></div>
+        <div class="demo"><div class="marquee"><div class="row"><span>Kudolane</span>·&nbsp;Design&nbsp;·<span>Kudolane</span>·&nbsp;Design&nbsp;·</div></div></div>
+        <div class="fx-desc">Endless horizontal scroll for logo walls, tickers, testimonials. <b>Duplicate the content and translate -50%.</b> Add an edge fade mask.</div>
+        <div class="code"><button class="copy">Copy</button><pre><span class="c1">@keyframes</span> scrollx { to { <span class="c1">transform</span>: translateX(-50%); } }
+<span class="c4">.row</span> {
+  <span class="c1">width</span>: max-content;
+  <span class="c1">animation</span>: scrollx 20s linear infinite;
+}
+<span class="c4">/* duplicate items inside .row for seamless loop */</span></pre></div>
+      </article>
+
+      <!-- 12 Noise -->
+      <article class="fx-card">
+        <div class="fx-top"><span class="rank">12</span><span class="fx-name">Grain / Noise Texture</span><span class="fx-use">texture</span></div>
+        <div class="demo d-noise"><b>grain overlay</b></div>
+        <div class="fx-desc">A faint SVG noise layer that makes flat gradients feel tactile & expensive. <b>One data-URI, blended over everything.</b></div>
+        <div class="code"><button class="copy">Copy</button><pre><span class="c4">body::before</span> {
+  <span class="c1">content</span>: "";
+  <span class="c1">position</span>: fixed; inset: 0;
+  <span class="c1">opacity</span>: .04;
+  <span class="c1">mix-blend-mode</span>: overlay;
+  <span class="c1">background</span>: url("data:image/svg+xml,...feTurbulence...");
+}</pre></div>
+      </article>
+
+    </div>
+
+    <div class="also">
+      <div><h4>Parallax</h4><p>Layers move at different scroll speeds. Now doable with <code>animation-timeline</code>.</p></div>
+      <div><h4>View Transitions API</h4><p>Smooth morphs between pages/states. <code>document.startViewTransition()</code>.</p></div>
+      <div><h4>Container Queries</h4><p>Components respond to their <b>own</b> width, not the viewport. <code>@container</code>.</p></div>
+      <div><h4>Custom Cursor</h4><p>Replace or trail the pointer with a glowing dot for a bespoke feel.</p></div>
+      <div><h4>Text Scramble / Split</h4><p>Reveal headlines letter-by-letter (GSAP SplitText or CSS).</p></div>
+      <div><h4>Scroll Snap</h4><p>Full-screen section snapping. Pure CSS <code>scroll-snap-type</code>.</p></div>
+      <div><h4>Sticky Stacking Cards</h4><p>Cards that stack & scale as you scroll. Big on landing pages.</p></div>
+      <div><h4>Gooey / SVG Filters</h4><p>Merge shapes into liquid blobs with <code>feGaussianBlur</code>.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===================== PALETTES ===================== -->
+<section id="palettes">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">02 — Premium color · by industry</div>
+      <h2>Palettes that read “premium” per domain</h2>
+      <p>Curated for the feeling each industry needs to sell: trust, appetite, luxury, calm. <b>Click any swatch to copy the hex.</b> Pair a dominant neutral with one accent — resist using all five equally.</p>
+    </div>
+
+    <div class="pal-grid">
+
+      <div class="pal-card">
+        <div class="pal-head"><span class="pal-ico">🛍️</span><span class="pal-title">Luxury Shopping / E-com<small>Fashion retail · marketplaces</small></span></div>
+        <div class="swatches">
+          <div class="sw" style="background:#0E0E10"><span>#0E0E10</span></div>
+          <div class="sw" style="background:#1C1C1F"><span>#1C1C1F</span></div>
+          <div class="sw" style="background:#C9A24B"><span>#C9A24B</span></div>
+          <div class="sw" style="background:#E8E4DC"><span>#E8E4DC</span></div>
+          <div class="sw" style="background:#FFFFFF"><span>#FFFFFF</span></div>
+        </div>
+        <div class="pal-why"><b>Black + gold + off-white</b> = restraint and status. Lots of white space, gold only on CTAs & prices.</div>
+      </div>
+
+      <div class="pal-card">
+        <div class="pal-head"><span class="pal-ico">🦷</span><span class="pal-title">Dental Clinic<small>Cosmetic · family dentistry</small></span></div>
+        <div class="swatches">
+          <div class="sw" style="background:#0A9396"><span>#0A9396</span></div>
+          <div class="sw" style="background:#4FD1C5"><span>#4FD1C5</span></div>
+          <div class="sw" style="background:#CAF0F8"><span>#CAF0F8</span></div>
+          <div class="sw" style="background:#F8FAFB"><span>#F8FAFB</span></div>
+          <div class="sw" style="background:#1B4965"><span>#1B4965</span></div>
+        </div>
+        <div class="pal-why"><b>Clean teal + soft aqua</b> signals hygiene & freshness (“minty clean”) without feeling clinical or cold.</div>
+      </div>
+
+      <div class="pal-card">
+        <div class="pal-head"><span class="pal-ico">🏥</span><span class="pal-title">Hospital / Healthcare<small>Clinics · med systems</small></span></div>
+        <div class="swatches">
+          <div class="sw" style="background:#1466B8"><span>#1466B8</span></div>
+          <div class="sw" style="background:#2E9E8F"><span>#2E9E8F</span></div>
+          <div class="sw" style="background:#E6F0F7"><span>#E6F0F7</span></div>
+          <div class="sw" style="background:#FFFFFF"><span>#FFFFFF</span></div>
+          <div class="sw" style="background:#16324F"><span>#16324F</span></div>
+        </div>
+        <div class="pal-why"><b>Trustworthy blue + healing green.</b> Blue = reliability, green = care. Keep it calm and high-contrast for older users.</div>
+      </div>
+
+      <div class="pal-card">
+        <div class="pal-head"><span class="pal-ico">🍽️</span><span class="pal-title">Fine Dining Restaurant<small>Upscale · chef-led</small></span></div>
+        <div class="swatches">
+          <div class="sw" style="background:#1A1310"><span>#1A1310</span></div>
+          <div class="sw" style="background:#7B2D26"><span>#7B2D26</span></div>
+          <div class="sw" style="background:#C9974C"><span>#C9974C</span></div>
+          <div class="sw" style="background:#EDE6D6"><span>#EDE6D6</span></div>
+          <div class="sw" style="background:#2F4A3C"><span>#2F4A3C</span></div>
+        </div>
+        <div class="pal-why"><b>Deep wine, warm gold, cream.</b> Warm tones stir appetite; darkness = intimacy & exclusivity.</div>
+      </div>
+
+      <div class="pal-card">
+        <div class="pal-head"><span class="pal-ico">👗</span><span class="pal-title">Fashion / Luxury Brand<small>Beauty · couture</small></span></div>
+        <div class="swatches">
+          <div class="sw" style="background:#111111"><span>#111111</span></div>
+          <div class="sw" style="background:#8A7355"><span>#8A7355</span></div>
+          <div class="sw" style="background:#D9CBB8"><span>#D9CBB8</span></div>
+          <div class="sw" style="background:#F2EDE7"><span>#F2EDE7</span></div>
+          <div class="sw" style="background:#C4A6A0"><span>#C4A6A0</span></div>
+        </div>
+        <div class="pal-why"><b>Muted taupe & nude neutrals.</b> Understated, editorial — lets product photography be the loudest thing on screen.</div>
+      </div>
+
+      <div class="pal-card">
+        <div class="pal-head"><span class="pal-ico">💻</span><span class="pal-title">Tech / SaaS<small>Startups · dashboards</small></span></div>
+        <div class="swatches">
+          <div class="sw" style="background:#0B0F1A"><span>#0B0F1A</span></div>
+          <div class="sw" style="background:#6C5CE7"><span>#6C5CE7</span></div>
+          <div class="sw" style="background:#00D0BD"><span>#00D0BD</span></div>
+          <div class="sw" style="background:#A5B4FC"><span>#A5B4FC</span></div>
+          <div class="sw" style="background:#F4F6FB"><span>#F4F6FB</span></div>
+        </div>
+        <div class="pal-why"><b>Indigo + electric mint on dark.</b> Feels modern & confident; gradients between the two read as “innovative.”</div>
+      </div>
+
+      <div class="pal-card">
+        <div class="pal-head"><span class="pal-ico">🧖</span><span class="pal-title">Beauty / Spa & Wellness<small>Salon · skincare</small></span></div>
+        <div class="swatches">
+          <div class="sw" style="background:#8B6F63"><span>#8B6F63</span></div>
+          <div class="sw" style="background:#D8A7A0"><span>#D8A7A0</span></div>
+          <div class="sw" style="background:#EAD9C9"><span>#EAD9C9</span></div>
+          <div class="sw" style="background:#9CAF88"><span>#9CAF88</span></div>
+          <div class="sw" style="background:#FBF6F0"><span>#FBF6F0</span></div>
+        </div>
+        <div class="pal-why"><b>Blush, sage & warm cream.</b> Soft and organic — communicates calm, self-care and natural ingredients.</div>
+      </div>
+
+      <div class="pal-card">
+        <div class="pal-head"><span class="pal-ico">💳</span><span class="pal-title">Finance / Fintech<small>Banking · investing</small></span></div>
+        <div class="swatches">
+          <div class="sw" style="background:#0A2540"><span>#0A2540</span></div>
+          <div class="sw" style="background:#00875A"><span>#00875A</span></div>
+          <div class="sw" style="background:#635BFF"><span>#635BFF</span></div>
+          <div class="sw" style="background:#EAF0F6"><span>#EAF0F6</span></div>
+          <div class="sw" style="background:#FFFFFF"><span>#FFFFFF</span></div>
+        </div>
+        <div class="pal-why"><b>Navy + green + one bold violet.</b> Navy = security, green = growth/money, violet accent keeps it from feeling dated.</div>
+      </div>
+
+      <div class="pal-card">
+        <div class="pal-head"><span class="pal-ico">🏛️</span><span class="pal-title">Real Estate / Architecture<small>Property · interiors</small></span></div>
+        <div class="swatches">
+          <div class="sw" style="background:#1F2A2E"><span>#1F2A2E</span></div>
+          <div class="sw" style="background:#B08D57"><span>#B08D57</span></div>
+          <div class="sw" style="background:#C7C2B8"><span>#C7C2B8</span></div>
+          <div class="sw" style="background:#F5F3EF"><span>#F5F3EF</span></div>
+          <div class="sw" style="background:#5A6B5D"><span>#5A6B5D</span></div>
+        </div>
+        <div class="pal-why"><b>Charcoal, brass & stone.</b> Architectural and grounded; brass accents add quiet luxury to listings.</div>
+      </div>
+
+      <div class="pal-card">
+        <div class="pal-head"><span class="pal-ico">💪</span><span class="pal-title">Fitness / Sports<small>Gyms · athletic brands</small></span></div>
+        <div class="swatches">
+          <div class="sw" style="background:#0D0D0D"><span>#0D0D0D</span></div>
+          <div class="sw" style="background:#E8FE55"><span>#E8FE55</span></div>
+          <div class="sw" style="background:#FF4D2E"><span>#FF4D2E</span></div>
+          <div class="sw" style="background:#1F1F22"><span>#1F1F22</span></div>
+          <div class="sw" style="background:#F2F2F2"><span>#F2F2F2</span></div>
+        </div>
+        <div class="pal-why"><b>Near-black + a single high-voltage accent.</b> Energetic and bold; the acid color drives urgency on CTAs.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===================== ACCESSIBILITY ===================== -->
+<section id="a11y">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">03 — Accessibility that ships</div>
+      <h2>Make it beautiful <em>and</em> usable by everyone</h2>
+      <p>These are the checks that catch ~90% of real issues — and they protect you legally while widening your clients' audience. Run through them before every handoff.</p>
+    </div>
+
+    <div class="a11y-grid">
+      <div class="a11y-card">
+        <h3><span class="em">🎨</span>Color &amp; Contrast</h3>
+        <ul>
+          <li><span class="tick"></span><span>Body text hits <b>4.5:1</b> contrast, large text <b>3:1</b> (WCAG AA). Check every glass/gradient overlay.</span></li>
+          <li><span class="tick"></span><span>Never signal meaning by <b>color alone</b> — add icons, labels or underlines (errors, links, status).</span></li>
+          <li><span class="tick"></span><span>Test your palette in a <b>color-blind simulator</b>; ~8% of men can't distinguish red/green.</span></li>
+        </ul>
+      </div>
+
+      <div class="a11y-card">
+        <h3><span class="em">⌨️</span>Keyboard &amp; Focus</h3>
+        <ul>
+          <li><span class="tick"></span><span>Every interactive element is <b>reachable by Tab</b> and usable without a mouse.</span></li>
+          <li><span class="tick"></span><span>Keep a <b>visible focus ring</b> — style <code style="color:var(--a3)">:focus-visible</code>, never <code style="color:var(--a3)">outline:none</code> alone.</span></li>
+          <li><span class="tick"></span><span>Logical <b>tab order</b> that follows the visual layout; add a “skip to content” link.</span></li>
+        </ul>
+      </div>
+
+      <div class="a11y-card">
+        <h3><span class="em">🏗️</span>Structure &amp; Semantics</h3>
+        <ul>
+          <li><span class="tick"></span><span>Use real tags — <code style="color:var(--a3)">&lt;button&gt;</code>, <code style="color:var(--a3)">&lt;nav&gt;</code>, <code style="color:var(--a3)">&lt;main&gt;</code> — not <code style="color:var(--a3)">&lt;div onclick&gt;</code>.</span></li>
+          <li><span class="tick"></span><span>One <b>H1</b> per page; headings nested in order (don't skip H2→H4).</span></li>
+          <li><span class="tick"></span><span>Every image has meaningful <b>alt text</b> (or <code style="color:var(--a3)">alt=""</code> if purely decorative).</span></li>
+        </ul>
+      </div>
+
+      <div class="a11y-card">
+        <h3><span class="em">🎬</span>Motion &amp; Media</h3>
+        <ul>
+          <li><span class="tick"></span><span>Honor <code style="color:var(--a3)">prefers-reduced-motion</code> — kill big animations for users who need calm.</span></li>
+          <li><span class="tick"></span><span>No pure <b>autoplay audio</b>; give controls. Captions/transcripts for video.</span></li>
+          <li><span class="tick"></span><span>Avoid content that <b>flashes &gt;3×/sec</b> (seizure risk).</span></li>
+        </ul>
+      </div>
+
+      <div class="a11y-card">
+        <h3><span class="em">📝</span>Forms &amp; Touch</h3>
+        <ul>
+          <li><span class="tick"></span><span>Every input has a real <code style="color:var(--a3)">&lt;label&gt;</code> — placeholders aren't labels.</span></li>
+          <li><span class="tick"></span><span>Tap targets <b>≥ 44×44px</b> with breathing room between them.</span></li>
+          <li><span class="tick"></span><span>Clear, specific <b>error messages</b> tied to the field, announced to screen readers.</span></li>
+        </ul>
+      </div>
+
+      <div class="a11y-card">
+        <h3><span class="em">🔍</span>Verify It</h3>
+        <ul>
+          <li><span class="tick"></span><span>Run <b>Lighthouse</b> (Chrome DevTools) &amp; the <b>axe</b> extension on every page.</span></li>
+          <li><span class="tick"></span><span>Actually <b>tab through</b> the page and try a screen reader (VoiceOver / NVDA) once.</span></li>
+          <li><span class="tick"></span><span>Zoom to <b>200%</b> — layout must not break or clip content.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===================== AI WORKFLOW ===================== -->
+<section id="ai">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">04 — Hassle-free build with AI</div>
+      <h2>A workflow that keeps AI from fighting you</h2>
+      <p>How to actually ship faster with AI instead of debugging its guesses. The pattern: give it constraints, build in slices, and let it do the tedious parts.</p>
+    </div>
+
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="ai-num">01</div>
+        <h3>Feed it a design system first</h3>
+        <p>Hand over your <b>tokens up front</b> — the exact hex palette, fonts, spacing scale, radius. AI defaults to generic looks; pinned tokens make every component consistent and on-brand.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-num">02</div>
+        <h3>Build in slices, not one shot</h3>
+        <p>Ask for <b>one component at a time</b> — nav, then hero, then cards. Small scopes mean fewer bugs, easier review, and you can course-correct before it compounds.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-num">03</div>
+        <h3>Iterate with screenshots</h3>
+        <p>Paste a screenshot and say <b>“this spacing is off, tighten it.”</b> Visual feedback beats paragraphs of description — a picture fixes in one turn what words take five to.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-num">04</div>
+        <h3>Delegate the boring 80%</h3>
+        <p>Boilerplate, responsive breakpoints, <b>ARIA labels, alt text, form validation</b>, dummy content, README. Let AI grind the tedium; you spend your time on taste and logic.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-num">05</div>
+        <h3>Make it your a11y auditor</h3>
+        <p>Paste a component and ask it to <b>flag contrast, missing labels, and keyboard traps.</b> A fast second pass that catches what you'd miss at 2am before a deadline.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-num">06</div>
+        <h3>Be specific or get generic</h3>
+        <p>“Make it modern” → mush. <b>“Glassmorphic cards, 20px blur, indigo→pink gradient, Bricolage headings”</b> → exactly what you pictured. Name effects, sizes, and references.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-num">07</div>
+        <h3>Commit before big changes</h3>
+        <p>Use <b>Git checkpoints</b> so an AI refactor that goes sideways is one <code style="color:var(--a3)">git reset</code> away. Freedom to experiment without fear of losing working code.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-num">08</div>
+        <h3>Always read before you ship</h3>
+        <p>AI can hallucinate APIs and subtly break logic. <b>Understand every line</b> you hand a client — you're the one supporting it. Test the real thing, don't trust the demo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>Kudolane&nbsp;Design&nbsp;Lab</div>
+    <p>Your reusable reference for stunning, accessible client sites. Bookmark it, copy from it, and keep adding your own effects & palettes as you find them.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var toast = document.getElementById('toast'), tId;
+  function ping(msg){
+    toast.textContent = msg || 'Copied to clipboard';
+    toast.classList.add('show');
+    clearTimeout(tId);
+    tId = setTimeout(function(){ toast.classList.remove('show'); }, 1400);
+  }
+  function copy(text){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      return navigator.clipboard.writeText(text);
+    }
+    var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity=0;
+    document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);
+    return Promise.resolve();
+  }
+
+  // copy CSS snippets
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var code = btn.parentElement.querySelector('pre');
+      copy(code.innerText).then(function(){
+        btn.textContent='Copied';btn.classList.add('done');
+        ping('CSS copied');
+        setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1300);
+      });
+    });
+  });
+
+  // copy hex swatches
+  document.querySelectorAll('.sw').forEach(function(sw){
+    sw.setAttribute('tabindex','0');
+    sw.setAttribute('role','button');
+    var hex = sw.querySelector('span').textContent.trim();
+    sw.setAttribute('aria-label','Copy '+hex);
+    function go(){
+      copy(hex).then(function(){
+        sw.classList.add('done');ping(hex+' copied');
+        setTimeout(function(){sw.classList.remove('done');},1200);
+      });
+    }
+    sw.addEventListener('click', go);
+    sw.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();go();} });
+  });
+
+  if(reduce) return; // skip motion-heavy interactions
+
+  // hero 3D tilt
+  var hero = document.getElementById('heroCard');
+  if(hero){
+    var hp = hero.parentElement;
+    hp.addEventListener('mousemove', function(e){
+      var r=hero.getBoundingClientRect();
+      var x=(e.clientX-r.left-r.width/2)/r.width;
+      var y=(e.clientY-r.top-r.height/2)/r.height;
+      hero.style.transform='perspective(1000px) rotateY('+(x*7)+'deg) rotateX('+(-y*7)+'deg)';
+    });
+    hp.addEventListener('mouseleave', function(){ hero.style.transform='perspective(1000px) rotateY(0) rotateX(0)'; });
+  }
+
+  // tilt demo card
+  var td=document.getElementById('tiltDemo');
+  if(td){
+    var card=td.querySelector('.tilt3d');
+    td.addEventListener('mousemove', function(e){
+      var r=td.getBoundingClientRect();
+      var x=(e.clientX-r.left-r.width/2)/r.width;
+      var y=(e.clientY-r.top-r.height/2)/r.height;
+      card.style.transform='perspective(600px) rotateY('+(x*22)+'deg) rotateX('+(-y*22)+'deg)';
+    });
+    td.addEventListener('mouseleave', function(){ card.style.transform='perspective(600px) rotateY(0) rotateX(0)'; });
+  }
+
+  // spotlight button
+  var mb=document.getElementById('magDemo');
+  if(mb){
+    var glow=mb.querySelector('.glow');
+    mb.addEventListener('mousemove', function(e){
+      var r=mb.getBoundingClientRect();
+      glow.style.left=(e.clientX-r.left)+'px';
+      glow.style.top=(e.clientY-r.top)+'px';
+    });
+  }
+})();
+</script>
+</body>
+</html>
