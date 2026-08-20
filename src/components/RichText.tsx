@@ -1,8 +1,11 @@
 import { Fragment, type ReactNode } from 'react';
 import type { Rich } from '../types';
 
-/** `**bold**` and `` `code` `` — the only two markers the data files use. */
-const INLINE = /\*\*([\s\S]+?)\*\*|`([^`]+)`/g;
+/**
+ * The three inline markers the data files use. Bold is listed first so that
+ * `**text**` is never mistaken for an empty italic wrapping a bold.
+ */
+const INLINE = /\*\*([\s\S]+?)\*\*|\*([^*\n]+?)\*|`([^`]+)`/g;
 
 export function RichText({ text }: { text: Rich }) {
   const nodes: ReactNode[] = [];
@@ -14,10 +17,12 @@ export function RichText({ text }: { text: Rich }) {
     if (at > cursor) nodes.push(text.slice(cursor, at));
     if (m[1] !== undefined) {
       nodes.push(<b key={key++}>{m[1]}</b>);
+    } else if (m[2] !== undefined) {
+      nodes.push(<i key={key++}>{m[2]}</i>);
     } else {
       nodes.push(
         <code className="rt-code" key={key++}>
-          {m[2]}
+          {m[3]}
         </code>,
       );
     }

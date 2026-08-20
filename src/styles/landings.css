@@ -1,0 +1,317 @@
+/* ==========================================================================
+   SAMPLE LANDING PAGES
+   Each page is fully scoped under its own root class so none of the lab's
+   dark theme leaks in — and none of the landing's styles leak out.
+
+   Every root is an inline-size container and all fluid sizes use `cqi`, so a
+   page renders identically at 640px inside the detail frame and at 1920px
+   full screen. No viewport media queries live in here on purpose.
+   ========================================================================== */
+.lp{
+  container-type:inline-size;
+  position:relative;
+  width:100%;
+  text-align:left;
+  font-synthesis:none;
+}
+.lp a{text-decoration:none}
+
+/* The lab styles bare `section`, `nav`, `footer`, `h1` and `h2` globally —
+   sticky dark nav bars, 84px section padding, the display face on headings.
+   None of that may reach inside a landing page, so undo it here. `:where()`
+   holds the reset at `.lp` specificity, which is high enough to beat the bare
+   element selectors and low enough to lose to every landing rule below. */
+.lp :where(section,header,footer,nav){
+  position:static;padding:0;margin:0;border:0;z-index:auto;
+  background:none;text-align:inherit;
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+}
+.lp :where(h1,h2,h3,h4,p,cite){
+  font-family:inherit;letter-spacing:normal;line-height:inherit;margin:0;
+}
+
+/* ==========================================================================
+   1 — MINIMALISM  ·  Ora, an architecture practice
+   ========================================================================== */
+.lp-min{
+  --ink:#111111;
+  --paper:#FFFFFF;
+  --soft:#767676;
+  --hair:#E7E7E7;
+  background:var(--paper);color:var(--ink);
+  font-family:"Inter",system-ui,sans-serif;font-size:clamp(14px,1.35cqi,18px);line-height:1.65;
+}
+.lpm-nav{
+  position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:4cqi;
+  padding:2.6cqi 6cqi;background:rgba(255,255,255,.88);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--hair);
+}
+.lpm-brand{font-size:clamp(17px,1.9cqi,26px);font-weight:500;letter-spacing:-.02em}
+.lpm-nav nav{margin-left:auto;display:flex;gap:3cqi}
+.lpm-nav nav a{color:var(--soft);font-size:clamp(12px,1.15cqi,15px);transition:color .2s}
+.lpm-nav nav a:hover{color:var(--ink)}
+
+.lpm-hero{padding:14cqi 6cqi 11cqi;max-width:64cqi}
+.lpm-eyebrow{color:var(--soft);font-size:clamp(11px,1.05cqi,14px);letter-spacing:.16em;text-transform:uppercase;margin-bottom:3.5cqi}
+.lp-min h1{font-size:clamp(34px,7.6cqi,104px);font-weight:500;letter-spacing:-.04em;line-height:1.02;margin-bottom:3cqi}
+.lpm-lede{color:var(--soft);font-size:clamp(14px,1.55cqi,20px);max-width:44cqi;margin-bottom:4.5cqi}
+.lpm-cta{
+  display:inline-block;background:var(--ink);color:var(--paper);
+  padding:1.5cqi 3.4cqi;border-radius:100px;font-size:clamp(12px,1.2cqi,16px);
+  transition:opacity .2s ease;
+}
+.lpm-cta:hover{opacity:.76}
+
+.lpm-work{padding:0 6cqi 12cqi;display:grid;grid-template-columns:repeat(3,1fr);gap:3cqi}
+.lpm-shot{aspect-ratio:4/5;margin-bottom:1.8cqi;transition:opacity .3s ease}
+.lpm-shot.s1{background:linear-gradient(160deg,#E9E7E2,#CFCBC3)}
+.lpm-shot.s2{background:linear-gradient(160deg,#DDE3E6,#B9C3C8)}
+.lpm-shot.s3{background:linear-gradient(160deg,#EDEAE4,#D6CFC4)}
+.lpm-item:hover .lpm-shot{opacity:.82}
+.lpm-item h3{font-size:clamp(14px,1.5cqi,19px);font-weight:500;letter-spacing:-.01em}
+.lpm-item p{color:var(--soft);font-size:clamp(11px,1.1cqi,14px)}
+
+.lpm-say{padding:11cqi 6cqi;border-top:1px solid var(--hair);max-width:70cqi}
+.lpm-say p{font-size:clamp(19px,3.1cqi,42px);font-weight:400;letter-spacing:-.025em;line-height:1.28;margin-bottom:2.6cqi}
+.lpm-say cite{color:var(--soft);font-style:normal;font-size:clamp(11px,1.1cqi,14px);letter-spacing:.1em;text-transform:uppercase}
+
+.lpm-foot{display:flex;flex-wrap:wrap;gap:3cqi;padding:4cqi 6cqi 6cqi;border-top:1px solid var(--hair);
+  color:var(--soft);font-size:clamp(11px,1.1cqi,14px)}
+.lpm-foot span:first-child{color:var(--ink)}
+.lpm-foot span:last-child{margin-left:auto}
+
+/* ==========================================================================
+   2 — MAXIMALISM  ·  Sundae Riot
+   ========================================================================== */
+.lp-max{
+  --ink:#150C2E;
+  --pink:#FF3DAE;
+  --lime:#7CFF4F;
+  --yellow:#FFE347;
+  --cyan:#00E0FF;
+  background:#1B0733;color:#fff;overflow:hidden;
+  font-family:"Inter",system-ui,sans-serif;font-size:clamp(14px,1.35cqi,18px);line-height:1.5;
+}
+.lpx-noise{
+  position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.22;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.lpx-blob{position:absolute;z-index:0;border-radius:50%;filter:blur(9cqi);opacity:.9}
+.lpx-blob.b1{width:52cqi;height:52cqi;background:var(--pink);top:-14cqi;left:-10cqi}
+.lpx-blob.b2{width:44cqi;height:44cqi;background:var(--lime);top:22cqi;right:-12cqi;opacity:.65}
+.lpx-blob.b3{width:40cqi;height:40cqi;background:var(--cyan);bottom:8cqi;left:26cqi;opacity:.5}
+
+.lpx-nav{position:relative;z-index:4;display:flex;align-items:center;gap:3cqi;padding:2.6cqi 5cqi}
+.lpx-brand{
+  font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;letter-spacing:-.01em;
+  font-size:clamp(16px,2.1cqi,30px);background:var(--yellow);color:var(--ink);
+  padding:.6cqi 1.6cqi;rotate:-2deg;border:.35cqi solid var(--ink);
+}
+.lpx-nav nav{margin-left:auto;display:flex;gap:1.4cqi}
+.lpx-nav nav a{
+  font-family:"JetBrains Mono",monospace;font-size:clamp(10px,1.05cqi,14px);letter-spacing:.06em;
+  color:#fff;border:.28cqi solid #fff;padding:.7cqi 1.6cqi;border-radius:100px;transition:.15s;
+}
+.lpx-nav nav a:hover{background:var(--yellow);color:var(--ink);border-color:var(--yellow);rotate:-3deg}
+
+.lpx-hero{position:relative;z-index:3;padding:6cqi 5cqi 8cqi;text-align:center}
+.lp-max h1{
+  font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(52px,17cqi,240px);line-height:.8;letter-spacing:-.05em;text-transform:uppercase;
+  display:flex;flex-direction:column;align-items:center;
+}
+.lp-max h1 .l1{color:var(--yellow);rotate:-2.5deg;text-shadow:.9cqi .9cqi 0 var(--pink)}
+.lp-max h1 .l2{color:var(--lime);rotate:2deg;margin-top:-.5cqi;text-shadow:.9cqi .9cqi 0 var(--ink)}
+.lpx-lede{max-width:46cqi;margin:4cqi auto 3.6cqi;font-size:clamp(14px,1.6cqi,21px);color:#F3E9FF}
+.lpx-lede em{background:var(--pink);color:#fff;font-style:italic;padding:0 .5cqi}
+.lpx-ctas{display:flex;gap:1.6cqi;justify-content:center;flex-wrap:wrap}
+.lpx-btn{
+  font-family:"JetBrains Mono",monospace;font-weight:700;font-size:clamp(12px,1.25cqi,17px);letter-spacing:.04em;
+  background:var(--yellow);color:var(--ink);padding:1.5cqi 3cqi;border:.35cqi solid var(--ink);
+  box-shadow:.8cqi .8cqi 0 var(--ink);transition:transform .12s,box-shadow .12s;
+}
+.lpx-btn:hover{transform:translate(.4cqi,.4cqi);box-shadow:.4cqi .4cqi 0 var(--ink)}
+.lpx-btn.ghost{background:var(--cyan);text-transform:lowercase}
+
+.lpx-sticker{
+  position:absolute;z-index:5;font-family:"JetBrains Mono",monospace;font-weight:700;
+  font-size:clamp(10px,1.15cqi,15px);background:var(--cyan);color:var(--ink);
+  border:.35cqi solid var(--ink);box-shadow:.7cqi .7cqi 0 var(--ink);padding:.8cqi 1.4cqi;
+}
+.lpx-sticker.s1{top:3cqi;left:6cqi;rotate:-11deg}
+.lpx-sticker.s2{top:9cqi;right:6cqi;rotate:9deg;background:var(--pink);color:#fff}
+
+.lpx-marquee{position:relative;z-index:4;background:var(--yellow);color:var(--ink);
+  border-block:.4cqi solid var(--ink);padding:1.1cqi 0;overflow:hidden;rotate:-1.2deg;margin:0 -2cqi}
+.lpx-track{display:flex;width:max-content;animation:lpx-slide 22s linear infinite}
+.lpx-track span{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(16px,2.4cqi,34px);letter-spacing:-.01em;padding-right:2cqi;white-space:nowrap}
+@keyframes lpx-slide{to{transform:translateX(-50%)}}
+
+.lpx-flavours{position:relative;z-index:3;display:grid;grid-template-columns:repeat(3,1fr);gap:2.6cqi;padding:9cqi 5cqi}
+.lpx-card{
+  background:#fff;color:var(--ink);border:.4cqi solid var(--ink);
+  box-shadow:1.1cqi 1.1cqi 0 var(--ink);padding:3cqi 2.6cqi;transition:transform .18s;
+}
+.lpx-card.c1{rotate:-1.6deg;background:var(--lime)}
+.lpx-card.c2{rotate:1.2deg;background:var(--yellow)}
+.lpx-card.c3{rotate:-.8deg;background:var(--pink);color:#fff}
+.lpx-card:hover{transform:translateY(-1cqi) rotate(0deg)}
+.lpx-emoji{font-size:clamp(26px,4cqi,58px);display:block;margin-bottom:1.4cqi}
+.lpx-card h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(16px,2.2cqi,32px);letter-spacing:-.02em;line-height:1;margin-bottom:1.4cqi}
+.lpx-card p{font-size:clamp(12px,1.3cqi,17px)}
+
+.lpx-foot{position:relative;z-index:3;text-align:center;padding:6cqi 5cqi 8cqi;border-top:.4cqi solid var(--yellow)}
+.lp-max h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(38px,10cqi,150px);letter-spacing:-.045em;line-height:.9;color:var(--yellow)}
+.lpx-foot p{font-family:"JetBrains Mono",monospace;font-size:clamp(10px,1.1cqi,15px);
+  letter-spacing:.18em;color:var(--lime);margin-top:2cqi}
+
+/* ==========================================================================
+   3 — SWISS DESIGN  ·  Neue Halle Basel
+   ========================================================================== */
+.lp-swiss{
+  --ink:#111111;
+  --red:#E1140A;
+  --hair:#111111;
+  --soft:#6E6E6E;
+  background:#FFFFFF;color:var(--ink);
+  font-family:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:clamp(13px,1.3cqi,17px);line-height:1.5;
+}
+.lps-nav{display:flex;align-items:baseline;gap:4cqi;padding:2.4cqi 5cqi;border-bottom:2px solid var(--hair)}
+.lps-brand{font-size:clamp(15px,1.9cqi,26px);font-weight:700;letter-spacing:-.03em}
+.lps-nav nav{display:flex;gap:2.6cqi;margin-left:6cqi}
+.lps-nav nav a{color:var(--ink);font-size:clamp(11px,1.15cqi,15px);font-weight:500;
+  border-bottom:2px solid transparent;transition:.15s;padding-bottom:.3cqi}
+.lps-nav nav a:hover{border-bottom-color:var(--red);color:var(--red)}
+.lps-lang{margin-left:auto;color:var(--soft);font-size:clamp(10px,1.05cqi,14px);letter-spacing:.1em}
+
+/* the grid is the layout — 12 columns, content spans them explicitly */
+.lps-hero{display:grid;grid-template-columns:repeat(12,1fr);column-gap:2cqi;padding:7cqi 5cqi 6cqi}
+.lps-hero-type{grid-column:1 / span 7}
+.lps-hero-side{grid-column:9 / span 4;display:flex;flex-direction:column;align-items:flex-start;gap:2.4cqi}
+.lps-kicker{font-size:clamp(10px,1.1cqi,14px);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--red);font-weight:600;margin-bottom:2.6cqi;border-top:2px solid var(--red);padding-top:1.2cqi}
+.lp-swiss h1{font-size:clamp(40px,9.4cqi,132px);font-weight:700;line-height:.9;letter-spacing:-.045em;text-align:left}
+.lps-mark{display:flex;gap:.8cqi;align-items:flex-end}
+.lps-mark .d1{width:7cqi;height:7cqi;background:var(--red);border-radius:50%}
+.lps-mark .d2{width:7cqi;height:7cqi;background:var(--ink)}
+.lps-hero-side p{color:var(--ink);font-size:clamp(12px,1.35cqi,18px);max-width:34cqi}
+.lps-cta{background:var(--red);color:#fff;font-weight:600;font-size:clamp(11px,1.2cqi,16px);
+  padding:1.2cqi 2.4cqi;transition:background .15s}
+.lps-cta:hover{background:var(--ink)}
+
+.lps-rule{height:2px;background:var(--hair);margin:0 5cqi}
+
+.lps-facts{display:grid;grid-template-columns:repeat(4,1fr);column-gap:2cqi;padding:5cqi 5cqi 7cqi}
+.lps-fact{border-top:1px solid var(--hair);padding-top:1.6cqi}
+.lps-num{display:block;font-family:"JetBrains Mono",monospace;font-size:clamp(10px,1.05cqi,14px);
+  color:var(--red);margin-bottom:1.6cqi}
+.lps-fact h3{font-size:clamp(13px,1.5cqi,20px);font-weight:700;letter-spacing:-.02em;margin-bottom:.9cqi;line-height:1.15}
+.lps-fact p{color:var(--soft);font-size:clamp(11px,1.2cqi,15px)}
+
+.lps-visit{display:grid;grid-template-columns:repeat(12,1fr);column-gap:2cqi;padding:0 5cqi 7cqi}
+.lps-col{grid-column:span 3}
+.lps-col:first-child{grid-column:1 / span 3}
+.lps-col h4{font-size:clamp(10px,1.05cqi,14px);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1.2cqi;font-weight:600}
+.lps-col p{font-size:clamp(11px,1.25cqi,16px);line-height:1.7}
+
+.lps-foot{display:flex;gap:3cqi;padding:2.4cqi 5cqi 4cqi;border-top:2px solid var(--hair);
+  font-size:clamp(10px,1.1cqi,14px);color:var(--soft)}
+.lps-foot span:first-child{color:var(--ink);font-weight:600}
+.lps-foot span:last-child{margin-left:auto}
+
+/* ==========================================================================
+   4 — BRUTALISM  ·  Heavy Industry
+   ========================================================================== */
+.lp-brut{
+  --ink:#0B0B0B;
+  --paper:#F5F1E8;
+  --acid:#FFE100;
+  --blue:#0057FF;
+  --line:.32cqi;
+  background:var(--paper);color:var(--ink);
+  font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,monospace;
+  font-size:clamp(12px,1.25cqi,16px);line-height:1.55;
+}
+.lp-brut a{text-decoration:none}
+.lpb-nav{display:flex;align-items:center;gap:3cqi;padding:2.2cqi 4cqi;border-bottom:.5cqi solid var(--ink);background:var(--paper)}
+.lpb-brand{font-weight:700;font-size:clamp(14px,1.9cqi,26px);letter-spacing:-.02em}
+.lpb-nav nav{margin-left:auto;display:flex;gap:1.2cqi}
+.lpb-nav nav a{font-size:clamp(10px,1.1cqi,14px);border:var(--line) solid var(--ink);
+  padding:.8cqi 1.6cqi;background:var(--paper);transition:.1s}
+.lpb-nav nav a:hover{background:var(--ink);color:var(--acid)}
+
+.lpb-ticker{background:var(--ink);color:var(--acid);font-size:clamp(9px,1.05cqi,13px);
+  letter-spacing:.14em;padding:.9cqi 4cqi;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.lpb-hero{display:grid;grid-template-columns:1.35fr 1fr;gap:4cqi;padding:6cqi 4cqi 5cqi;align-items:start}
+.lp-brut h1{font-size:clamp(38px,9cqi,124px);font-weight:700;line-height:.87;letter-spacing:-.035em;text-transform:uppercase}
+/* inline-block, so the highlight box is the line box — an inline <mark> paints
+   its full font content area and would bleed over the line above at .87 leading */
+.lp-brut h1 mark{display:inline-block;background:var(--acid);color:var(--ink);line-height:1.02;padding:0 .12em}
+.lpb-hero-side{display:flex;flex-direction:column;align-items:flex-start;gap:2.4cqi;padding-top:1.6cqi}
+.lpb-hero-side p{font-size:clamp(12px,1.35cqi,17px);border-left:.5cqi solid var(--ink);padding-left:1.6cqi}
+.lpb-btn{
+  font-weight:700;font-size:clamp(11px,1.25cqi,16px);background:var(--acid);color:var(--ink);
+  border:.45cqi solid var(--ink);box-shadow:.9cqi .9cqi 0 var(--ink);padding:1.3cqi 2.6cqi;
+  transition:transform .08s linear,box-shadow .08s linear;
+}
+.lpb-btn:hover{transform:translate(.45cqi,.45cqi);box-shadow:.45cqi .45cqi 0 var(--ink)}
+.lpb-btn:active{transform:translate(.9cqi,.9cqi);box-shadow:0 0 0 var(--ink)}
+.lpb-btn.big{font-size:clamp(13px,1.7cqi,22px);padding:1.8cqi 3.4cqi}
+.lpb-link{text-decoration:underline;font-size:clamp(11px,1.15cqi,15px)}
+.lpb-link:hover{background:var(--acid)}
+
+.lpb-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:.5cqi solid var(--ink);border-bottom:.5cqi solid var(--ink)}
+.lpb-stats div{padding:2.6cqi 2cqi;border-left:var(--line) solid var(--ink)}
+.lpb-stats div:first-child{border-left:none}
+.lpb-stats b{display:block;font-size:clamp(22px,4.4cqi,62px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.lpb-stats span{font-size:clamp(9px,1cqi,13px);letter-spacing:.12em;opacity:.72}
+
+.lpb-work{display:grid;grid-template-columns:repeat(3,1fr);gap:2.6cqi;padding:6cqi 4cqi}
+.lpb-card{background:#fff;border:.45cqi solid var(--ink);box-shadow:1cqi 1cqi 0 var(--ink);padding:2.6cqi 2.2cqi;
+  transition:transform .1s linear,box-shadow .1s linear}
+.lpb-card.alt{background:var(--acid)}
+.lpb-card:hover{transform:translate(.5cqi,.5cqi);box-shadow:.5cqi .5cqi 0 var(--ink)}
+.lpb-tag{display:inline-block;background:var(--ink);color:var(--paper);font-size:clamp(9px,1cqi,13px);
+  letter-spacing:.1em;padding:.4cqi 1cqi;margin-bottom:1.6cqi}
+.lpb-card h3{font-size:clamp(15px,2cqi,28px);font-weight:700;letter-spacing:-.02em;margin-bottom:1.2cqi}
+.lpb-card p{font-size:clamp(11px,1.2cqi,15px)}
+
+.lpb-cta{background:var(--ink);color:var(--paper);padding:7cqi 4cqi;text-align:center}
+.lp-brut h2{font-size:clamp(26px,6cqi,86px);font-weight:700;letter-spacing:-.04em;line-height:.95;margin-bottom:1.8cqi}
+.lpb-cta p{font-size:clamp(11px,1.3cqi,17px);opacity:.78;margin-bottom:3.4cqi}
+.lpb-cta .lpb-btn{border-color:var(--paper);box-shadow:.9cqi .9cqi 0 var(--acid)}
+.lpb-cta .lpb-btn:hover{box-shadow:.45cqi .45cqi 0 var(--acid)}
+
+.lpb-foot{display:flex;flex-wrap:wrap;gap:2.6cqi;padding:2.6cqi 4cqi 4cqi;border-top:.5cqi solid var(--ink);
+  font-size:clamp(9px,1.05cqi,13px);letter-spacing:.08em}
+.lpb-foot span:last-child{margin-left:auto}
+
+/* ==========================================================================
+   NARROW CONTAINERS — the only breakpoints in here are container queries,
+   so they fire inside the detail frame exactly as they do full screen.
+   ========================================================================== */
+@container (max-width: 620px){
+  .lpm-work{grid-template-columns:1fr 1fr}
+  .lpx-flavours,.lpb-work{grid-template-columns:1fr}
+  .lps-facts{grid-template-columns:1fr 1fr;row-gap:3cqi}
+  .lps-hero{grid-template-columns:1fr;row-gap:5cqi}
+  .lps-hero-type,.lps-hero-side{grid-column:1 / -1}
+  .lps-visit{grid-template-columns:1fr 1fr;row-gap:4cqi}
+  .lps-col,.lps-col:first-child{grid-column:span 1}
+  .lpb-hero{grid-template-columns:1fr}
+  .lpb-stats{grid-template-columns:1fr 1fr}
+  .lpb-stats div:nth-child(3){border-left:none}
+  .lpb-stats div:nth-child(n+3){border-top:var(--line) solid var(--ink)}
+}
+@container (max-width: 420px){
+  .lpm-nav nav,.lps-nav nav,.lpx-nav nav,.lpb-nav nav{display:none}
+  .lpm-work{grid-template-columns:1fr}
+  .lps-facts{grid-template-columns:1fr}
+  .lpx-sticker{display:none}
+}

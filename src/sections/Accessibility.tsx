@@ -7,7 +7,7 @@ export function Accessibility() {
     <section id="a11y">
       <div className="wrap">
         <SectionHead
-          kicker="03 — Accessibility that ships"
+          kicker="04 — Accessibility that ships"
           title={
             <>
               Make it beautiful <em>and</em> usable by everyone

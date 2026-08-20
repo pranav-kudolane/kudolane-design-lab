@@ -1,6 +1,7 @@
 import { useTilt } from '../hooks/useTilt';
 import { effects } from '../data/effects';
 import { palettes } from '../data/palettes';
+import { designs } from '../data/designs';
 
 export function Hero() {
   const { containerRef, targetRef } = useTilt<HTMLDivElement, HTMLDivElement>({ maxDeg: 7 });
@@ -8,12 +9,13 @@ export function Hero() {
   const chips = [
     `${effects.length} live effects`,
     `${palettes.length} premium palettes`,
+    `${designs.length} design styles`,
     'a11y checklist',
     'AI workflow',
   ];
 
   return (
-    <header className="hero">
+    <header className="hero" id="top">
       <div className="aurora" aria-hidden="true">
         <span className="b1" />
         <span className="b2" />

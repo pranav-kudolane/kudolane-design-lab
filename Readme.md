@@ -1,7 +1,8 @@
 # Kudolane Design Lab
 
 A working reference for client-ready sites: live CSS effects, premium palettes by
-industry, an accessibility checklist, and an AI build workflow — all copy-and-paste ready.
+industry, the design languages a site can be built in, an accessibility checklist,
+and an AI build workflow — all copy-and-paste ready.
 
 Built with **Vite + React + TypeScript**.
 
@@ -23,14 +24,33 @@ touch the section components.
 
 ```
 src/
-  data/          effects, palettes, checklist, aiTips, alsoWorth
-  components/    cards, demos, code block, toast, rich text
-  sections/      Hero, Effects, Palettes, Accessibility, AiWorkflow, Footer
-  hooks/         useTilt, useSpotlight, useCopy, useToast, useReducedMotion
+  data/          effects, palettes, designs, checklist, aiTips, alsoWorth
+  components/    cards, demos, designThumbs, code block, toast, rich text
+  landings/      one sample landing page per design style
+  sections/      Hero, Effects, Palettes, Designs, Accessibility, AiWorkflow,
+                 Footer, DesignDetail, DesignLive
+  hooks/         useTilt, useSpotlight, useCopy, useToast, useReducedMotion,
+                 useHashRoute
   lib/           highlight.tsx — the small CSS/JS syntax highlighter
-  styles/        tokens, base, layout, cards, demos
+  styles/        tokens, base, layout, cards, demos, designs, landings
   types.ts       the shape of every data file
 ```
+
+## Routing
+
+The lab is one page with a ~40-line hash router (`hooks/useHashRoute.ts`). Two
+shapes of hash share the URL bar:
+
+| hash | what renders |
+| --- | --- |
+| `#effects`, `#palettes`, … | the home page, scrolled to that section |
+| `#/design/brutalism` | the full write-up for one design style |
+| `#/design/brutalism/live` | that style's sample landing page, full screen |
+
+Anything not starting with `#/` is treated as a plain anchor, so every existing
+nav link keeps working. Landing pages use the `A` component from
+`landings/anchors.tsx` for their own in-page links — a bare `#work` would be read
+as a route change and throw the reader off the page.
 
 ## Adding things
 
@@ -56,8 +76,26 @@ Copy button puts the raw text on the clipboard.
 **A new palette** — one entry in `src/data/palettes.ts` with five hexes. Swatches,
 click-to-copy and the toast come for free.
 
-**Rich text** — `desc`, `why`, checklist items and tip bodies support two inline
-markers: `**bold**` and `` `code` ``. See `components/RichText.tsx`.
+**A new design style** — three files, then one data entry:
+
+1. a thumbnail in `src/components/designThumbs.tsx` — a miniature fake website
+   built from divs, sized in `cqi` so it scales with the card;
+2. a sample landing page in `src/landings/`, scoped under its own root class;
+3. the styles for both, in `styles/designs.css` and `styles/landings.css`;
+4. an entry in `src/data/designs.ts` carrying the write-up — origin, principles,
+   traits, when to reach for it, when not to, and a representative snippet.
+
+The card grid, the `#/design/<id>` write-up and the full-screen preview are all
+generated from that array; no component needs editing.
+
+Landing pages are **container-query sized**: each root sets `container-type:
+inline-size` and every fluid value uses `cqi`, never `vw`. That is what makes a
+page look identical framed inside the write-up and filling a 4K screen — so keep
+`@container` rules, not `@media` rules, in `styles/landings.css`.
+
+**Rich text** — `desc`, `why`, checklist items, tip bodies and every design-style
+field support three inline markers: `**bold**`, `*italic*` and `` `code` ``.
+See `components/RichText.tsx`.
 
 ## Design tokens
 

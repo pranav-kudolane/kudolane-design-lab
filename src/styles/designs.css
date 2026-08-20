@@ -1,0 +1,211 @@
+/* ==========================================================================
+   DESIGN STYLES — card grid, CSS thumbnails, detail route, live route.
+   Every card exposes its own --ds-accent (set inline from data/designs.ts).
+   ========================================================================== */
+
+/* ---------- GRID + CARD ---------- */
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px}
+.ds-card{
+  position:relative;display:flex;flex-direction:column;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;transition:transform .25s,border-color .25s;
+}
+.ds-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ds-accent);opacity:.8}
+.ds-card:hover{transform:translateY(-3px);border-color:var(--line-strong)}
+.ds-card:hover .dt{transform:scale(1.025)}
+
+.ds-shot{
+  margin:16px 16px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  container-type:inline-size;   /* thumbs size off the card, not the viewport */
+}
+.ds-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.ds-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:9px}
+.ds-name{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.015em;line-height:1.15;margin:0}
+.ds-name small{display:block;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--ds-accent);margin-top:5px;opacity:.9}
+.ds-use{margin-left:auto;flex:none;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line);padding:4px 8px;border-radius:100px;white-space:nowrap}
+.ds-desc{margin:0 0 16px;font-size:13.5px;color:var(--muted)}
+.ds-desc b{color:var(--ink);font-weight:600}
+
+.ds-more{
+  margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;padding:9px 15px;border-radius:100px;
+  border:1px solid var(--line-strong);transition:.18s;
+}
+.ds-more span{transition:transform .18s}
+.ds-more:hover{border-color:var(--ds-accent);color:var(--ds-accent)}
+.ds-more:hover span{transform:translateX(4px)}
+
+/* ---------- THUMBNAILS (miniature fake websites) ---------- */
+.dt{position:relative;aspect-ratio:16/10;overflow:hidden;font-size:4cqi;transition:transform .3s ease}
+.dt-nav{display:flex;align-items:center;gap:2.5cqi;padding:4.5cqi 5.5cqi}
+.dt-hero{padding:0 5.5cqi;display:flex;flex-direction:column;align-items:flex-start;gap:1.8cqi}
+
+/* --- minimalism --- */
+.dt-min{background:#fff}
+.dt-min .dt-mark{width:7cqi;height:1.8cqi;background:#111;border-radius:1px}
+.dt-min .dt-nav i{width:5cqi;height:1cqi;background:#d8d8d8;border-radius:1px}
+.dt-min .dt-nav i:first-of-type{margin-left:auto}
+.dt-min .dt-hero{margin-top:7cqi}
+.dt-min .dt-h{width:56%;height:5.4cqi;background:#111;border-radius:1px}
+.dt-min .dt-l{width:44%;height:1.3cqi;background:#cfcfcf;border-radius:1px;margin-top:1cqi}
+.dt-min .dt-l.short{width:30%;margin-top:0}
+.dt-min .dt-btn{width:17cqi;height:4.2cqi;background:#111;border-radius:100px;margin-top:2.4cqi}
+.dt-min .dt-rule{position:absolute;left:5.5cqi;right:5.5cqi;bottom:5cqi;height:1px;background:#eaeaea}
+
+/* --- maximalism --- */
+.dt-max{background:linear-gradient(135deg,#2A0B4E 0%,#5A0F63 55%,#1B0733 100%);overflow:hidden}
+.dt-max .dt-blob{position:absolute;border-radius:50%;filter:blur(6cqi);opacity:.85}
+.dt-max .b1{width:34cqi;height:34cqi;background:#FF3DAE;top:-8cqi;left:-6cqi}
+.dt-max .b2{width:30cqi;height:30cqi;background:#7CFF4F;bottom:-10cqi;right:-4cqi}
+.dt-max .dt-star{position:absolute;width:9cqi;height:9cqi;background:#FFE347;top:12cqi;right:16cqi;rotate:24deg;border:.8cqi solid #150C2E}
+.dt-max .dt-mark{width:12cqi;height:2.2cqi;background:#FFE347;border-radius:1px}
+.dt-max .dt-nav i{width:4.5cqi;height:1.2cqi;background:rgba(255,255,255,.75);border-radius:1px}
+.dt-max .dt-nav i:first-of-type{margin-left:auto}
+.dt-max .dt-hero{margin-top:3cqi;gap:1.2cqi}
+.dt-max .dt-h{width:70%;height:8cqi;background:#FF3DAE;border-radius:1px;rotate:-1.5deg}
+.dt-max .dt-h.alt{width:52%;height:7cqi;background:#7CFF4F;margin-left:8cqi;rotate:1.5deg}
+.dt-max .dt-badge{width:20cqi;height:4.6cqi;background:#FFE347;border:.7cqi solid #150C2E;border-radius:100px;margin-top:2cqi}
+.dt-max .dt-sticker{position:absolute;width:13cqi;height:6cqi;background:#00E0FF;border:.8cqi solid #150C2E;
+  box-shadow:1.4cqi 1.4cqi 0 #150C2E;bottom:5cqi;right:6cqi;rotate:-9deg}
+
+/* --- swiss --- */
+.dt-swiss{background:#fff}
+.dt-swiss .dt-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr)}
+.dt-swiss .dt-grid i{border-left:1px solid rgba(0,0,0,.07)}
+.dt-swiss .dt-grid i:first-child{border-left:none}
+.dt-swiss .dt-nav{position:relative;border-bottom:1px solid #111;padding-bottom:3cqi}
+.dt-swiss .dt-mark{width:11cqi;height:2cqi;background:#111}
+.dt-swiss .dt-nav i{width:4.5cqi;height:1cqi;background:#111;opacity:.45}
+.dt-swiss .dt-nav i:first-of-type{margin-left:auto}
+.dt-swiss .dt-hero{position:relative;margin-top:6cqi;gap:1.6cqi}
+.dt-swiss .dt-h{width:64%;height:6cqi;background:#111}
+.dt-swiss .dt-h.w2{width:41%}
+.dt-swiss .dt-red{position:absolute;width:11cqi;height:11cqi;background:#E1140A;right:0;top:-1cqi}
+.dt-swiss .dt-cols{position:absolute;left:5.5cqi;right:5.5cqi;bottom:5cqi;display:grid;grid-template-columns:repeat(3,1fr);gap:2.5cqi}
+.dt-swiss .dt-cols span{height:1.1cqi;background:#111;opacity:.3}
+.dt-swiss .dt-cols span:first-child{opacity:.85}
+
+/* --- brutalism --- */
+.dt-brut{background:#F5F1E8}
+.dt-brut .dt-nav{border-bottom:.8cqi solid #0B0B0B;padding-bottom:3.4cqi}
+.dt-brut .dt-mark{width:14cqi;height:2.6cqi;background:#0B0B0B}
+.dt-brut .dt-nav i{width:5cqi;height:1.2cqi;background:#0B0B0B}
+.dt-brut .dt-nav i:first-of-type{margin-left:auto}
+.dt-brut .dt-hero{margin-top:5cqi;gap:1.6cqi}
+.dt-brut .dt-h{width:66%;height:7cqi;background:#0B0B0B}
+.dt-brut .dt-l{width:40%;height:1.4cqi;background:#0B0B0B;opacity:.45}
+.dt-brut .dt-btn{width:19cqi;height:5cqi;background:#FFE100;border:.8cqi solid #0B0B0B;box-shadow:1.4cqi 1.4cqi 0 #0B0B0B;margin-top:1.4cqi}
+.dt-brut .dt-boxes{position:absolute;right:5.5cqi;bottom:5cqi;display:flex;gap:2.4cqi}
+.dt-brut .dt-boxes span{width:10cqi;height:8cqi;background:#fff;border:.8cqi solid #0B0B0B;box-shadow:1.2cqi 1.2cqi 0 #0B0B0B}
+
+/* ==========================================================================
+   DETAIL ROUTE  (#/design/<id>)
+   ========================================================================== */
+.dd{padding:56px 0 40px}
+/* base.css gives every <section> 84px of padding — the detail blocks space
+   themselves, so opt them out without out-specifying their own rules. */
+.dd :where(section){padding:0}
+.dd-missing{padding:120px 24px;text-align:center}
+.dd-missing h1{font-family:var(--display);font-size:clamp(26px,4vw,40px);margin:0 0 10px}
+.dd-missing p{color:var(--muted);margin:0 0 26px}
+
+.dd-back{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line);padding:9px 15px;border-radius:100px;transition:.18s;
+}
+.dd-back:hover{color:var(--ink);border-color:var(--line-strong);background:var(--surface)}
+.dd-back.bottom{margin:8px 0 40px}
+
+.dd-head{max-width:760px;margin:34px 0 54px}
+.dd-era{font-family:var(--mono);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ds-accent);margin-bottom:16px}
+.dd-head h1{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:1;
+  font-size:clamp(38px,6.5vw,68px);margin:0}
+.dd-tagline{font-size:clamp(17px,2.2vw,21px);color:var(--ink);opacity:.75;margin:12px 0 22px;font-style:italic}
+.dd-intro{font-size:16.5px;color:var(--muted);margin:0;max-width:640px}
+.dd-intro b{color:var(--ink);font-weight:600}
+
+.dd-block{margin-bottom:56px}
+.dd-block h2{font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:clamp(22px,3vw,30px);margin:0 0 18px;
+  display:flex;align-items:center;gap:12px}
+.dd-block h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line-strong),transparent)}
+.dd-prose{color:var(--muted);font-size:15.5px;max-width:680px;margin:0 0 20px}
+.dd-prose b{color:var(--ink);font-weight:600}
+
+/* principles */
+.dd-principles{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.dd-principles li{display:flex;gap:18px;padding:20px 0;border-top:1px solid var(--line)}
+.dd-principles li:first-child{border-top:none}
+.dd-num{font-family:var(--mono);font-size:12px;color:var(--ds-accent);padding-top:4px;flex:none;opacity:.8}
+.dd-principles h3{font-family:var(--display);font-size:16.5px;font-weight:700;margin:0 0 6px}
+.dd-principles p{margin:0;color:var(--muted);font-size:14px;max-width:640px}
+.dd-principles p b{color:var(--ink);font-weight:600}
+
+/* traits */
+.dd-traits{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin:0}
+.dd-trait{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.dd-trait dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ds-accent);margin-bottom:8px}
+.dd-trait dd{margin:0;font-size:13.5px;color:var(--muted)}
+.dd-trait dd b{color:var(--ink);font-weight:600}
+
+/* fit / anti-fit */
+.dd-fit{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.dd-fit-col{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 24px 18px}
+.dd-fit-col h2{font-size:18px;margin-bottom:14px}
+.dd-fit-col h2::after{display:none}
+.dd-fit-col ul{list-style:none;margin:0;padding:0}
+.dd-fit-col li{display:flex;gap:11px;padding:9px 0;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line)}
+.dd-fit-col li:first-child{border-top:none}
+.dd-fit-col li b{color:var(--ink);font-weight:600}
+.dd-fit-col li::before{flex:none;font-family:var(--mono);font-size:13px;line-height:1.5}
+.dd-fit-col.good li::before{content:"+";color:var(--a3)}
+.dd-fit-col.bad li::before{content:"–";color:var(--a2)}
+
+/* the code block sits in a card so it matches the rest of the page */
+.dd-code{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:6px 0}
+.dd-code .code{margin:12px 18px}
+.dd-code pre{max-height:520px}
+
+/* ---------- FRAMED LANDING PREVIEW ---------- */
+.dd-frame{border:1px solid var(--line-strong);border-radius:16px;overflow:hidden;background:var(--surface);
+  box-shadow:0 30px 70px -35px rgba(0,0,0,.8)}
+.dd-chrome{display:flex;align-items:center;gap:14px;padding:10px 14px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.dd-dots{display:flex;gap:6px;flex:none}
+.dd-dots i{width:10px;height:10px;border-radius:50%;background:var(--line-strong)}
+.dd-url{font-family:var(--mono);font-size:11px;color:var(--muted);background:var(--bg);border:1px solid var(--line);
+  padding:4px 12px;border-radius:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dd-open{margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ds-accent);
+  border:1px solid var(--line-strong);padding:6px 12px;border-radius:100px;transition:.18s}
+.dd-open:hover{border-color:var(--ds-accent);background:var(--bg)}
+/* the preview scrolls inside itself; the landing sizes off this width */
+.dd-viewport{max-height:74vh;overflow:auto;overscroll-behavior:contain;background:#fff}
+
+/* ==========================================================================
+   LIVE ROUTE  (#/design/<id>/live)
+   ========================================================================== */
+.dl{min-height:100vh;background:var(--bg)}
+/* A strip in the flow rather than a floating pill: every landing puts its
+   brand top-left, and an overlay would sit on top of it. */
+.dl-bar{
+  display:flex;align-items:center;gap:14px;padding:9px 18px;
+  background:var(--surface);border-bottom:1px solid var(--line-strong);
+}
+.dl-back{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line-strong);padding:7px 13px;border-radius:100px;transition:.18s;
+}
+.dl-back:hover{border-color:var(--a3);color:var(--ink)}
+.dl-note{margin-left:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:9px}
+.dl-bar kbd{font-family:var(--mono);font-size:9.5px;border:1px solid var(--line-strong);border-radius:5px;
+  padding:2px 6px;color:var(--ink)}
+
+@media(max-width:720px){
+  .dd-open span{display:none}
+  .dl-back kbd{display:none}
+}

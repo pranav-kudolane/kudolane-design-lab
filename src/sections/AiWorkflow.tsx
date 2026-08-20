@@ -7,7 +7,7 @@ export function AiWorkflow() {
     <section id="ai">
       <div className="wrap">
         <SectionHead
-          kicker="04 — Hassle-free build with AI"
+          kicker="05 — Hassle-free build with AI"
           title="A workflow that keeps AI from fighting you"
         >
           How to actually ship faster with AI instead of debugging its guesses. The pattern: give it
