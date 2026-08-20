@@ -27,7 +27,8 @@
   backdrop-filter:none;-webkit-backdrop-filter:none;
 }
 .lp :where(h1,h2,h3,h4,p,cite){
-  font-family:inherit;letter-spacing:normal;line-height:inherit;margin:0;
+  font-family:inherit;letter-spacing:normal;line-height:inherit;
+  margin:0;max-width:none;color:inherit;
 }
 
 /* ==========================================================================
@@ -293,11 +294,337 @@
 .lpb-foot span:last-child{margin-left:auto}
 
 /* ==========================================================================
+   5 — SURREALISM  ·  Nocturne, a perfume house
+   ========================================================================== */
+.lp-surr{
+  --ink:#2A1B4E;
+  --paper:#FCE9D6;
+  --gold:#F3C178;
+  --deep:#1B1033;
+  background:linear-gradient(180deg,#FAD3AC 0%,#E9A9C0 26%,#B583C9 52%,#6C4E9E 76%,#241645 100%);
+  color:var(--ink);overflow:hidden;
+  font-family:Georgia,"Times New Roman",serif;font-size:clamp(14px,1.4cqi,19px);line-height:1.6;
+}
+.lpu-sky{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.lpu-sun{
+  position:absolute;width:32cqi;height:32cqi;border-radius:50%;top:4%;right:-7cqi;
+  background:radial-gradient(circle at 34% 30%,#FFF8EC,#F6B26B 62%,#E98A5C);
+  box-shadow:0 0 18cqi rgba(255,220,170,.55);animation:lpu-drift 24s ease-in-out infinite;
+}
+.lpu-cloud{position:absolute;border-radius:50%;background:rgba(255,255,255,.72);filter:blur(1.4cqi)}
+.lpu-cloud.c1{width:30cqi;height:7cqi;left:-4cqi;top:17%;animation:lpu-sail 46s linear infinite}
+.lpu-cloud.c2{width:20cqi;height:5cqi;right:12cqi;top:47%;opacity:.6;animation:lpu-sail 62s linear infinite reverse}
+.lpu-cloud.c3{width:38cqi;height:8cqi;left:18cqi;top:66%;opacity:.42;animation:lpu-sail 74s linear infinite}
+/* a door standing in the middle of the sky, opening onto nothing */
+.lpu-door{
+  position:absolute;width:15cqi;height:26cqi;right:6cqi;top:61%;rotate:-7deg;
+  border-radius:7.5cqi 7.5cqi .4cqi .4cqi;background:linear-gradient(180deg,#2B1B52,#120A26);
+  box-shadow:inset 0 0 0 .5cqi rgba(255,226,182,.65),0 4cqi 9cqi rgba(30,15,60,.4);
+  animation:lpu-drift 30s ease-in-out infinite reverse;
+}
+.lpu-stair{
+  position:absolute;left:5cqi;top:62%;width:22cqi;height:14cqi;rotate:8deg;opacity:.45;
+  background:repeating-linear-gradient(165deg,rgba(255,255,255,.65) 0 .5cqi,transparent .5cqi 3cqi);
+}
+@keyframes lpu-drift{50%{transform:translateY(-3cqi)}}
+@keyframes lpu-sail{to{transform:translateX(38cqi)}}
+
+.lpu-nav{position:relative;z-index:3;display:flex;align-items:baseline;gap:4cqi;padding:3cqi 6cqi}
+.lpu-brand{font-size:clamp(18px,2.3cqi,32px);letter-spacing:.14em;text-transform:uppercase}
+.lpu-nav nav{margin-left:auto;display:flex;gap:3cqi}
+.lpu-nav nav a{color:var(--ink);font-size:clamp(11px,1.15cqi,15px);letter-spacing:.14em;
+  text-transform:uppercase;border-bottom:1px solid transparent;transition:.2s;padding-bottom:.3cqi}
+.lpu-nav nav a:hover{border-bottom-color:var(--ink)}
+
+.lpu-hero{position:relative;z-index:2;padding:10cqi 6cqi 14cqi;max-width:62cqi}
+.lpu-eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(10px,1.05cqi,14px);
+  letter-spacing:.24em;text-transform:uppercase;margin-bottom:3cqi;opacity:.8}
+.lp-surr h1{font-size:clamp(32px,6.6cqi,92px);font-weight:400;line-height:1.02;letter-spacing:-.02em;margin-bottom:3cqi}
+/* inline-block so the rotated box is the line box, plus breathing room either
+   side — a bare rotated inline would clip the words next to it */
+.lpu-tilt{display:inline-block;rotate:-3deg;margin-inline:.1em;padding:0 .16em;line-height:1.04;
+  background:var(--gold);color:var(--deep);border-radius:.5cqi;box-shadow:0 1cqi 3cqi rgba(60,30,90,.28)}
+.lpu-lede{max-width:40cqi;font-size:clamp(14px,1.55cqi,20px);margin-bottom:4cqi;opacity:.86}
+.lpu-cta{
+  display:inline-block;border:1px solid var(--ink);color:var(--ink);border-radius:100px;
+  padding:1.5cqi 3.4cqi;font-size:clamp(11px,1.2cqi,16px);letter-spacing:.14em;text-transform:uppercase;
+  transition:.22s;
+}
+.lpu-cta:hover{background:var(--ink);color:var(--paper)}
+
+/* the objects that have no business being there — placed against the page, not
+   the hero, so they never drift over the headline at any width */
+.lpu-bottle{
+  position:absolute;right:9cqi;top:11%;width:12cqi;height:18cqi;rotate:9deg;
+  animation:lpu-drift 18s ease-in-out infinite;
+}
+.lpu-bottle .body{position:absolute;inset:4cqi 0 0;border-radius:1.6cqi;
+  background:linear-gradient(150deg,rgba(255,255,255,.55),rgba(255,214,168,.4));
+  border:1px solid rgba(255,255,255,.7);box-shadow:0 3cqi 7cqi rgba(60,30,90,.3),inset 0 1px 0 rgba(255,255,255,.9)}
+.lpu-bottle .cap{position:absolute;left:34%;top:0;width:32%;height:5cqi;border-radius:.6cqi;background:var(--deep)}
+.lpu-eye{
+  position:absolute;right:26cqi;top:84%;width:13cqi;height:7.5cqi;
+  border-radius:50%;background:#FFF6E8;box-shadow:0 2cqi 6cqi rgba(60,30,90,.3);
+  display:grid;place-items:center;rotate:-6deg;animation:lpu-drift 21s ease-in-out infinite reverse;
+}
+.lpu-eye i{width:4.4cqi;height:4.4cqi;border-radius:50%;background:radial-gradient(circle at 40% 35%,#6C4E9E,#1B1033)}
+
+.lpu-notes{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:3cqi;padding:6cqi 6cqi 10cqi}
+.lpu-note{
+  background:rgba(255,247,236,.5);border:1px solid rgba(255,255,255,.6);border-radius:2cqi 2cqi 12cqi 12cqi;
+  padding:4cqi 3cqi;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  box-shadow:0 3cqi 8cqi rgba(50,25,80,.18);transition:transform .3s ease;
+}
+.lpu-note:hover{transform:translateY(-1.4cqi) rotate(-1deg)}
+.lpu-glyph{display:block;width:6cqi;height:6cqi;margin-bottom:2.4cqi;border-radius:50%}
+.lpu-glyph.g1{background:radial-gradient(circle at 35% 30%,#fff,#9FC7E8)}
+.lpu-glyph.g2{background:radial-gradient(circle at 35% 30%,#fff,#E3A0C4);rotate:12deg;border-radius:50% 50% 50% 8%}
+.lpu-glyph.g3{background:radial-gradient(circle at 35% 30%,#fff,#C8A06A);border-radius:40% 60% 55% 45%}
+.lpu-note h3{font-size:clamp(14px,1.7cqi,23px);font-weight:400;letter-spacing:.02em;margin-bottom:1.2cqi}
+.lpu-note p{font-size:clamp(12px,1.3cqi,17px);opacity:.82}
+
+.lpu-quote{position:relative;z-index:2;padding:8cqi 6cqi;max-width:66cqi;color:#F6EBFF}
+.lpu-quote p{font-size:clamp(18px,3cqi,42px);line-height:1.26;margin-bottom:2.6cqi}
+.lpu-quote cite{font-style:normal;font-family:"JetBrains Mono",monospace;font-size:clamp(10px,1.1cqi,14px);
+  letter-spacing:.18em;text-transform:uppercase;opacity:.7}
+
+.lpu-foot{position:relative;z-index:2;text-align:center;padding:8cqi 6cqi 10cqi;color:#F6EBFF}
+.lp-surr h2{font-size:clamp(30px,7cqi,100px);font-weight:400;letter-spacing:.16em;text-transform:uppercase;line-height:1}
+.lpu-foot p{font-family:"JetBrains Mono",monospace;font-size:clamp(10px,1.05cqi,14px);
+  letter-spacing:.14em;margin-top:2.4cqi;opacity:.82}
+
+/* ==========================================================================
+   6 — NEO-BRUTALISM  ·  Tally, invoicing for freelancers
+   ========================================================================== */
+.lp-neob{
+  --ink:#14110C;
+  --paper:#FFF3D6;
+  --mint:#8DF2C0;
+  --lilac:#C6B8FF;
+  --pink:#FFB3C7;
+  --sun:#FFE55C;
+  --line:.26cqi;
+  background:var(--paper);color:var(--ink);
+  font-family:"Inter",system-ui,sans-serif;font-size:clamp(13px,1.35cqi,18px);line-height:1.55;
+}
+.lp-neob :where(a,button){transition:transform .1s linear,box-shadow .1s linear}
+.lpn-nav{display:flex;align-items:center;gap:2.6cqi;padding:2.4cqi 5cqi;border-bottom:var(--line) solid var(--ink)}
+.lpn-brand{display:flex;align-items:center;gap:1.2cqi;font-weight:800;font-size:clamp(17px,2.1cqi,29px);letter-spacing:-.03em}
+.lpn-dot{width:2.4cqi;height:2.4cqi;border-radius:50%;background:var(--mint);border:var(--line) solid var(--ink)}
+.lpn-nav nav{margin-left:auto;display:flex;gap:1.4cqi}
+.lpn-nav nav a{font-size:clamp(11px,1.2cqi,15px);font-weight:600;padding:.9cqi 1.8cqi;border-radius:100px;
+  border:var(--line) solid transparent}
+.lpn-nav nav a:hover{border-color:var(--ink);background:var(--lilac)}
+.lpn-btn{
+  display:inline-block;font-weight:700;font-size:clamp(12px,1.3cqi,17px);
+  background:var(--mint);color:var(--ink);border:var(--line) solid var(--ink);border-radius:1.4cqi;
+  padding:1.4cqi 2.8cqi;box-shadow:.7cqi .7cqi 0 var(--ink);
+}
+.lpn-btn:hover{transform:translate(.35cqi,.35cqi);box-shadow:.35cqi .35cqi 0 var(--ink)}
+.lpn-btn:active{transform:translate(.7cqi,.7cqi);box-shadow:0 0 0 var(--ink)}
+.lpn-btn.sm{padding:1cqi 2cqi;font-size:clamp(11px,1.15cqi,15px);border-radius:1cqi;box-shadow:.45cqi .45cqi 0 var(--ink)}
+.lpn-btn.ghost{background:var(--paper)}
+
+.lpn-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:5cqi;padding:7cqi 5cqi 6cqi;align-items:center}
+.lpn-badge{display:inline-block;background:var(--sun);border:var(--line) solid var(--ink);border-radius:100px;
+  padding:.7cqi 1.8cqi;font-size:clamp(10px,1.1cqi,14px);font-weight:700;margin-bottom:2.6cqi}
+.lp-neob h1{font-size:clamp(32px,6.2cqi,86px);font-weight:800;line-height:1;letter-spacing:-.04em;margin-bottom:2.4cqi}
+.lpn-hero-copy p{font-size:clamp(13px,1.5cqi,20px);max-width:38cqi;margin-bottom:3cqi}
+.lpn-ctas{display:flex;gap:1.6cqi;flex-wrap:wrap;margin-bottom:2cqi}
+.lpn-fine{display:block;font-size:clamp(10px,1.05cqi,14px);opacity:.62;font-weight:500}
+
+.lpn-mock{
+  position:relative;background:#fff;border:var(--line) solid var(--ink);border-radius:2cqi;
+  box-shadow:1.1cqi 1.1cqi 0 var(--ink);padding:2.6cqi;rotate:1.6deg;
+}
+.lpn-mock-bar{display:flex;align-items:center;gap:1.4cqi;font-size:clamp(10px,1.05cqi,14px);font-weight:700;
+  letter-spacing:.08em;padding-bottom:1.8cqi;border-bottom:var(--line) solid var(--ink)}
+.lpn-paid{margin-left:auto;background:var(--mint);border:var(--line) solid var(--ink);border-radius:100px;padding:.3cqi 1.2cqi}
+.lpn-row{display:flex;justify-content:space-between;gap:2cqi;padding:1.4cqi 0;font-size:clamp(11px,1.2cqi,16px);
+  border-bottom:1px dashed rgba(20,17,12,.25)}
+.lpn-total{display:flex;justify-content:space-between;gap:2cqi;padding-top:1.8cqi;font-weight:800;
+  font-size:clamp(13px,1.7cqi,23px);letter-spacing:-.02em}
+.lpn-stamp{position:absolute;right:-2cqi;bottom:-2.4cqi;background:var(--pink);border:var(--line) solid var(--ink);
+  border-radius:1cqi;box-shadow:.6cqi .6cqi 0 var(--ink);padding:.8cqi 1.6cqi;rotate:-8deg;
+  font-weight:800;font-size:clamp(10px,1.15cqi,15px);letter-spacing:.1em}
+
+.lpn-features{display:grid;grid-template-columns:repeat(3,1fr);gap:2.6cqi;padding:4cqi 5cqi 7cqi}
+.lpn-card{border:var(--line) solid var(--ink);border-radius:2cqi;box-shadow:.9cqi .9cqi 0 var(--ink);padding:3cqi 2.6cqi}
+.lpn-card.c1{background:var(--mint)}
+.lpn-card.c2{background:var(--lilac)}
+.lpn-card.c3{background:var(--pink)}
+.lpn-card:hover{transform:translate(.4cqi,.4cqi);box-shadow:.5cqi .5cqi 0 var(--ink)}
+.lpn-ico{display:block;font-size:clamp(22px,3.2cqi,44px);margin-bottom:1.6cqi}
+.lpn-card h3{font-size:clamp(15px,1.9cqi,26px);font-weight:800;letter-spacing:-.02em;margin-bottom:1cqi}
+.lpn-card p{font-size:clamp(11px,1.25cqi,16px)}
+
+.lpn-price{padding:0 5cqi 8cqi;display:flex;justify-content:center}
+.lpn-plan{width:min(100%,44cqi);background:var(--sun);border:var(--line) solid var(--ink);border-radius:2.4cqi;
+  box-shadow:1.2cqi 1.2cqi 0 var(--ink);padding:4cqi 3.4cqi;text-align:center}
+.lpn-tag{font-size:clamp(10px,1.05cqi,14px);font-weight:800;letter-spacing:.16em}
+.lp-neob h2{font-size:clamp(38px,7cqi,96px);font-weight:800;letter-spacing:-.05em;line-height:1;margin:1.6cqi 0 2.4cqi}
+.lp-neob h2 small{font-size:clamp(13px,1.6cqi,21px);font-weight:600;letter-spacing:-.01em}
+.lpn-plan ul{list-style:none;margin:0 0 3cqi;padding:0;text-align:left;display:grid;gap:1cqi}
+.lpn-plan li{display:flex;gap:1.2cqi;font-size:clamp(11px,1.25cqi,16px);font-weight:500}
+.lpn-plan li::before{content:"✓";font-weight:800}
+
+.lpn-foot{display:flex;gap:2.6cqi;padding:2.6cqi 5cqi 4cqi;border-top:var(--line) solid var(--ink);
+  font-size:clamp(10px,1.1cqi,14px);font-weight:600}
+.lpn-foot span:last-child{margin-left:auto}
+
+/* ==========================================================================
+   7 — NEO-CLASSICAL  ·  Caldwell & Rose, attorneys
+   ========================================================================== */
+.lp-neoc{
+  --ink:#1C1913;
+  --paper:#FBF7EE;
+  --gold:#B08D4F;
+  --soft:#6B6353;
+  background:var(--paper);color:var(--ink);text-align:center;
+  font-family:Georgia,"Times New Roman",serif;font-size:clamp(13px,1.35cqi,18px);line-height:1.72;
+}
+.lpc-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:3cqi;padding:3.4cqi 5cqi 2.6cqi}
+.lpc-nav-l{justify-self:start}
+.lpc-nav-r{justify-self:end}
+.lpc-nav nav{display:flex;gap:3cqi}
+.lpc-nav nav a{color:var(--soft);font-size:clamp(10px,1.1cqi,14px);letter-spacing:.2em;text-transform:uppercase;transition:.2s}
+.lpc-nav nav a:hover{color:var(--gold)}
+.lpc-brand{font-size:clamp(18px,2.6cqi,38px);letter-spacing:.1em;text-transform:uppercase;line-height:1.1}
+.lpc-brand i{color:var(--gold);font-style:italic;text-transform:none;letter-spacing:0}
+.lpc-brand small{display:block;font-size:clamp(9px,.95cqi,12px);letter-spacing:.24em;color:var(--soft);margin-top:1cqi}
+.lpc-brand.small{font-size:clamp(14px,1.9cqi,26px)}
+.lpc-rule.double{border-top:4px double var(--gold);margin:0 5cqi}
+
+.lpc-hero{padding:8cqi 5cqi 6cqi;max-width:62cqi;margin-inline:auto}
+.lpc-orn{display:block;color:var(--gold);font-size:clamp(18px,2.6cqi,34px);margin-bottom:2.6cqi}
+.lpc-eyebrow{font-size:clamp(10px,1.05cqi,14px);letter-spacing:.26em;text-transform:uppercase;color:var(--soft);margin-bottom:3cqi}
+.lp-neoc h1{font-size:clamp(32px,6.4cqi,90px);font-weight:400;line-height:1.08;letter-spacing:.005em;margin-bottom:3cqi}
+.lpc-lede{max-width:44cqi;margin:0 auto 4cqi;font-size:clamp(13px,1.5cqi,19px);color:var(--soft)}
+.lpc-cta{display:inline-block;border:1px solid var(--gold);color:var(--ink);padding:1.5cqi 3.6cqi;
+  font-size:clamp(10px,1.15cqi,15px);letter-spacing:.2em;text-transform:uppercase;transition:.22s}
+.lpc-cta:hover{background:var(--gold);color:var(--paper)}
+
+/* a colonnade standing in for a hero image — narrow shafts on a stylobate */
+.lpc-colonnade{position:relative;display:grid;grid-template-columns:repeat(7,1fr);gap:4cqi;
+  height:26cqi;padding:0 6cqi 1cqi;align-items:end;margin-bottom:8cqi}
+.lpc-colonnade::after{content:"";position:absolute;left:5cqi;right:5cqi;bottom:0;
+  height:.55cqi;background:#D8CBAF}
+.lpc-colonnade span{width:58%;justify-self:center;height:100%;border-radius:3.4cqi 3.4cqi 0 0;
+  background:linear-gradient(90deg,#D9CAA6 0%,#F2EBDB 26%,#E4D9BE 62%,#C9B991 100%);
+  box-shadow:inset 0 1cqi 0 rgba(255,255,255,.5)}
+.lpc-colonnade span:nth-child(even){height:93%}
+
+.lpc-practice{display:grid;grid-template-columns:repeat(3,1fr);gap:5cqi;padding:0 6cqi 8cqi}
+.lpc-num{display:block;font-size:clamp(13px,1.6cqi,21px);color:var(--gold);letter-spacing:.2em;margin-bottom:1.6cqi}
+.lpc-col h3{font-size:clamp(15px,1.9cqi,26px);font-weight:400;letter-spacing:.04em;margin-bottom:1.4cqi}
+.lpc-col p{color:var(--soft);font-size:clamp(11px,1.25cqi,16px);max-width:26cqi;margin-inline:auto}
+
+.lpc-tenet{background:#F4EEE0;border-block:1px solid rgba(176,141,79,.4);padding:8cqi 6cqi;margin-bottom:7cqi}
+.lpc-tenet p{max-width:52cqi;margin:0 auto 2.6cqi;font-size:clamp(17px,2.6cqi,36px);font-style:italic;line-height:1.34}
+.lpc-tenet cite{font-style:normal;font-size:clamp(10px,1.05cqi,14px);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--soft)}
+
+.lpc-offices{display:grid;grid-template-columns:repeat(3,1fr);gap:4cqi;padding:0 6cqi 8cqi}
+.lpc-offices h4{font-size:clamp(11px,1.15cqi,15px);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.4cqi;font-weight:400}
+.lpc-offices p{color:var(--soft);font-size:clamp(11px,1.25cqi,16px)}
+
+.lpc-foot{padding:0 0 6cqi}
+.lpc-foot .lpc-brand{margin:4cqi 0 1.6cqi}
+.lpc-foot p{color:var(--soft);font-size:clamp(10px,1.1cqi,14px);letter-spacing:.1em}
+
+/* ==========================================================================
+   8 — NEUMORPHISM  ·  Hush, a thermostat
+   ========================================================================== */
+.lp-neum{
+  --bg:#E4E9F2;
+  --hi:#FFFFFF;
+  --lo:#C2C8D4;
+  --ink:#333A4D;
+  --soft:#697086;
+  --accent:#5B6CFF;
+  background:var(--bg);color:var(--ink);
+  font-family:"Inter",system-ui,sans-serif;font-size:clamp(13px,1.35cqi,18px);line-height:1.6;
+  /* one raised surface and one pressed surface, reused everywhere */
+  --up:.9cqi .9cqi 1.8cqi var(--lo),-.9cqi -.9cqi 1.8cqi var(--hi);
+  --up-sm:.5cqi .5cqi 1cqi var(--lo),-.5cqi -.5cqi 1cqi var(--hi);
+  --in:inset .7cqi .7cqi 1.4cqi var(--lo),inset -.7cqi -.7cqi 1.4cqi var(--hi);
+}
+.lpq-nav{display:flex;align-items:center;gap:2.4cqi;padding:3cqi 5cqi}
+.lpq-brand{display:flex;align-items:center;gap:1.4cqi;font-weight:700;font-size:clamp(16px,1.9cqi,26px);letter-spacing:-.02em}
+.lpq-logo{width:3.4cqi;height:3.4cqi;border-radius:50%;background:var(--bg);box-shadow:var(--up-sm)}
+.lpq-nav nav{margin-left:auto;display:flex;gap:1.4cqi}
+.lpq-nav nav a{color:var(--soft);font-size:clamp(11px,1.15cqi,15px);font-weight:600;
+  padding:1cqi 2.2cqi;border-radius:100px;transition:box-shadow .2s,color .2s}
+.lpq-nav nav a:hover{color:var(--ink);box-shadow:var(--up-sm)}
+.lpq-btn{display:inline-block;background:var(--bg);color:var(--ink);font-weight:700;
+  font-size:clamp(12px,1.3cqi,17px);padding:1.6cqi 3.2cqi;border-radius:2.4cqi;
+  box-shadow:var(--up);transition:box-shadow .18s ease,transform .18s ease}
+.lpq-btn:hover{transform:translateY(-.2cqi)}
+.lpq-btn:active{box-shadow:var(--in);transform:translateY(0)}
+.lpq-btn.sm{padding:1.1cqi 2.2cqi;font-size:clamp(11px,1.15cqi,15px);border-radius:1.8cqi;box-shadow:var(--up-sm)}
+
+.lpq-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:6cqi;padding:7cqi 5cqi 8cqi;align-items:center}
+.lpq-pill{display:inline-block;color:var(--soft);font-size:clamp(10px,1.05cqi,14px);font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;padding:1cqi 2.2cqi;border-radius:100px;
+  box-shadow:var(--up-sm);margin-bottom:3cqi}
+.lp-neum h1{font-size:clamp(30px,5.6cqi,78px);font-weight:800;line-height:1.04;letter-spacing:-.04em;margin-bottom:2.4cqi}
+.lpq-hero-copy p{color:var(--soft);font-size:clamp(13px,1.5cqi,20px);max-width:36cqi;margin-bottom:3.4cqi}
+
+.lpq-panel{background:var(--bg);border-radius:5cqi;padding:5cqi 4cqi;box-shadow:var(--up);
+  display:grid;justify-items:center;gap:3.4cqi}
+.lpq-dial{position:relative;width:28cqi;height:28cqi;border-radius:50%;background:var(--bg);
+  box-shadow:var(--up);display:grid;place-items:center}
+.lpq-dial-face{width:20cqi;height:20cqi;border-radius:50%;background:var(--bg);box-shadow:var(--in);
+  display:grid;place-items:center;align-content:center;gap:.4cqi}
+.lpq-dial-face b{font-size:clamp(24px,4.4cqi,60px);font-weight:800;letter-spacing:-.04em;line-height:1}
+.lpq-dial-face span{font-size:clamp(9px,1cqi,13px);color:var(--soft);font-weight:600;letter-spacing:.08em}
+.lpq-tick{position:absolute;top:1.6cqi;width:.9cqi;height:2.6cqi;border-radius:100px;background:var(--accent);opacity:.85}
+.lpq-switches{display:flex;gap:2.4cqi}
+.lpq-switch{width:11cqi;height:5.4cqi;border-radius:100px;background:var(--bg);box-shadow:var(--in);
+  display:flex;align-items:center;padding:.8cqi}
+.lpq-switch i{width:3.8cqi;height:3.8cqi;border-radius:50%;background:var(--bg);box-shadow:var(--up-sm)}
+.lpq-switch.on{justify-content:flex-end}
+.lpq-switch.on i{background:var(--accent);box-shadow:.3cqi .3cqi .8cqi rgba(60,70,140,.4)}
+.lpq-slider{width:24cqi;height:3.4cqi;border-radius:100px;background:var(--bg);box-shadow:var(--in);
+  display:flex;align-items:center;padding:.6cqi}
+.lpq-slider i{width:62%;height:100%;border-radius:100px;background:linear-gradient(90deg,#8E9AFF,var(--accent))}
+
+.lpq-features{display:grid;grid-template-columns:repeat(3,1fr);gap:3cqi;padding:0 5cqi 7cqi}
+.lpq-card{background:var(--bg);border-radius:3.4cqi;padding:3.4cqi 3cqi;box-shadow:var(--up);
+  transition:box-shadow .25s ease}
+.lpq-card:hover{box-shadow:var(--in)}
+.lpq-ico{display:grid;place-items:center;width:8cqi;height:8cqi;border-radius:50%;background:var(--bg);
+  box-shadow:var(--up-sm);font-size:clamp(16px,2.4cqi,32px);color:var(--accent);margin-bottom:2.4cqi}
+.lpq-card h3{font-size:clamp(14px,1.8cqi,24px);font-weight:700;letter-spacing:-.02em;margin-bottom:1.2cqi}
+.lpq-card p{color:var(--soft);font-size:clamp(11px,1.25cqi,16px)}
+
+.lpq-rooms{display:grid;grid-template-columns:repeat(4,1fr);gap:2.6cqi;padding:0 5cqi 8cqi}
+.lpq-room{background:var(--bg);border-radius:2.6cqi;box-shadow:var(--up-sm);padding:2.6cqi;
+  display:flex;flex-direction:column;gap:.8cqi}
+.lpq-room-t{color:var(--soft);font-size:clamp(10px,1.05cqi,14px);font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.lpq-room b{font-size:clamp(18px,2.8cqi,38px);font-weight:800;letter-spacing:-.03em}
+.lpq-room.off{box-shadow:var(--in)}
+.lpq-room.off b{color:var(--soft)}
+
+.lpq-foot{text-align:center;padding:0 5cqi 9cqi;display:grid;justify-items:center;gap:3cqi}
+.lp-neum h2{font-size:clamp(22px,3.8cqi,52px);font-weight:800;letter-spacing:-.035em;line-height:1.1;max-width:26ch}
+.lpq-foot p{color:var(--soft);font-size:clamp(10px,1.1cqi,14px);font-weight:600;letter-spacing:.06em}
+
+/* ==========================================================================
    NARROW CONTAINERS — the only breakpoints in here are container queries,
    so they fire inside the detail frame exactly as they do full screen.
    ========================================================================== */
 @container (max-width: 620px){
   .lpm-work{grid-template-columns:1fr 1fr}
+  .lpu-notes,.lpn-features,.lpc-practice,.lpq-features{grid-template-columns:1fr}
+  .lpu-bottle,.lpu-eye{display:none}
+  .lpu-hero,.lpu-quote{max-width:none}
+  .lpn-hero,.lpq-hero{grid-template-columns:1fr;row-gap:5cqi}
+  .lpn-mock{rotate:0deg}
+  .lpc-offices{grid-template-columns:1fr 1fr;row-gap:4cqi}
+  .lpc-colonnade{grid-template-columns:repeat(5,1fr);height:12cqi}
+  .lpq-rooms{grid-template-columns:1fr 1fr}
   .lpx-flavours,.lpb-work{grid-template-columns:1fr}
   .lps-facts{grid-template-columns:1fr 1fr;row-gap:3cqi}
   .lps-hero{grid-template-columns:1fr;row-gap:5cqi}
@@ -311,6 +638,10 @@
 }
 @container (max-width: 420px){
   .lpm-nav nav,.lps-nav nav,.lpx-nav nav,.lpb-nav nav{display:none}
+  .lpu-nav nav,.lpn-nav nav,.lpc-nav nav,.lpq-nav nav{display:none}
+  .lpc-nav{grid-template-columns:1fr}
+  .lpc-offices{grid-template-columns:1fr}
+  .lpc-colonnade{grid-template-columns:repeat(3,1fr)}
   .lpm-work{grid-template-columns:1fr}
   .lps-facts{grid-template-columns:1fr}
   .lpx-sticker{display:none}

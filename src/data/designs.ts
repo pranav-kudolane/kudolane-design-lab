@@ -2,11 +2,19 @@ import {
   BrutalismThumb,
   MaximalismThumb,
   MinimalismThumb,
+  NeoBrutalismThumb,
+  NeoClassicalThumb,
+  NeumorphismThumb,
+  SurrealismThumb,
   SwissThumb,
 } from '../components/designThumbs';
 import { BrutalismLanding } from '../landings/BrutalismLanding';
 import { MaximalismLanding } from '../landings/MaximalismLanding';
 import { MinimalismLanding } from '../landings/MinimalismLanding';
+import { NeoBrutalismLanding } from '../landings/NeoBrutalismLanding';
+import { NeoClassicalLanding } from '../landings/NeoClassicalLanding';
+import { NeumorphismLanding } from '../landings/NeumorphismLanding';
+import { SurrealismLanding } from '../landings/SurrealismLanding';
 import { SwissLanding } from '../landings/SwissLanding';
 import type { DesignStyle } from '../types';
 
@@ -468,6 +476,437 @@ h1 {
 /* keep the interface honest as well as loud */
 a { text-decoration: underline; }
 :focus-visible { outline: var(--line) solid #0057FF; outline-offset: 3px; }`,
+    },
+  },
+  {
+    id: 'surrealism',
+    name: 'Surrealism',
+    era: 'Breton’s manifesto 1924 · web since 2020',
+    use: 'brand · campaign',
+    tagline: 'Dream logic, rendered',
+    desc: 'Impossible scale, floating objects and two ordinary things that should never share a frame. **A picture the visitor has to finish in their own head.**',
+    accent: '#C9A7FF',
+    Thumb: SurrealismThumb,
+    Landing: SurrealismLanding,
+    detail: {
+      intro:
+        'Surrealism puts recognisable things in impossible relationships — a door standing in the sky, a bottle the size of a building, a horizon that will not stay put. The effect is not confusion but *attention*: the brain stops skimming and starts working. **It buys you the one thing a landing page cannot otherwise get: a second look.**',
+      origin:
+        'André Breton’s *Surrealist Manifesto* (1924) and the painters who followed it — Dalí, Magritte, Carrington, Tanning. Magritte matters most to designers: his pictures are painted plainly and *composed* impossibly. The web revival arrived around 2020, when WebGL, 3D asset libraries and generative imagery made dream scenes cheap to produce for the first time.',
+      principles: [
+        {
+          title: 'Juxtapose two ordinary things',
+          body: 'The surrealism is in the *pairing*, not the objects. A rock and a cloud are boring; a rock **floating like** a cloud is not. Keep both halves recognisable.',
+        },
+        {
+          title: 'Break one law, not all of them',
+          body: 'Suspend gravity, or scale, or perspective — one. Break three and the image reads as noise, and the viewer stops looking for meaning in it.',
+        },
+        {
+          title: 'Scale is the cheapest trick that works',
+          body: 'An everyday object at the wrong size is instantly unsettling and costs nothing but a `transform`. It is the highest-return move in the style.',
+        },
+        {
+          title: 'Keep the craft immaculate',
+          body: 'Dream content, waking execution. Soft shadows land correctly, edges are clean, the type is set properly. **Sloppy surrealism just reads as a mistake.**',
+        },
+        {
+          title: 'Anchor the reader with one real thing',
+          body: 'Somewhere on the page there must be a plain sentence and an ordinary button. The strangeness sells the brand; the anchor sells the product.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A calm counterweight to the imagery — an elegant serif or a plain grotesque. **The type stays sane so the picture can be strange.**',
+        },
+        {
+          label: 'Colour',
+          value: 'Dusk and dawn gradients — peach into lilac into deep indigo. Light that comes from nowhere identifiable.',
+        },
+        {
+          label: 'Layout',
+          value: 'Objects float free of the grid and overlap section boundaries. The text still sits on a grid underneath.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Collage, cutouts, 3D renders, arches, doors, orbs, clouds, eyes. Hard-edged objects against soft backgrounds.',
+        },
+        {
+          label: 'Motion',
+          value: 'Slow drift and parallax — 15 to 30 second loops. Fast motion breaks the spell instantly.',
+        },
+        {
+          label: 'Risk',
+          value: 'Mood over meaning, plus weight: 3D scenes and large renders are the easiest way to ruin your `LCP`.',
+        },
+      ],
+      bestFor: [
+        '**Fragrance, fashion and beauty** — categories that sell a feeling rather than a spec sheet.',
+        'Campaign and launch microsites that need to be remembered for a week.',
+        'Music, film and festival brands.',
+        '**AI and creative tools**, where “imagination” is literally the product.',
+      ],
+      avoidWhen: [
+        'The page is transactional — checkout, booking, onboarding, account settings.',
+        'The visitor arrives under time pressure or in a support context.',
+        'You cannot afford the asset weight. A dream scene that takes four seconds to load is just a slow page.',
+        'The imagery has nothing to do with the brand. Decoration pretending to be an idea is the most common failure here.',
+      ],
+      lang: 'css',
+      code: `/* Surrealism: ordinary objects, impossible relationships. */
+.sky {
+  background: linear-gradient(180deg,
+    #FAD3AC 0%, #E9A9C0 26%, #B583C9 52%, #6C4E9E 76%, #241645 100%);
+}
+
+/* a door, standing in the sky, opening onto nothing */
+.door {
+  position: absolute;
+  border-radius: 50% 50% 2px 2px;      /* an arch */
+  background: linear-gradient(180deg, #2B1B52, #120A26);
+  box-shadow:
+    inset 0 0 0 4px rgba(255,226,182,.65),   /* lit from inside */
+    0 40px 90px rgba(30,15,60,.4);           /* but casting down */
+  rotate: -7deg;
+  animation: drift 30s ease-in-out infinite;
+}
+
+/* the whole style is one slow loop — never a fast one */
+@keyframes drift { 50% { transform: translateY(-28px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .door { animation: none; }
+}`,
+    },
+  },
+  {
+    id: 'neo-brutalism',
+    name: 'Neo-Brutalism',
+    era: 'Gumroad’s 2022 redesign onward',
+    use: 'saas · fintech',
+    tagline: 'Brutalism that smiles',
+    desc: 'Thick black outlines, hard offset shadows and candy-flat fills. **Brutalism’s structure with none of its hostility** — the default look for indie software since 2022.',
+    accent: '#8DF2C0',
+    Thumb: NeoBrutalismThumb,
+    Landing: NeoBrutalismLanding,
+    detail: {
+      intro:
+        'Neo-brutalism keeps the honest structure of **Brutalism** — visible borders, unblurred shadows, no faux depth — and swaps the hostility for warmth. Corners get a small radius, fills get bright and pastel, and the whole thing reads as **confident rather than confrontational**. It is the friendliest way to look like you build things yourself.',
+      origin:
+        'Brutalism’s descendant. Gumroad’s 2022 redesign made the recipe famous, Figma community files and Tailwind template packs spread it in months, and by 2024 it was the house style of indie SaaS, creator tools and hackathon projects alike.',
+      principles: [
+        {
+          title: 'Outline everything',
+          body: 'Every surface gets the same **2–4px near-black border**. Consistency of the outline is what holds a loud palette together.',
+        },
+        {
+          title: 'Shadows never blur',
+          body: '`box-shadow: 6px 6px 0 #000`. A blur radius above zero drops you straight back into ordinary material design.',
+        },
+        {
+          title: 'One bright fill per surface',
+          body: 'Flat pastel blocks — mint, lilac, pink, butter. Never a gradient, and never two fills fighting inside the same card.',
+        },
+        {
+          title: 'Round the corners just enough',
+          body: '8–16px. **This single value is the difference between neo-brutalism and brutalism** — zero reads as aggressive, 32px reads as a generic startup.',
+        },
+        {
+          title: 'Let buttons move into their shadow',
+          body: 'On press, translate the element by the shadow offset and shrink the shadow to match. It is the only motion the style needs.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A heavy geometric or grotesque sans — `Satoshi`, `Space Grotesk`, `Inter` at 800. Tight tracking, sentence case, not shouty.',
+        },
+        {
+          label: 'Colour',
+          value: 'Cream or off-white base, near-black ink, and three or four **flat pastels** used as whole-surface fills.',
+        },
+        {
+          label: 'Layout',
+          value: 'Cards, badges, pills and tilted stickers. Slight rotations (1–3°) on mock-ups keep it from looking rigid.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Product mock-ups drawn in the same border-and-shadow language, plus emoji and simple icons.',
+        },
+        {
+          label: 'Motion',
+          value: 'Short and mechanical — 80–120ms press states. No easing curves with bounce.',
+        },
+        {
+          label: 'Risk',
+          value: '**Template fatigue.** It is so widely adopted that it can read as “made from a starter kit” rather than designed.',
+        },
+      ],
+      bestFor: [
+        '**Indie SaaS and creator tools** — the audience recognises the codes and trusts them.',
+        'Fintech and money apps aimed at freelancers or young users.',
+        'Developer products, docs sites and API landing pages.',
+        'Anything that has to look built by humans rather than by a committee.',
+      ],
+      avoidWhen: [
+        'Enterprise or luxury positioning — the palette actively undercuts a high price.',
+        'Data-dense interfaces: heavy borders on every element create enormous visual noise at scale.',
+        '**Differentiation is the goal.** Half your competitors are already using it.',
+      ],
+      lang: 'css',
+      code: `/* Neo-brutalism is four tokens and one press animation. */
+:root {
+  --ink: #14110C;
+  --paper: #FFF3D6;
+  --mint: #8DF2C0;
+  --line: 3px;
+  --lift: 7px;          /* the shadow offset, reused everywhere */
+  --round: 14px;        /* brutalism is 0 — this value is the whole difference */
+}
+
+.card,
+.btn {
+  border: var(--line) solid var(--ink);
+  border-radius: var(--round);
+  box-shadow: var(--lift) var(--lift) 0 var(--ink);   /* zero blur */
+  background: var(--mint);
+}
+
+/* the element physically moves into its own shadow */
+.btn {
+  transition: transform .1s linear, box-shadow .1s linear;
+}
+.btn:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.btn:active {
+  transform: translate(var(--lift), var(--lift));
+  box-shadow: 0 0 0 var(--ink);
+}
+
+/* tilt the mock-ups, never the text */
+.mock { rotate: 1.6deg; }`,
+    },
+  },
+  {
+    id: 'neo-classical',
+    name: 'Neo-Classical',
+    era: '18th-century revival · web for law & luxury',
+    use: 'law · luxury',
+    tagline: 'Symmetry, serif and gold',
+    desc: 'A centred axis, high-contrast serifs, hairline gold rules and classical proportion. **It signals permanence** — which is precisely what old institutions and old money sell.',
+    accent: '#C9A24B',
+    Thumb: NeoClassicalThumb,
+    Landing: NeoClassicalLanding,
+    detail: {
+      intro:
+        'Neo-classicism borrows the order of Greek and Roman building — symmetry, proportion, restrained ornament — and applies it to a page. Everything balances on a centre line, the type is a serif with real thick-thin contrast, and decoration appears only where the structure invites it. **The message is continuity: we were here before you and we will be here after.**',
+      origin:
+        'The 1750s European revival of Greco-Roman form, driven by the excavation of Pompeii and by Winckelmann’s writing, and built by Robert Adam and John Soane. Print luxury carried it into the present — fashion houses, university crests, law firm letterheads — and the web inherited it from those, not from the buildings.',
+      principles: [
+        {
+          title: 'Commit to the centre line',
+          body: 'Wordmark, headline, rule, call to action — all on one axis. **Half-centred layouts are the most common failure**; a single flush-left block undoes the whole effect.',
+        },
+        {
+          title: 'Use a serif with genuine contrast',
+          body: 'A transitional or Didone face — `Playfair Display`, `Cormorant`, `Bodoni`. A low-contrast slab reads as rustic, not classical.',
+        },
+        {
+          title: 'Ornament sparingly and symmetrically',
+          body: 'One fleuron above a heading, a `double` rule between sections. Ornament that appears once has authority; ornament that repeats becomes wallpaper.',
+        },
+        {
+          title: 'Proportion over pixels',
+          body: 'Wide outer margins, a narrow measure, and headings sized in clean ratios. The classical orders were **ratio systems** — treat the page the same way.',
+        },
+        {
+          title: 'Letterspace the small type',
+          body: 'Small caps at `0.2em` tracking for eyebrows, navigation and captions. That one detail carries most of the period feeling.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'High-contrast serif for display, small caps with wide tracking for labels. **Generous leading** — 1.7 or more on body copy.',
+        },
+        {
+          label: 'Colour',
+          value: 'Parchment and stone neutrals, near-black ink, and a single muted gold. Never a bright metallic gradient.',
+        },
+        {
+          label: 'Layout',
+          value: 'Symmetrical and centred, wide margins, hairline and `double` rules dividing sections into clear registers.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Architecture, columns, sculpture, engraving, marble. Photography desaturated and warm.',
+        },
+        { label: 'Motion', value: 'Almost none. Slow opacity fades, no movement that draws attention to itself.' },
+        {
+          label: 'Risk',
+          value: 'Reads as stuffy, dated, or — with too much ornament — like a wedding invitation.',
+        },
+      ],
+      bestFor: [
+        '**Law firms, private banks and family offices**, where age is the selling point.',
+        'Universities, libraries, museums and foundations.',
+        'Jewellery, perfume and heritage luxury.',
+        'Publishers and anything positioned as canon rather than as news.',
+      ],
+      avoidWhen: [
+        'The brand is young, fast, or technical — the codes read as pretence.',
+        'The interface is used often. Centred symmetry is beautiful to arrive at and tiring to work in.',
+        'Your audience needs to feel invited rather than impressed.',
+      ],
+      lang: 'css',
+      code: `/* Neo-classical: one axis, one serif, one metal. */
+:root {
+  --ink: #1C1913;
+  --paper: #FBF7EE;
+  --gold: #B08D4F;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  text-align: center;                /* the axis, declared once */
+  font-family: "Cormorant Garamond", Georgia, serif;
+  line-height: 1.72;                 /* classical leading is generous */
+}
+
+h1 {
+  font-size: clamp(34px, 6.4vw, 90px);
+  font-weight: 400;                  /* never bold — contrast comes from the face */
+  line-height: 1.08;
+}
+
+/* small caps with wide tracking carry the period */
+.eyebrow,
+nav a {
+  font-size: 13px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+/* the classical divider is a real CSS border-style */
+.rule { border-top: 3px double var(--gold); }
+
+.cta {
+  border: 1px solid var(--gold);
+  padding: 16px 40px;
+  transition: background .22s ease, color .22s ease;
+}
+.cta:hover { background: var(--gold); color: var(--paper); }`,
+    },
+  },
+  {
+    id: 'neumorphism',
+    name: 'Neumorphism',
+    era: 'Dribbble, late 2019 · “soft UI”',
+    use: 'ui · devices',
+    tagline: 'Extruded from the background',
+    desc: 'Shapes pushed out of — or pressed into — a single flat colour, using one light shadow and one dark one. **Beautiful, and famously hard to make accessible.**',
+    accent: '#8E9AFF',
+    Thumb: NeumorphismThumb,
+    Landing: NeumorphismLanding,
+    detail: {
+      intro:
+        'Neumorphism makes every control look moulded out of the page itself. There are no borders and no colour changes between an element and its background — only a light shadow on one side and a dark shadow on the other. **The entire style rests on two shadows**, which is also why it fails so often: remove the shadows and there is no interface left.',
+      origin:
+        'Michal Malewicz named it in December 2019, after a Dribbble concept for a banking app spread widely — a soft reaction to a decade of flat design. It peaked within about a year, then stalled: designers ran the shapes through contrast checkers and discovered that most of them were unusable for low-vision users.',
+      principles: [
+        {
+          title: 'One background colour, everywhere',
+          body: 'Elements must be the **same colour as the surface** behind them. The base has to be a mid-tone — pure white and pure black cannot cast both a light and a dark shadow.',
+        },
+        {
+          title: 'Two shadows, always',
+          body: 'Light from the top-left, dark from the bottom-right, consistent across every element on the page. **One inconsistent light source destroys the illusion instantly.**',
+        },
+        {
+          title: 'Raised and pressed are your only states',
+          body: 'Outer shadows read as raised, `inset` shadows as pressed. That pair is the whole interaction vocabulary — use it for toggles, active tabs and pressed buttons.',
+        },
+        {
+          title: 'Never let the shadow carry the meaning alone',
+          body: 'Add a label, a colour, or an icon to every state. A raised card and a pressed card are **indistinguishable** at low vision, on a cheap panel, or in sunlight.',
+        },
+        {
+          title: 'Check the contrast on everything',
+          body: 'Text needs 4.5:1 against the base; interactive edges need 3:1. In practice this means a **hybrid** — neumorphic surfaces with a real accent colour and real borders on the controls that matter.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A geometric or rounded sans in medium to bold weights, in an ink dark enough to pass contrast — not the pale grey the style is usually shown with.',
+        },
+        {
+          label: 'Colour',
+          value: 'One desaturated mid-tone base (`#E4E9F2` and its neighbours), a lighter tint, a darker shade, and a single saturated accent reserved for state.',
+        },
+        {
+          label: 'Layout',
+          value: 'Large radii, generous padding, few elements per screen. Density is the enemy — the shadows need room to be read.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Almost none. Icons and simple glyphs, ideally drawn in the same extruded language.',
+        },
+        {
+          label: 'Motion',
+          value: 'Soft press transitions — swap the outer shadow for the `inset` one over 150–200ms.',
+        },
+        {
+          label: 'Risk',
+          value: '**Accessibility, first and last.** This is the only style on this page that regularly fails `WCAG` by construction rather than by carelessness.',
+        },
+      ],
+      bestFor: [
+        '**Hardware and device product pages** — thermostats, speakers, wearables — where the UI should feel physical.',
+        'Control-style interfaces: players, calculators, mixers, smart-home panels.',
+        'A **hybrid** system: neumorphic surfaces and cards, conventional accessible controls on top.',
+        'Portfolio and showcase pieces where craft is the point.',
+      ],
+      avoidWhen: [
+        '**The product has forms, or any accessibility obligation.** Input fields with no visible border are the style’s worst failure.',
+        'The interface is text-heavy or data-dense.',
+        'You need both light and dark themes — the effect has to be rebuilt from scratch for each and rarely survives the second.',
+        'Users are on low-quality displays or outdoors, where subtle shadow differences simply vanish.',
+      ],
+      lang: 'css',
+      code: `/* Neumorphism: one surface colour, two shadows, two states. */
+:root {
+  --bg: #E4E9F2;          /* must be mid-tone, never #fff or #000 */
+  --hi: #FFFFFF;          /* light source: top-left */
+  --lo: #C2C8D4;          /* shadow: bottom-right */
+  --ink: #333A4D;         /* dark enough to actually pass contrast */
+  --accent: #5B6CFF;      /* state is carried by colour, not shadow alone */
+
+  --up: 9px 9px 18px var(--lo), -9px -9px 18px var(--hi);
+  --in: inset 7px 7px 14px var(--lo), inset -7px -7px 14px var(--hi);
+}
+
+body { background: var(--bg); color: var(--ink); }
+
+.card,
+.btn {
+  background: var(--bg);        /* same colour as the page — that is the point */
+  border-radius: 24px;
+  box-shadow: var(--up);
+}
+
+.btn { transition: box-shadow .18s ease; }
+.btn:active,
+.toggle[aria-pressed="true"] { box-shadow: var(--in); }
+
+/* the accessibility floor this style keeps failing:
+   never let the shadow be the only signal, and keep a real focus ring */
+.toggle[aria-pressed="true"] { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }`,
     },
   },
 ];

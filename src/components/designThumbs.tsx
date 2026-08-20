@@ -85,3 +85,84 @@ export function BrutalismThumb() {
     </div>
   );
 }
+
+export function SurrealismThumb() {
+  return (
+    <div className="dt dt-surr" role="img" aria-label="Miniature surrealist website: dusk sky, floating orb and an impossible door">
+      <span className="dt-orb" />
+      <span className="dt-cloud c1" />
+      <span className="dt-cloud c2" />
+      <span className="dt-door" />
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-h alt" />
+      </div>
+      <span className="dt-horizon" />
+    </div>
+  );
+}
+
+export function NeoBrutalismThumb() {
+  return (
+    <div className="dt dt-neob" role="img" aria-label="Miniature neo-brutalist website: pastel fills, thick outlines, hard shadows">
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-l" />
+        <span className="dt-btn" />
+      </div>
+      <div className="dt-boxes">
+        <span className="b1" /> <span className="b2" /> <span className="b3" />
+      </div>
+    </div>
+  );
+}
+
+export function NeoClassicalThumb() {
+  return (
+    <div className="dt dt-neoc" role="img" aria-label="Miniature neo-classical website: symmetrical cream layout, serif type, gold rules">
+      <div className="dt-nav">
+        <i /> <span className="dt-mark" /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-rule gold" />
+        <span className="dt-h" />
+        <span className="dt-h alt" />
+        <span className="dt-rule gold" />
+        <span className="dt-btn" />
+      </div>
+      <div className="dt-cols">
+        <span /> <span /> <span />
+      </div>
+    </div>
+  );
+}
+
+export function NeumorphismThumb() {
+  return (
+    <div className="dt dt-neum" role="img" aria-label="Miniature neumorphic website: soft extruded shapes in one grey tone">
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-l" />
+        <span className="dt-btn" />
+      </div>
+      <span className="dt-dial">
+        <i />
+      </span>
+      <div className="dt-pills">
+        <span /> <span />
+      </div>
+    </div>
+  );
+}

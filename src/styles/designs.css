@@ -101,6 +101,77 @@
 .dt-brut .dt-boxes{position:absolute;right:5.5cqi;bottom:5cqi;display:flex;gap:2.4cqi}
 .dt-brut .dt-boxes span{width:10cqi;height:8cqi;background:#fff;border:.8cqi solid #0B0B0B;box-shadow:1.2cqi 1.2cqi 0 #0B0B0B}
 
+
+/* --- surrealism --- */
+.dt-surr{background:linear-gradient(180deg,#F9CDA4 0%,#D291BC 42%,#493A7C 100%)}
+.dt-surr .dt-orb{position:absolute;width:21cqi;height:21cqi;border-radius:50%;right:11cqi;top:7cqi;
+  background:radial-gradient(circle at 34% 30%,#FFF7E8,#F1A65C);box-shadow:0 0 7cqi rgba(255,228,180,.55)}
+.dt-surr .dt-cloud{position:absolute;height:3.2cqi;border-radius:100px;background:rgba(255,255,255,.8)}
+.dt-surr .dt-cloud.c1{width:17cqi;left:5cqi;top:23cqi}
+.dt-surr .dt-cloud.c2{width:11cqi;right:27cqi;top:34cqi;opacity:.62}
+.dt-surr .dt-door{position:absolute;width:9cqi;height:14cqi;right:7cqi;bottom:8cqi;rotate:-8deg;
+  border-radius:4.5cqi 4.5cqi 0 0;background:#1B1033;box-shadow:inset 0 0 0 .55cqi rgba(255,241,213,.6)}
+.dt-surr .dt-stair{position:absolute;left:0;bottom:0}
+.dt-surr .dt-mark{width:11cqi;height:2cqi;background:rgba(255,255,255,.94);border-radius:1px}
+.dt-surr .dt-nav i{width:4.5cqi;height:1cqi;background:rgba(255,255,255,.62);border-radius:1px}
+.dt-surr .dt-nav i:first-of-type{margin-left:auto}
+.dt-surr .dt-hero{margin-top:7cqi;gap:2.2cqi}
+.dt-surr .dt-h{width:44%;height:4.2cqi;background:rgba(255,255,255,.95);border-radius:1px}
+.dt-surr .dt-h.alt{width:30%;margin-left:6cqi;rotate:-4deg;background:rgba(255,245,216,.92)}
+.dt-surr .dt-horizon{position:absolute;left:0;right:0;bottom:6.5cqi;height:1px;background:rgba(255,255,255,.45)}
+
+/* --- neo-brutalism --- */
+.dt-neob{background:#FFF3D6}
+.dt-neob .dt-nav{border-bottom:.55cqi solid #14110C;padding-bottom:3.2cqi}
+.dt-neob .dt-mark{width:12cqi;height:2.6cqi;background:#14110C;border-radius:.8cqi}
+.dt-neob .dt-nav i{width:7cqi;height:2.8cqi;background:#C6B8FF;border:.45cqi solid #14110C;border-radius:1cqi}
+.dt-neob .dt-nav i:first-of-type{margin-left:auto}
+.dt-neob .dt-hero{margin-top:5cqi;gap:1.6cqi}
+.dt-neob .dt-h{width:56%;height:5.2cqi;background:#14110C;border-radius:.9cqi}
+.dt-neob .dt-l{width:37%;height:1.5cqi;background:#14110C;opacity:.42;border-radius:.9cqi}
+.dt-neob .dt-btn{width:20cqi;height:5cqi;background:#8DF2C0;border:.55cqi solid #14110C;border-radius:1.6cqi;
+  box-shadow:1.2cqi 1.2cqi 0 #14110C;margin-top:1.4cqi}
+.dt-neob .dt-boxes{position:absolute;right:5cqi;bottom:4.5cqi;display:flex;gap:2cqi}
+.dt-neob .dt-boxes span{width:9cqi;height:9cqi;border:.55cqi solid #14110C;border-radius:1.6cqi;box-shadow:1cqi 1cqi 0 #14110C}
+.dt-neob .dt-boxes .b1{background:#FFB3C7}
+.dt-neob .dt-boxes .b2{background:#C6B8FF}
+.dt-neob .dt-boxes .b3{background:#8DF2C0}
+
+/* --- neo-classical --- */
+.dt-neoc{background:#FBF7EE}
+.dt-neoc .dt-nav{justify-content:center;border-bottom:1px solid #C9AE79;padding-bottom:3.4cqi}
+.dt-neoc .dt-nav i{width:5cqi;height:1cqi;background:#8A7A5C;border-radius:1px}
+.dt-neoc .dt-mark{width:17cqi;height:2.8cqi;background:#1C1913;margin:0 3.5cqi}
+.dt-neoc .dt-hero{align-items:center;margin-top:5.5cqi;gap:2.2cqi}
+.dt-neoc .dt-rule.gold{width:15cqi;height:1px;background:#B08D4F}
+.dt-neoc .dt-h{width:52%;height:4.4cqi;background:#1C1913}
+.dt-neoc .dt-h.alt{width:34%}
+.dt-neoc .dt-btn{width:19cqi;height:4.2cqi;border:1px solid #B08D4F;background:transparent}
+.dt-neoc .dt-cols{position:absolute;left:6cqi;right:6cqi;bottom:0;height:12cqi;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:4cqi}
+.dt-neoc .dt-cols span{width:46%;justify-self:center;border-radius:3cqi 3cqi 0 0;
+  background:linear-gradient(90deg,#D9CAA6,#F2EBDB 28%,#CFC0A0)}
+
+/* --- neumorphism --- */
+.dt-neum{background:#E4E9F2}
+.dt-neum .dt-mark{width:12cqi;height:3cqi;border-radius:100px;background:#E4E9F2;
+  box-shadow:.6cqi .6cqi 1.2cqi #c2c8d4,-.6cqi -.6cqi 1.2cqi #fff}
+.dt-neum .dt-nav i{width:6cqi;height:2.6cqi;border-radius:100px;background:#E4E9F2;
+  box-shadow:.45cqi .45cqi .9cqi #c2c8d4,-.45cqi -.45cqi .9cqi #fff}
+.dt-neum .dt-nav i:first-of-type{margin-left:auto}
+.dt-neum .dt-hero{margin-top:6cqi;gap:2cqi}
+.dt-neum .dt-h{width:44%;height:4cqi;border-radius:1cqi;background:#cfd5e0}
+.dt-neum .dt-l{width:31%;height:1.5cqi;border-radius:1cqi;background:#d6dbe4}
+.dt-neum .dt-btn{width:19cqi;height:5cqi;border-radius:2cqi;background:#E4E9F2;
+  box-shadow:.75cqi .75cqi 1.5cqi #c2c8d4,-.75cqi -.75cqi 1.5cqi #fff;margin-top:1.4cqi}
+.dt-neum .dt-dial{position:absolute;right:8cqi;top:24cqi;width:21cqi;height:21cqi;border-radius:50%;background:#E4E9F2;
+  display:grid;place-items:center;box-shadow:1.3cqi 1.3cqi 2.6cqi #c2c8d4,-1.3cqi -1.3cqi 2.6cqi #fff}
+.dt-neum .dt-dial i{width:11cqi;height:11cqi;border-radius:50%;background:#E4E9F2;
+  box-shadow:inset .8cqi .8cqi 1.5cqi #c2c8d4,inset -.8cqi -.8cqi 1.5cqi #fff}
+.dt-neum .dt-pills{position:absolute;left:5.5cqi;bottom:4.5cqi;display:flex;gap:2cqi}
+.dt-neum .dt-pills span{width:13cqi;height:3.6cqi;border-radius:100px;background:#E4E9F2;
+  box-shadow:inset .45cqi .45cqi .9cqi #c2c8d4,inset -.45cqi -.45cqi .9cqi #fff}
+
 /* ==========================================================================
    DETAIL ROUTE  (#/design/<id>)
    ========================================================================== */
