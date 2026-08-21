@@ -255,6 +255,87 @@
 .dt-bento .dt-tiles .tall{grid-column:span 2;grid-row:span 1;background:linear-gradient(120deg,#263A47,#22222E)}
 .dt-bento .dt-tiles .wide{grid-column:span 4}
 
+
+/* --- pixel art --- */
+.dt-pixel{background:#161327;image-rendering:pixelated}
+.dt-pixel .dt-mark{width:13cqi;height:2.6cqi;background:#7CF56B}
+.dt-pixel .dt-nav i{width:5cqi;height:1.6cqi;background:#F2E9C9}
+.dt-pixel .dt-nav i:first-of-type{margin-left:auto}
+.dt-pixel .dt-hero{margin-top:5cqi;gap:2cqi}
+.dt-pixel .dt-h{width:50%;height:5.4cqi;background:#FFC63D}
+.dt-pixel .dt-l{width:34%;height:1.8cqi;background:#8E86B8}
+.dt-pixel .dt-btn{width:20cqi;height:5cqi;background:#FF4D6D;margin-top:1cqi;
+  box-shadow:0 -1cqi 0 #0B0B14,0 1cqi 0 #0B0B14,-1cqi 0 0 #0B0B14,1cqi 0 0 #0B0B14}
+.dt-pixel .dt-sprite{position:absolute;right:10cqi;top:13cqi;width:17cqi;height:14cqi;
+  background:
+    conic-gradient(from 0deg,#2E9E45 0 100%) 0 0/100% 100% no-repeat;
+  clip-path:polygon(25% 0,75% 0,75% 12%,100% 12%,100% 78%,75% 78%,75% 92%,25% 92%,25% 78%,0 78%,0 12%,25% 12%)}
+.dt-pixel .dt-sprite::after{content:"";position:absolute;inset:24% 18% 40%;
+  background:#7CF56B;box-shadow:-.2cqi 0 0 #7CF56B}
+.dt-pixel .dt-boxes{position:absolute;left:5.5cqi;right:5.5cqi;bottom:5cqi;display:grid;
+  grid-template-columns:repeat(3,1fr);gap:2.4cqi}
+.dt-pixel .dt-boxes span{height:7cqi;background:#251F42;
+  box-shadow:0 -.8cqi 0 #0B0B14,0 .8cqi 0 #0B0B14,-.8cqi 0 0 #0B0B14,.8cqi 0 0 #0B0B14}
+.dt-pixel .dt-scan{position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background:repeating-linear-gradient(180deg,rgba(0,0,0,.5) 0 .5cqi,transparent .5cqi 1.2cqi)}
+
+/* --- conceptual sketch --- */
+.dt-sketch{background:#FBFAF6;
+  background-image:linear-gradient(rgba(90,105,130,.09) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(90,105,130,.09) 1px,transparent 1px);
+  background-size:5cqi 5cqi}
+.dt-sketch .dt-mark{width:13cqi;height:2.4cqi;background:#2E3A4E;
+  border-radius:200px 12px 180px 14px/12px 170px 14px 200px}
+.dt-sketch .dt-nav i{width:5cqi;height:1cqi;background:#7C8AA0;border-radius:100px 8px 90px 8px}
+.dt-sketch .dt-nav i:first-of-type{margin-left:auto}
+.dt-sketch .dt-hero{margin-top:5cqi;gap:1.6cqi}
+.dt-sketch .dt-h{width:44%;height:4.4cqi;background:#2E3A4E;
+  border-radius:220px 14px 200px 14px/14px 190px 14px 220px}
+.dt-sketch .dt-underline{width:30cqi;height:1.4cqi;border-bottom:.7cqi solid #E0623C;
+  border-radius:0 0 60% 40%;rotate:-1.5deg}
+.dt-sketch .dt-l{width:30%;height:1.4cqi;background:#7C8AA0;opacity:.6;border-radius:100px 8px 90px 8px}
+.dt-sketch .dt-wire{position:absolute;right:6cqi;top:15cqi;width:26cqi;height:20cqi;
+  border:.55cqi solid #2E3A4E;background:#fff;
+  border-radius:230px 16px 210px 16px/16px 200px 16px 230px}
+.dt-sketch .dt-wire::after{content:"";position:absolute;inset:14% 12% 55% 12%;
+  border:.4cqi dashed #9AA7BA;border-radius:180px 12px 160px 12px}
+.dt-sketch .dt-arrow{position:absolute;right:33cqi;top:26cqi;width:8cqi;height:.5cqi;background:#E0623C;rotate:-16deg}
+.dt-sketch .dt-arrow::after{content:"";position:absolute;right:-.3cqi;top:-1.1cqi;
+  border:1.2cqi solid transparent;border-left-color:#E0623C;border-right:0}
+.dt-sketch .dt-boxes{position:absolute;left:5.5cqi;bottom:4.5cqi;display:flex;gap:2.4cqi}
+.dt-sketch .dt-boxes span{width:12cqi;height:7cqi;border:.5cqi solid #2E3A4E;
+  border-radius:190px 14px 170px 14px/14px 160px 14px 190px}
+
+/* --- luxury typography --- */
+.dt-lux{background:#F3EFE7}
+.dt-lux .dt-mark{width:15cqi;height:2cqi;background:#14100C}
+.dt-lux .dt-nav i{width:6cqi;height:.8cqi;background:#14100C;opacity:.45}
+.dt-lux .dt-nav i:first-of-type{margin-left:auto}
+.dt-lux .dt-hero{margin-top:11cqi;gap:2.6cqi}
+.dt-lux .dt-h{width:66%;height:11cqi;background:#14100C}
+.dt-lux .dt-l{width:20%;height:.9cqi;background:#14100C;opacity:.5}
+.dt-lux .dt-plate{position:absolute;right:6cqi;bottom:5cqi;width:20cqi;height:26cqi;
+  background:linear-gradient(160deg,#D9CFBE,#A99C86)}
+.dt-lux .dt-rule{position:absolute;left:5.5cqi;bottom:6cqi;width:34cqi;height:1px;background:#14100C;opacity:.45}
+
+/* --- editorial --- */
+.dt-edit{background:#FFFDF9}
+.dt-edit .dt-nav{border-bottom:.5cqi solid #16130F;padding-bottom:3cqi}
+.dt-edit .dt-mark{width:17cqi;height:2.6cqi;background:#16130F}
+.dt-edit .dt-nav i{width:5cqi;height:.9cqi;background:#16130F;opacity:.4}
+.dt-edit .dt-nav i:first-of-type{margin-left:auto}
+.dt-edit .dt-hero{margin-top:4.5cqi;gap:1.4cqi}
+.dt-edit .dt-h{width:74%;height:4.4cqi;background:#16130F}
+.dt-edit .dt-h.alt{width:52%}
+.dt-edit .dt-deck{width:44%;height:1.4cqi;background:#7A6F5E}
+.dt-edit .dt-cols{position:absolute;left:5.5cqi;right:5.5cqi;bottom:4.5cqi;height:15cqi;
+  display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:2.4cqi}
+.dt-edit .dt-cols .col{position:relative;
+  background:repeating-linear-gradient(180deg,#3A342B 0 .8cqi,transparent .8cqi 2.4cqi);
+  opacity:.55}
+.dt-edit .dt-cols .col .cap{position:absolute;left:0;top:0;width:4cqi;height:4cqi;background:#C0392B}
+.dt-edit .dt-cols .pic{background:linear-gradient(160deg,#C9BFAC,#8A7E68)}
+
 /* ==========================================================================
    DETAIL ROUTE  (#/design/<id>)
    ========================================================================== */

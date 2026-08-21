@@ -244,3 +244,85 @@ export function BentoThumb() {
     </div>
   );
 }
+
+export function PixelArtThumb() {
+  return (
+    <div className="dt dt-pixel" role="img" aria-label="Miniature pixel-art website: chunky blocks, limited palette, scanlines">
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-l" />
+        <span className="dt-btn" />
+      </div>
+      <span className="dt-sprite" />
+      <div className="dt-boxes">
+        <span /> <span /> <span />
+      </div>
+      <span className="dt-scan" />
+    </div>
+  );
+}
+
+export function SketchThumb() {
+  return (
+    <div className="dt dt-sketch" role="img" aria-label="Miniature sketch website: hand-drawn wireframe boxes and pencil annotations">
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-underline" />
+        <span className="dt-l" />
+      </div>
+      <span className="dt-wire" />
+      <span className="dt-arrow" />
+      <div className="dt-boxes">
+        <span /> <span />
+      </div>
+    </div>
+  );
+}
+
+export function LuxuryTypeThumb() {
+  return (
+    <div className="dt dt-lux" role="img" aria-label="Miniature luxury typography website: one enormous serif word on cream">
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-l" />
+      </div>
+      <span className="dt-plate" />
+      <span className="dt-rule" />
+    </div>
+  );
+}
+
+export function EditorialThumb() {
+  return (
+    <div className="dt dt-edit" role="img" aria-label="Miniature editorial website: masthead, serif headline, columns and a drop cap">
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-h alt" />
+        <span className="dt-deck" />
+      </div>
+      <div className="dt-cols">
+        <span className="col">
+          <i className="cap" />
+        </span>
+        <span className="col" />
+        <span className="pic" />
+      </div>
+    </div>
+  );
+}

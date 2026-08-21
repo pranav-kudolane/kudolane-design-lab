@@ -17,5 +17,7 @@
   --display:"Bricolage Grotesque",system-ui,sans-serif;
   --body:"Inter",system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,monospace;
-  --hand:"Caveat",ui-rounded,cursive;   /* scrapbook landing only */
+  --hand:"Caveat",ui-rounded,cursive;          /* scrapbook + sketch annotations */
+  --serif:"Playfair Display",Georgia,serif;    /* luxury + editorial display */
+  --pixel:"Press Start 2P",ui-monospace,monospace; /* pixel-art headings only */
 }

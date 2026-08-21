@@ -2,26 +2,34 @@ import {
   BentoThumb,
   BrutalismThumb,
   ClaymorphismThumb,
+  EditorialThumb,
   GlassmorphismThumb,
+  LuxuryTypeThumb,
   MaximalismThumb,
   MinimalismThumb,
   NeoBrutalismThumb,
   NeoClassicalThumb,
   NeumorphismThumb,
+  PixelArtThumb,
   ScrapbookThumb,
+  SketchThumb,
   SurrealismThumb,
   SwissThumb,
 } from '../components/designThumbs';
 import { BentoLanding } from '../landings/BentoLanding';
 import { BrutalismLanding } from '../landings/BrutalismLanding';
 import { ClaymorphismLanding } from '../landings/ClaymorphismLanding';
+import { EditorialLanding } from '../landings/EditorialLanding';
 import { GlassmorphismLanding } from '../landings/GlassmorphismLanding';
+import { LuxuryTypeLanding } from '../landings/LuxuryTypeLanding';
 import { MaximalismLanding } from '../landings/MaximalismLanding';
 import { MinimalismLanding } from '../landings/MinimalismLanding';
 import { NeoBrutalismLanding } from '../landings/NeoBrutalismLanding';
 import { NeoClassicalLanding } from '../landings/NeoClassicalLanding';
 import { NeumorphismLanding } from '../landings/NeumorphismLanding';
+import { PixelArtLanding } from '../landings/PixelArtLanding';
 import { ScrapbookLanding } from '../landings/ScrapbookLanding';
+import { SketchLanding } from '../landings/SketchLanding';
 import { SurrealismLanding } from '../landings/SurrealismLanding';
 import { SwissLanding } from '../landings/SwissLanding';
 import type { DesignStyle } from '../types';
@@ -1346,6 +1354,446 @@ body {
   .bento { grid-template-columns: 1fr; }
   .tile, .tile.hero, .tile.wide, .tile.tall { grid-column: span 1; grid-row: span 1; }
 }`,
+    },
+  },
+  {
+    id: 'pixel-art',
+    name: 'Pixel Art',
+    era: '8-bit hardware, 1983 · a choice since 1995',
+    use: 'games · indie',
+    tagline: 'Every pixel placed by hand',
+    desc: 'Chunky sprites, a locked palette, hard edges and stepped animation. Once a hardware limit, now a signature — **it says a person drew this, one square at a time.**',
+    accent: '#7CF56B',
+    Thumb: PixelArtThumb,
+    Landing: PixelArtLanding,
+    detail: {
+      intro:
+        'Pixel art works on a grid where the pixel is the smallest unit you are allowed to use. No anti-aliasing, no gradients, no half-measures — a diagonal is a staircase and you decide where each step falls. On the web the discipline is mostly about **refusing the browser’s help**: turning off smoothing, snapping every measurement to your pixel size, and stepping animation instead of easing it.',
+      origin:
+        'It began as a constraint. The NES gave you 25 colours on screen and 8×8 tiles, and artists learned to imply everything else. Once hardware stopped caring, the look survived as a deliberate choice — Cave Story, Celeste, Stardew Valley — and spread outward into music, fashion and profile-picture culture.',
+      principles: [
+        {
+          title: 'Decide your pixel, then never break it',
+          body: 'Pick a scale — 3×, 4× — and make **every** size, offset and border a multiple of it. One 5px value in a 4px world is instantly visible and looks like a bug.',
+        },
+        {
+          title: 'Turn the smoothing off',
+          body: '`image-rendering: pixelated` on every raster, and `shape-rendering: crispEdges` on SVG. Without them the browser blurs your art back into mush at any non-integer scale.',
+        },
+        {
+          title: 'Lock the palette',
+          body: 'Eight to sixteen colours for the whole site. Shading is a **second colour**, never opacity — a 50% overlay produces values that are not in your palette.',
+        },
+        {
+          title: 'Step the motion',
+          body: '`animation-timing-function: steps(2)`, not `ease`. Smooth interpolation between two sprite positions is the single fastest way to break the illusion.',
+        },
+        {
+          title: 'Do not set body copy in a pixel font',
+          body: 'Pixel faces are for headings, buttons and labels. **Paragraphs get a real typeface** — usually a mono — or nobody reads them.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A bitmap face (`Press Start 2P`, `Silkscreen`, `Pixelify`) for display only, at multiples of its native size. Mono or a plain sans for body.',
+        },
+        {
+          label: 'Colour',
+          value: 'A small locked palette, usually dark ground with two or three bright accents. **No gradients and no alpha shading.**',
+        },
+        {
+          label: 'Layout',
+          value: 'Chunky stepped borders (four offset `box-shadow`s, no blur), tile-based spacing, hard-edged panels that read as UI windows.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Sprites — drawn as tiny SVGs or PNGs and scaled up by integers. Dithering instead of gradients; scanlines for CRT flavour.',
+        },
+        {
+          label: 'Motion',
+          value: 'Two- or three-frame stepped loops. Bobs, blinks and flickers, never a tween.',
+        },
+        {
+          label: 'Risk',
+          value: 'Legibility and scale. Bitmap type fails on odd zoom levels, and the whole style locks you into a narrow set of associations.',
+        },
+      ],
+      bestFor: [
+        '**Indie games** — the audience reads the style as a promise about the product.',
+        'Developer tools, terminals and anything with a deliberately retro-technical voice.',
+        'Music, merch and event brands aimed at people who grew up on consoles.',
+        '404 pages, loading states and easter eggs inside otherwise plain sites.',
+      ],
+      avoidWhen: [
+        'The product must feel current or premium — pixel art reads as nostalgia, always.',
+        'The site is text-heavy or has real forms to fill in.',
+        'Accessibility matters and you cannot escape the bitmap face for interface text.',
+      ],
+      lang: 'css',
+      code: `/* Pixel art: pick a pixel, snap everything to it, refuse smoothing. */
+:root {
+  --px: 4px;                 /* the unit — every value is a multiple */
+  --deep: #0B0B14;
+  --green: #7CF56B;
+}
+
+.sprite,
+img { image-rendering: pixelated; }        /* never interpolate */
+svg { shape-rendering: crispEdges; }
+
+/* a chunky stepped frame: four offsets, zero blur, notched corners */
+.panel {
+  box-shadow:
+    0 calc(var(--px) * -3) 0 var(--deep),
+    0 calc(var(--px) *  3) 0 var(--deep),
+    calc(var(--px) * -3) 0 0 var(--deep),
+    calc(var(--px) *  3) 0 0 var(--deep);
+}
+
+/* stepped, never eased — interpolation kills the illusion */
+.idle { animation: bob 1.6s steps(2) infinite; }
+@keyframes bob { 50% { transform: translateY(calc(var(--px) * -4)); } }
+
+/* shading is a second palette colour, never opacity */
+.shadow { background: #2E9E45; }           /* not rgba(0,0,0,.4) */`,
+    },
+  },
+  {
+    id: 'conceptual-sketch',
+    name: 'Conceptual Sketch',
+    era: 'Studio culture · Balsamiq 2008, Excalidraw 2020',
+    use: 'agency · process',
+    tagline: 'Thinking, left visible',
+    desc: 'Wobbly hand-drawn boxes, pencil annotations, dashed leader lines and arrows in the margin. **Deliberately unfinished** — it invites an opinion instead of asking for approval.',
+    accent: '#E0623C',
+    Thumb: SketchThumb,
+    Landing: SketchLanding,
+    detail: {
+      intro:
+        'Sketch design makes the working-out visible. Boxes wobble, lines are drawn rather than ruled, and arrows point at things with handwriting attached. The point is psychological: **a polished mockup asks “do you approve?”, a sketch asks “what do you think?”** — and people answer the second question far more honestly.',
+      origin:
+        'It comes out of studio and consulting practice — whiteboards, napkins, and the wireframe. Balsamiq made the deliberately-crude wireframe a product in 2008 on exactly this insight, and Excalidraw took the aesthetic to the whole industry from 2020. Where scrapbook borrows from a notebook of *memories*, this borrows from a notebook of *arguments*.',
+      principles: [
+        {
+          title: 'Draw the box, do not rule it',
+          body: 'The classic trick is a plain solid border with wildly uneven corner radii — `border-radius: 230px 16px 210px 18px / 18px 200px 16px 230px`. **One value, and a rectangle stops looking machine-made.**',
+        },
+        {
+          title: 'Annotate in the margin',
+          body: 'Handwritten notes with arrows pointing at the thing they discuss. Marginalia is what separates a sketch from a low-fidelity mockup — it carries the *reasoning*, not the layout.',
+        },
+        {
+          title: 'Grey out what is not the point',
+          body: 'Placeholder text becomes hatched blocks and dashed boxes. Detail signals importance, so anything rendered in full **claims to be decided**.',
+        },
+        {
+          title: 'One ink for the pencil, one for the pen',
+          body: 'A blue-grey graphite for structure, a single bright mark colour — red or orange — for annotation, corrections and emphasis. Never more.',
+        },
+        {
+          title: 'Vary the wobble',
+          body: 'Reuse the same corner radii on every box and the eye spots the repeat instantly. Keep two or three variants and alternate them across siblings.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A plain sans for content plus a handwriting face (`Caveat`, `Architects Daughter`) for annotation only. Mono for labels and numbering.',
+        },
+        {
+          label: 'Colour',
+          value: 'Off-white paper, graphite ink, one mark colour. Faint grid or ruled lines in the background.',
+        },
+        {
+          label: 'Layout',
+          value: 'Wireframe boxes, dashed placeholders, hatched fills, arrows connecting steps. Flow diagrams instead of feature rows.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Almost none — diagrams, wireframes and scribbles stand in for it. Real photography breaks the fiction immediately.',
+        },
+        {
+          label: 'Motion',
+          value: 'Small rotations and lifts on hover, as if a card were being nudged across a table.',
+        },
+        {
+          label: 'Risk',
+          value: 'It can read as genuinely unfinished, and clients occasionally ask when the real design is arriving.',
+        },
+      ],
+      bestFor: [
+        '**Agencies, studios and consultancies** selling a way of working rather than a deliverable.',
+        'Courses, workshops and anything about process or craft.',
+        'Documentation, changelogs and roadmaps — where “provisional” is honest.',
+        'Internal tools and early-stage products that want feedback rather than applause.',
+      ],
+      avoidWhen: [
+        'The audience is buying polish — luxury, finance, anything where “rough” means “cheap”.',
+        'The product is finished and confident. Sketch styling on a mature product reads as affectation.',
+        'You need photography or real product shots to sell — they cannot coexist with the fiction.',
+      ],
+      lang: 'css',
+      code: `/* Sketch: one border-radius value is the entire hand-drawn effect. */
+:root {
+  --ink: #2E3A4E;         /* graphite */
+  --pencil: #9AA7BA;      /* structure, not decided */
+  --mark: #E0623C;        /* the pen — annotation and correction only */
+
+  --rough:  230px 16px 210px 18px / 18px 200px 16px 230px;
+  --rough2: 16px 220px 18px 200px / 190px 18px 220px 16px;
+}
+
+.box {
+  border: 3px solid var(--ink);
+  border-radius: var(--rough);      /* alternate with --rough2 on siblings */
+  background: #fff;
+}
+
+/* placeholders are hatched, because they are not decisions yet */
+.placeholder {
+  border: 2px dashed var(--pencil);
+  border-radius: var(--rough2);
+  background: repeating-linear-gradient(135deg,
+    rgba(154,167,186,.16) 0 6px, transparent 6px 18px);
+}
+
+/* the annotation carries the reasoning — always in the pen colour */
+.note {
+  font-family: "Caveat", cursive;
+  color: var(--mark);
+  rotate: -3deg;
+}
+
+/* an underline that was drawn, not ruled */
+.marked { border-bottom: 4px solid var(--mark); border-radius: 0 0 60% 40%; }`,
+    },
+  },
+  {
+    id: 'luxury-typography',
+    name: 'Luxury Typography',
+    era: 'Fashion print · the web since the 2010s',
+    use: 'fashion · beauty',
+    tagline: 'The type is the image',
+    desc: 'One enormous high-contrast serif, letterspaced capitals at the size of a whisper, and more empty space than a client will be comfortable with. **Restraint priced as confidence.**',
+    accent: '#C9BFAC',
+    Thumb: LuxuryTypeThumb,
+    Landing: LuxuryTypeLanding,
+    detail: {
+      intro:
+        'Luxury typography sells by refusing to sell. There is no gradient, no shadow, no ornament and often no photograph above the fold — just a word set very large in a serif with dramatic thick-thin contrast, and a label set very small in letterspaced capitals. **The gap between those two sizes is the entire design**, and it reads as expensive because it looks like the brand does not need your attention.',
+      origin:
+        'It comes from fashion print — the Didone faces of the 18th century as reinterpreted by Vogue, Harper’s Bazaar and the house books of Saint Laurent, Celine and Jil Sander. The web version arrived once browsers could set large type well, and it is now the default register for fashion, beauty, jewellery and spirits.',
+      principles: [
+        {
+          title: 'Two sizes, very far apart',
+          body: 'A display size in the hundreds of pixels and a label size around 10–12px. **Nothing in between.** Mid-sized type is what makes a page look commercial.',
+        },
+        {
+          title: 'A serif with real contrast',
+          body: 'Didone or high-contrast transitional — `Playfair Display`, `Bodoni Moda`, `Canela`. The thin strokes are the luxury; a low-contrast serif reads as institutional instead.',
+        },
+        {
+          title: 'Letterspace the small, tighten the large',
+          body: 'Labels and navigation at `0.2–0.3em` tracking, uppercase. Display type at negative tracking. The two treatments **belong to different worlds** on purpose.',
+        },
+        {
+          title: 'Asymmetry over symmetry',
+          body: 'Centring reads ceremonial — that is Neo-Classical territory. Luxury sets type flush left, then pushes one line to the right edge, and lets the imbalance sit there.',
+        },
+        {
+          title: 'Let the page be mostly empty',
+          body: 'Margins of 8–12% and huge vertical gaps. **Whitespace is the most expensive thing on the page**, and every element you add spends some of it.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'One high-contrast serif for display, one neutral sans for the small print. Italics used as a *voice*, not for emphasis.',
+        },
+        {
+          label: 'Colour',
+          value: 'Bone, cream, ivory or true black — two values, no third. **Colour, if any, comes only from photography.**',
+        },
+        {
+          label: 'Layout',
+          value: 'Flush-left with deliberate imbalance, enormous margins, hairline rules dividing registers. Editorial plates rather than cards.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Few images, large, desaturated, always full-bleed or precisely aligned to the type. No rounded corners.',
+        },
+        {
+          label: 'Motion',
+          value: 'Slow fades and gentle reveals — 600ms and up. Anything fast reads as a sale.',
+        },
+        {
+          label: 'Risk',
+          value: 'It communicates very little. If a visitor needs to know a price, a size or a delivery date, this style actively obstructs them.',
+        },
+      ],
+      bestFor: [
+        '**Fashion, beauty, jewellery and fragrance** — the register the whole category shares.',
+        'Hotels, restaurants and interiors at the top of the market.',
+        'Photographers, galleries and creative directors.',
+        'Brand and campaign pages where information lives one click deeper.',
+      ],
+      avoidWhen: [
+        'The site has to convert directly — e-commerce with real SKUs needs mid-sized, scannable type.',
+        'The audience is broad or in a hurry.',
+        'Your typeface budget is a free grotesque. **This style is the typeface**; without a good serif there is nothing left of it.',
+      ],
+      lang: 'css',
+      code: `/* Luxury: two type sizes, very far apart, and a great deal of nothing. */
+:root {
+  --ink: #14100C;
+  --paper: #F3EFE7;      /* never pure white */
+  --serif: "Playfair Display", "Bodoni Moda", Georgia, serif;
+}
+
+/* the display size — the only image on the page */
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;                  /* never bold; the face has the contrast */
+  font-size: clamp(48px, 16vw, 230px);
+  line-height: .82;
+  letter-spacing: -.03em;            /* tighten the large */
+}
+h1 .second { font-style: italic; justify-self: end; }   /* deliberate imbalance */
+
+/* the label size — nothing exists between these two */
+.label, nav a {
+  font-size: 11px;
+  letter-spacing: .28em;             /* letterspace the small */
+  text-transform: uppercase;
+}
+
+section { padding-block: 10vw; }     /* the whitespace is the product */
+body { background: var(--paper); color: var(--ink); }
+
+a { transition: opacity .4s ease; }  /* slow — fast reads as a sale */`,
+    },
+  },
+  {
+    id: 'editorial',
+    name: 'Editorial Design',
+    era: 'Magazine craft · web longform since 2012',
+    use: 'magazine · longform',
+    tagline: 'Built for reading',
+    desc: 'Drop caps, real columns, standfirsts, bylines, pull quotes and captions that carry their own weight. **The only style on this page designed around a reader, not a visitor.**',
+    accent: '#C0392B',
+    Thumb: EditorialThumb,
+    Landing: EditorialLanding,
+    detail: {
+      intro:
+        'Editorial design is the set of conventions magazines worked out for holding attention across three thousand words. Every element has a job and a name — kicker, headline, standfirst, byline, drop cap, pull quote, caption, folio — and the hierarchy between them is what lets a reader enter anywhere and still know where they are. **Its sample page here is an article, not a landing page**, because that is the only honest way to show it.',
+      origin:
+        'Centuries of print practice, compressed by the mid-century magazine — Harper’s Bazaar under Brodovitch, Twen under Fleckhaus, The Face under Brody. The web spent fifteen years ignoring all of it, then rediscovered it in 2012 with the New York Times’ *Snow Fall* and the longform wave that followed.',
+      principles: [
+        {
+          title: 'Respect the measure',
+          body: '**60 to 75 characters a line.** Wider and the eye loses its place returning; narrower and the rag becomes distracting. This single number does more for readability than any other decision.',
+        },
+        {
+          title: 'Use the full furniture',
+          body: 'Kicker, headline, standfirst, byline, drop cap, pull quote, caption. Each answers a different question, and a page that skips them makes the reader do the sorting.',
+        },
+        {
+          title: 'Pull quotes interrupt, they do not repeat',
+          body: 'A pull quote is an **entry point for someone skimming** — set it large, break it across the column, and pick a line that earns the interruption.',
+        },
+        {
+          title: 'Captions are read more than body copy',
+          body: 'After the headline, the caption is the most-read text on a page. Write it as a sentence with information in it, never as a label.',
+        },
+        {
+          title: 'Two families, clearly divided',
+          body: 'A serif for reading and a sans for apparatus — decks, bylines, captions, categories. **The division tells the reader which text is the article** and which is scaffolding.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'High-contrast serif for headlines, a readable serif or sans for body at 18–21px, and a small sans for apparatus. Real `text-wrap: balance` on headings.',
+        },
+        {
+          label: 'Colour',
+          value: 'Paper white or cream, near-black ink, one accent for kickers, drop caps and rules. Colour is **navigation**, not decoration.',
+        },
+        {
+          label: 'Layout',
+          value: 'Asymmetric grid, rules dividing registers, images breaking the column, generous vertical rhythm. `columns` for genuinely multi-column passages.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Documentary photography, always captioned. Sizes vary deliberately — full-bleed, half-column, inline — to pace the read.',
+        },
+        {
+          label: 'Motion',
+          value: 'Almost none in the article body. Progress indicators and image reveals at most.',
+        },
+        {
+          label: 'Risk',
+          value: 'Multi-column text is **hostile on a phone** — a column that requires vertical scrolling to reach its own second column is unreadable, so it must collapse to one.',
+        },
+      ],
+      bestFor: [
+        '**Magazines, newspapers and longform journalism** — the native use.',
+        'Company blogs, essays, research write-ups and annual reports.',
+        'Documentation and knowledge bases that people actually read through.',
+        'Case studies, where the structure carries a narrative rather than a feature list.',
+      ],
+      avoidWhen: [
+        'The content is short. Editorial furniture on a 200-word page looks like a costume.',
+        'The page is an interface — dashboards and apps need scanning, not reading.',
+        'Nobody is writing real copy. **The style is a frame for good writing** and exposes bad writing mercilessly.',
+      ],
+      lang: 'css',
+      code: `/* Editorial: measure first, then the furniture. */
+:root {
+  --ink: #16130F;
+  --paper: #FFFDF9;
+  --accent: #C0392B;
+  --serif: "Playfair Display", Georgia, serif;
+}
+
+.article p {
+  max-width: 34em;          /* ~66 characters — the whole ballgame */
+  font-size: 19px;
+  line-height: 1.62;
+  margin-bottom: 1.6em;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(30px, 5.4vw, 76px);
+  line-height: 1.04;
+  text-wrap: balance;       /* what a subeditor used to do by hand */
+  max-width: 20ch;
+}
+
+/* the drop cap: float it, and kill the line-height so it sits on the baseline */
+.article p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--serif);
+  font-size: 4.2em;
+  line-height: .82;
+  padding: .06em .1em 0 0;
+  color: var(--accent);
+}
+
+/* an entry point for the skimmer — it interrupts, it does not repeat */
+.pull {
+  border-block: 2px solid var(--ink);
+  padding-block: 1.4em;
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.2vw, 30px);
+  break-inside: avoid-column;
+}
+
+/* real columns — and they MUST collapse, or the phone read is broken */
+.body { columns: 2; column-gap: 3.5rem; }
+@media (max-width: 720px) { .body { columns: 1; } }`,
     },
   },
 ];

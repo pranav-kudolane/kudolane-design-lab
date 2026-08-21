@@ -88,10 +88,20 @@ click-to-copy and the toast come for free.
 The card grid, the `#/design/<id>` write-up and the full-screen preview are all
 generated from that array; no component needs editing.
 
-Fonts are loaded once in `index.html` and exposed as tokens — `--display`,
-`--body`, `--mono`, and `--hand` (Caveat, used only for the scrapbook style's
-annotations). Adding a style that needs a new face means one more family on that
-existing link, not a second request.
+Fonts are loaded once in `index.html` and exposed as tokens in `tokens.css`:
+
+| token | face | used by |
+| --- | --- | --- |
+| `--display` | Bricolage Grotesque | the lab's own headings, claymorphism |
+| `--body` | Inter | the lab, and most landings |
+| `--mono` | JetBrains Mono | code, labels, kickers |
+| `--hand` | Caveat | scrapbook captions, sketch annotations |
+| `--serif` | Playfair Display | luxury typography, editorial |
+| `--pixel` | Press Start 2P | pixel art headings only — never body copy |
+
+Adding a style that needs a new face means one more family on that existing
+link, not a second request. Weigh it anyway: a style whose whole identity is its
+typeface (luxury, pixel) earns one; a style that merely prefers one does not.
 
 Landing pages are **container-query sized**: each root sets `container-type:
 inline-size` and every fluid value uses `cqi`, never `vw`. That is what makes a

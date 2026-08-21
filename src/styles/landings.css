@@ -968,6 +968,310 @@
 .lpo-foot span:last-child{margin-left:auto}
 
 /* ==========================================================================
+   13 — PIXEL ART  ·  Cavern Keep, an indie dungeon crawler
+   ========================================================================== */
+.lp-pixel{
+  --ink:#F2E9C9;
+  --dim:#9A90C4;
+  --night:#161327;
+  --deep:#0B0B14;
+  --green:#7CF56B;
+  --gold:#FFC63D;
+  --red:#FF4D6D;
+  --px:.32cqi;                     /* one "pixel" — every edge is a multiple */
+  background:var(--night);color:var(--ink);
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:clamp(12px,1.25cqi,16px);line-height:1.7;
+  image-rendering:pixelated;
+}
+.lp-pixel :where(h1,h2,h3,.lpp-brand,.lpp-btn,nav a){
+  font-family:var(--pixel),"JetBrains Mono",monospace;font-weight:400;
+}
+/* a chunky stepped border, the way a sprite sheet draws a window frame */
+.lp-pixel :where(.lpp-btn,.lpp-box,.lpp-stats>div){
+  box-shadow:
+    0 calc(var(--px)*-3) 0 var(--deep), 0 calc(var(--px)*3) 0 var(--deep),
+    calc(var(--px)*-3) 0 0 var(--deep), calc(var(--px)*3) 0 0 var(--deep);
+}
+.lpp-nav{display:flex;align-items:center;gap:3cqi;padding:3cqi 5cqi;border-bottom:calc(var(--px)*2) solid var(--deep)}
+.lpp-brand{font-size:clamp(11px,1.5cqi,20px);color:var(--green);letter-spacing:.02em}
+.lpp-nav nav{margin-left:auto;display:flex;gap:2.4cqi}
+.lpp-nav nav a{color:var(--dim);font-size:clamp(8px,.95cqi,12px);transition:color .1s steps(1)}
+.lpp-nav nav a:hover{color:var(--gold)}
+.lpp-btn{display:inline-block;background:var(--red);color:#fff;font-size:clamp(9px,1.1cqi,14px);
+  padding:1.8cqi 3cqi;line-height:1.4;
+  transition:transform .08s steps(1)}
+.lpp-btn:hover{transform:translateY(calc(var(--px)*-2))}
+.lpp-btn:active{transform:translateY(var(--px))}
+.lpp-btn.sm{padding:1.2cqi 2cqi;font-size:clamp(8px,.95cqi,12px);background:var(--gold);color:var(--deep)}
+.lpp-btn.ghost{background:var(--night);color:var(--green)}
+.lpp-btn.big{padding:2.4cqi 4cqi;font-size:clamp(11px,1.5cqi,20px)}
+
+.lpp-ticker{background:var(--gold);color:var(--deep);font-size:clamp(8px,.95cqi,12px);
+  letter-spacing:.1em;padding:1.2cqi 5cqi;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.lpp-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:5cqi;padding:7cqi 5cqi 6cqi;align-items:center}
+.lp-pixel h1{font-size:clamp(20px,4.2cqi,58px);line-height:1.35;color:var(--gold);
+  text-shadow:calc(var(--px)*3) calc(var(--px)*3) 0 var(--deep);margin-bottom:3cqi}
+.lpp-health{display:flex;gap:1.4cqi;margin-bottom:3cqi}
+.lpp-heart{width:5cqi;height:auto}
+.lpp-hero-copy p{color:var(--dim);max-width:36cqi;margin-bottom:3.4cqi}
+.lpp-ctas{display:flex;gap:2.4cqi;flex-wrap:wrap}
+
+.lpp-stage{position:relative;display:grid;place-items:center;min-height:34cqi}
+.lpp-slime{width:26cqi;height:auto;position:relative;z-index:2;
+  animation:lpp-bob 1.6s steps(2) infinite}     /* stepped, never eased */
+@keyframes lpp-bob{50%{transform:translateY(-1.6cqi)}}
+.lpp-shadow{position:absolute;bottom:8cqi;width:20cqi;height:2cqi;background:var(--deep);opacity:.55}
+.lpp-floor{position:absolute;left:0;right:0;bottom:5cqi;height:calc(var(--px)*3);background:var(--deep)}
+
+.lpp-items{display:grid;grid-template-columns:repeat(3,1fr);gap:4cqi;padding:4cqi 5cqi 7cqi}
+.lpp-box{background:#251F42;padding:3.4cqi 3cqi}
+.lpp-ico{width:8cqi;height:auto;display:block;margin-bottom:2.4cqi}
+.lpp-box h3{font-size:clamp(10px,1.3cqi,17px);color:var(--green);margin-bottom:1.6cqi;line-height:1.4}
+.lpp-box p{color:var(--dim);font-size:clamp(10px,1.15cqi,15px)}
+
+.lpp-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:4cqi;padding:0 5cqi 8cqi}
+.lpp-stats>div{background:#251F42;padding:2.6cqi 2cqi;text-align:center}
+.lpp-stats b{display:block;font-family:var(--pixel),monospace;font-weight:400;
+  font-size:clamp(13px,2.2cqi,30px);color:var(--gold);line-height:1.4;margin-bottom:1cqi}
+.lpp-stats span{font-size:clamp(8px,.95cqi,12px);color:var(--dim);letter-spacing:.06em}
+
+.lpp-foot{position:relative;text-align:center;padding:7cqi 5cqi 9cqi;border-top:calc(var(--px)*2) solid var(--deep);
+  display:grid;justify-items:center;gap:3.4cqi;
+  background:repeating-linear-gradient(180deg,rgba(0,0,0,.28) 0 var(--px),transparent var(--px) calc(var(--px)*3))}
+.lp-pixel h2{font-size:clamp(16px,3.4cqi,46px);color:var(--green);line-height:1.4;
+  text-shadow:calc(var(--px)*3) calc(var(--px)*3) 0 var(--deep)}
+.lpp-foot p{color:var(--dim);font-size:clamp(8px,.95cqi,12px);letter-spacing:.06em}
+
+/* ==========================================================================
+   14 — CONCEPTUAL SKETCH  ·  First Draft, a six-week course
+   ========================================================================== */
+.lp-sketch{
+  --ink:#2E3A4E;
+  --soft:#6D7C93;
+  --paper:#FBFAF6;
+  --pencil:#9AA7BA;
+  --mark:#E0623C;
+  /* the hand-drawn box: wildly uneven corner radii on a plain solid border */
+  --rough:230px 16px 210px 18px/18px 200px 16px 230px;
+  --rough2:16px 220px 18px 200px/190px 18px 220px 16px;
+  background:var(--paper);color:var(--ink);
+  background-image:linear-gradient(rgba(90,105,130,.07) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(90,105,130,.07) 1px,transparent 1px);
+  background-size:2.2cqi 2.2cqi;
+  font-family:"Inter",system-ui,sans-serif;font-size:clamp(13px,1.35cqi,18px);line-height:1.65;
+}
+.lpz-note{font-family:var(--hand);color:var(--mark);font-size:clamp(14px,1.9cqi,26px);
+  line-height:1.1;position:absolute;rotate:-3deg}
+.lpz-nav{display:flex;align-items:center;gap:3cqi;padding:3.4cqi 5cqi}
+.lpz-brand{position:relative;font-weight:700;font-size:clamp(17px,2.1cqi,29px);letter-spacing:-.02em}
+.lpz-brand-mark{position:absolute;left:-.6cqi;right:-.6cqi;bottom:-.8cqi;height:.5cqi;
+  background:var(--mark);border-radius:0 0 60% 40%;rotate:-1.2deg}
+.lpz-nav nav{margin-left:auto;display:flex;gap:2.6cqi}
+.lpz-nav nav a{color:var(--soft);font-size:clamp(11px,1.2cqi,16px);border-bottom:2px dashed transparent;transition:.2s}
+.lpz-nav nav a:hover{color:var(--ink);border-bottom-color:var(--pencil)}
+
+.lpz-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:5cqi;padding:5cqi 5cqi 8cqi;align-items:center}
+.lpz-hero-copy{position:relative}
+.lpz-eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(9px,1cqi,13px);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--soft);margin-bottom:2.6cqi}
+/* the squiggle hangs below the baseline, so the leading has to make room for it */
+.lp-sketch h1{font-size:clamp(28px,5.2cqi,72px);font-weight:700;line-height:1.24;letter-spacing:-.03em;margin-bottom:2.6cqi}
+.lpz-marked{position:relative;display:inline-block;padding:0 .12em .1em;margin:0 .06em}
+.lpz-squiggle{position:absolute;left:0;right:0;bottom:-.34em;width:100%;height:.34em;color:var(--mark)}
+.lpz-lede{max-width:38cqi;color:var(--soft);margin-bottom:3.4cqi;font-size:clamp(12px,1.4cqi,18px)}
+.lpz-cta{display:inline-block;border:.28cqi solid var(--ink);border-radius:var(--rough);
+  padding:1.4cqi 3.4cqi;font-weight:600;font-size:clamp(12px,1.3cqi,17px);
+  transition:background .18s ease,color .18s ease}
+.lpz-cta:hover{background:var(--ink);color:var(--paper)}
+.lpz-note.n1{left:0;bottom:-5cqi}
+.lpz-note.n2{right:2cqi;bottom:-4.6cqi;rotate:2deg}
+.lpz-note.n3{left:50%;translate:-50% 0;bottom:-5.4cqi;rotate:1.5deg}
+
+.lpz-wire{position:relative;padding-bottom:5cqi}
+.lpz-label{display:block;font-family:var(--hand);color:var(--soft);font-size:clamp(14px,1.8cqi,24px);
+  margin-bottom:1.2cqi;rotate:-1deg}
+.lpz-frame{border:.32cqi solid var(--ink);border-radius:var(--rough);background:#fff;padding:2cqi;
+  display:grid;gap:2cqi}
+.lpz-bar{height:3cqi;border:.24cqi solid var(--pencil);border-radius:var(--rough2)}
+.lpz-body{display:grid;grid-template-columns:1fr 1.2fr;gap:2cqi}
+.lpz-box.tall{border:.24cqi dashed var(--pencil);border-radius:var(--rough2);min-height:20cqi;
+  background:repeating-linear-gradient(135deg,rgba(154,167,186,.16) 0 .6cqi,transparent .6cqi 1.8cqi)}
+.lpz-stack{display:grid;align-content:start;gap:1.4cqi}
+.lpz-line{height:1.4cqi;background:var(--pencil);opacity:.55;border-radius:100px 8px 90px 8px}
+.lpz-line.w80{width:80%}
+.lpz-line.w60{width:60%}
+.lpz-line.w70{width:70%}
+.lpz-btnbox{width:40%;height:4.4cqi;border:.24cqi solid var(--ink);border-radius:var(--rough2);margin-top:1.4cqi}
+
+.lpz-weeks{padding:0 5cqi 6cqi}
+.lp-sketch h2{position:relative;font-size:clamp(20px,3.2cqi,44px);font-weight:700;letter-spacing:-.03em;
+  margin-bottom:4cqi;display:inline-block}
+.lpz-h-rule{position:absolute;left:0;right:0;bottom:-1.2cqi;height:.4cqi;background:var(--pencil);
+  border-radius:0 0 70% 30%;opacity:.7}
+.lpz-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:2cqi;align-items:center;margin-bottom:3.4cqi}
+.lpz-step{border:.28cqi solid var(--ink);border-radius:var(--rough);padding:2.6cqi 2.4cqi;background:#fff;
+  transition:transform .2s ease}
+.lpz-flow.second .lpz-step{border-radius:var(--rough2)}
+.lpz-step:hover{transform:translateY(-.8cqi) rotate(-.6deg)}
+.lpz-num{display:block;font-family:"JetBrains Mono",monospace;font-size:clamp(9px,1cqi,13px);
+  color:var(--mark);letter-spacing:.12em;margin-bottom:1.2cqi}
+.lpz-step h3{font-size:clamp(13px,1.6cqi,22px);font-weight:700;letter-spacing:-.02em;margin-bottom:.9cqi}
+.lpz-step p{color:var(--soft);font-size:clamp(11px,1.2cqi,15px)}
+.lpz-arrow{font-family:var(--hand);color:var(--mark);font-size:clamp(18px,2.8cqi,38px);text-align:center;rotate:-4deg}
+
+.lpz-quote{padding:4cqi 5cqi 7cqi;max-width:62cqi}
+.lpz-quote p{font-family:var(--hand);color:var(--ink);font-size:clamp(20px,3.4cqi,46px);
+  line-height:1.18;margin-bottom:2cqi}
+.lpz-quote cite{font-style:normal;color:var(--soft);font-size:clamp(11px,1.2cqi,15px)}
+
+.lpz-foot{padding:0 5cqi 8cqi;display:grid;justify-items:center;gap:9cqi;text-align:center}
+.lpz-card{position:relative;border:.32cqi solid var(--ink);border-radius:var(--rough);background:#fff;
+  padding:4cqi 4.4cqi;max-width:52cqi}
+.lpz-card p{color:var(--soft);margin-bottom:2.6cqi;font-size:clamp(11px,1.3cqi,17px)}
+.lpz-fine{color:var(--soft);font-size:clamp(10px,1.1cqi,14px)}
+
+/* ==========================================================================
+   15 — LUXURY TYPOGRAPHY  ·  Verdant, a fashion house
+   ========================================================================== */
+.lp-lux{
+  --ink:#14100C;
+  --paper:#F3EFE7;
+  --soft:#6E6357;
+  background:var(--paper);color:var(--ink);
+  font-family:"Inter",system-ui,sans-serif;font-size:clamp(12px,1.25cqi,16px);line-height:1.7;
+}
+.lp-lux :where(h1,h2,h3){font-family:var(--serif);font-weight:400}
+.lpt-nav{display:flex;align-items:baseline;gap:4cqi;padding:3.4cqi 5cqi 8cqi}
+.lpt-brand{font-family:var(--serif);font-size:clamp(16px,2cqi,28px);letter-spacing:.28em;text-transform:uppercase}
+.lpt-nav nav{margin-left:auto;display:flex;gap:3.4cqi}
+.lpt-nav nav a{color:var(--soft);font-size:clamp(9px,.95cqi,12px);letter-spacing:.22em;
+  text-transform:uppercase;transition:color .3s}
+.lpt-nav nav a:hover{color:var(--ink)}
+
+.lpt-hero{padding:0 5cqi 6cqi}
+.lpt-season{font-size:clamp(9px,.95cqi,12px);letter-spacing:.3em;text-transform:uppercase;
+  color:var(--soft);margin-bottom:4cqi}
+/* the entire hero is one word, twice — scale is the only device */
+.lp-lux h1{display:grid;line-height:.82;letter-spacing:-.03em;margin-bottom:4cqi}
+.lp-lux h1 .l1{font-size:clamp(48px,16cqi,230px)}
+.lp-lux h1 .l2{font-size:clamp(48px,16cqi,230px);font-style:italic;justify-self:end;margin-right:6cqi}
+.lpt-meta{display:flex;gap:5cqi;border-top:1px solid rgba(20,16,12,.28);padding-top:2cqi;
+  font-size:clamp(9px,1cqi,13px);letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.lpt-meta span:last-child{margin-left:auto}
+
+.lpt-plate{display:grid;grid-template-columns:1.35fr 1fr;gap:2.4cqi;padding:2cqi 5cqi 8cqi;align-items:end}
+.lpt-img{display:block;background:linear-gradient(160deg,#D9CFBE,#A99C86)}
+.lpt-img.a{aspect-ratio:16/10}
+.lpt-img.b{aspect-ratio:3/4;background:linear-gradient(160deg,#C6BCA9,#7E7362)}
+
+.lpt-statement{padding:0 5cqi 10cqi;max-width:64cqi}
+.lpt-statement p{font-family:var(--serif);font-size:clamp(20px,3.4cqi,48px);line-height:1.24;letter-spacing:-.015em}
+.lpt-statement em{font-style:italic}
+
+.lpt-collection{display:grid;grid-template-columns:repeat(3,1fr);gap:4cqi;padding:0 5cqi 10cqi}
+.lpt-no{display:block;font-size:clamp(9px,.95cqi,12px);letter-spacing:.26em;color:var(--soft);margin-bottom:1.6cqi}
+.lpt-piece .lpt-img{aspect-ratio:3/4;margin-bottom:2cqi}
+.lpt-img.c{background:linear-gradient(160deg,#CFC5B2,#8B8070)}
+.lpt-img.d{background:linear-gradient(160deg,#DAD3C6,#A0968A)}
+.lpt-img.e{background:linear-gradient(160deg,#E2DACB,#B0A695)}
+.lpt-piece h3{font-size:clamp(15px,2cqi,28px);letter-spacing:-.01em;margin-bottom:.8cqi}
+.lpt-piece p{color:var(--soft);font-size:clamp(10px,1.05cqi,14px);letter-spacing:.06em}
+
+.lpt-house{display:grid;grid-template-columns:1fr 1.6fr;gap:4cqi;padding:0 5cqi 10cqi;
+  border-top:1px solid rgba(20,16,12,.28);padding-top:4cqi}
+.lpt-label{font-size:clamp(9px,.95cqi,12px);letter-spacing:.26em;text-transform:uppercase;color:var(--soft)}
+.lpt-house-r p{font-size:clamp(13px,1.6cqi,22px);max-width:44cqi;margin-bottom:3cqi}
+.lpt-link{font-size:clamp(9px,1cqi,13px);letter-spacing:.22em;text-transform:uppercase;
+  border-bottom:1px solid var(--ink);padding-bottom:.4cqi;transition:opacity .3s}
+.lpt-link:hover{opacity:.55}
+
+.lpt-foot{padding:0 5cqi 6cqi;overflow:hidden}
+.lpt-word{display:block;font-family:var(--serif);font-size:clamp(40px,15.5cqi,224px);line-height:.9;
+  letter-spacing:-.02em;text-transform:uppercase;opacity:.12;margin-bottom:2cqi}
+.lpt-foot-cols{display:flex;gap:4cqi;border-top:1px solid rgba(20,16,12,.28);padding-top:2cqi;
+  font-size:clamp(9px,1cqi,13px);letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.lpt-foot-cols span:last-child{margin-left:auto}
+
+/* ==========================================================================
+   16 — EDITORIAL  ·  The Long Field, a feature article
+   ========================================================================== */
+.lp-edit{
+  --ink:#16130F;
+  --soft:#6A6153;
+  --paper:#FFFDF9;
+  --accent:#C0392B;
+  --measure:34em;
+  background:var(--paper);color:var(--ink);
+  font-family:"Inter",system-ui,sans-serif;font-size:clamp(13px,1.3cqi,17px);line-height:1.62;
+}
+.lpe-masthead{display:flex;align-items:baseline;gap:4cqi;padding:3.4cqi 6cqi 2cqi}
+.lpe-title{font-family:var(--serif);font-weight:700;font-size:clamp(18px,2.6cqi,38px);letter-spacing:-.02em}
+.lpe-title.small{font-size:clamp(15px,2cqi,28px)}
+.lpe-masthead nav{margin-left:auto;display:flex;gap:2.6cqi}
+.lpe-masthead nav a{color:var(--soft);font-size:clamp(9px,1cqi,13px);letter-spacing:.16em;
+  text-transform:uppercase;transition:color .2s}
+.lpe-masthead nav a:hover{color:var(--accent)}
+.lpe-rule{height:1px;background:rgba(22,19,15,.3);margin:0 6cqi}
+.lpe-rule.thick{height:3px;background:var(--ink);margin-bottom:5cqi}
+
+/* flow-root contains the floated inline figure — without it the image escapes
+   the article and lands on top of the section below */
+.lpe-article{padding:0 6cqi;display:flow-root}
+.lpe-kicker{color:var(--accent);font-size:clamp(9px,1cqi,13px);letter-spacing:.2em;
+  text-transform:uppercase;font-weight:600;margin-bottom:2.4cqi}
+.lp-edit h1{font-family:var(--serif);font-weight:700;font-size:clamp(28px,5.4cqi,76px);
+  line-height:1.04;letter-spacing:-.025em;max-width:20ch;margin-bottom:2.6cqi;text-wrap:balance}
+.lpe-standfirst{font-size:clamp(14px,1.75cqi,24px);line-height:1.5;color:var(--soft);
+  max-width:44ch;margin-bottom:3cqi}
+.lpe-byline{display:flex;flex-wrap:wrap;gap:3cqi;padding:1.6cqi 0;border-block:1px solid rgba(22,19,15,.22);
+  font-size:clamp(10px,1.05cqi,14px);color:var(--soft);margin-bottom:4cqi}
+.lpe-byline b{color:var(--ink);font-weight:600}
+.lpe-byline span:last-child{margin-left:auto}
+
+.lpe-lead{margin:0 0 5cqi}
+.lpe-img{display:block}
+.lpe-img.a{aspect-ratio:16/9;background:linear-gradient(150deg,#B9C4C9,#5E6E75)}
+.lpe-img.b{aspect-ratio:4/3;background:linear-gradient(150deg,#CBBFA9,#877B65)}
+/* the rule spans the whole plate, the caption text stays at a readable measure */
+.lp-edit figcaption{font-size:clamp(10px,1.05cqi,14px);color:var(--soft);line-height:1.5;
+  padding-top:1.2cqi;border-top:1px solid rgba(22,19,15,.18);margin-top:1.2cqi}
+.lpe-lead figcaption{padding-right:42%}
+
+/* real magazine columns — the point of the whole style */
+.lpe-body{columns:2;column-gap:5cqi;margin-bottom:4cqi}
+.lpe-body p{margin-bottom:1.6em;max-width:var(--measure);break-inside:avoid-column}
+/* the closing passage runs beside the floated figure, so it stays single-column */
+.lpe-body:last-of-type{columns:1}
+.lpe-first::first-letter{
+  float:left;font-family:var(--serif);font-weight:700;font-size:4.2em;line-height:.82;
+  padding:.06em .1em 0 0;color:var(--accent);
+}
+.lpe-pull{
+  break-inside:avoid-column;margin:1em 0 1.6em;padding:1.4em 0;
+  border-block:2px solid var(--ink);
+  font-family:var(--serif);font-size:clamp(16px,2.2cqi,30px);line-height:1.28;letter-spacing:-.01em;
+}
+.lpe-inline{float:right;width:34%;margin:0 0 3cqi 4cqi}
+.lpe-inline .lpe-img{margin-bottom:0}
+
+.lpe-more{padding:5cqi 6cqi 4cqi}
+.lpe-more h4{font-size:clamp(10px,1.05cqi,14px);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:3cqi;font-weight:600}
+.lpe-more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4cqi}
+.lpe-more-grid article{border-top:2px solid var(--ink);padding-top:1.6cqi}
+.lpe-cat{display:block;font-size:clamp(9px,.95cqi,12px);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--soft);margin-bottom:1.2cqi}
+.lpe-more-grid h5{font-family:var(--serif);font-weight:700;font-size:clamp(14px,1.8cqi,25px);
+  line-height:1.16;letter-spacing:-.015em;margin-bottom:.9cqi}
+.lpe-more-grid p{color:var(--soft);font-size:clamp(11px,1.15cqi,15px)}
+
+.lpe-foot{padding:3cqi 6cqi 6cqi;border-top:3px solid var(--ink);margin:0 6cqi;
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:3cqi}
+.lpe-foot p{color:var(--soft);font-size:clamp(10px,1.05cqi,14px);margin-left:auto}
+
+/* ==========================================================================
    NARROW CONTAINERS — the only breakpoints in here are container queries,
    so they fire inside the detail frame exactly as they do full screen.
    ========================================================================== */
@@ -1016,6 +1320,9 @@
   .lpo-grid,.lpo-tile.feature,.lpo-tile.tall,.lpo-tile.wide,.lpo-tile.security,.lpo-tile.quote{grid-column:span 1}
   .lpo-grid{grid-template-columns:1fr}
   .lpo-logos{grid-template-columns:repeat(3,1fr)}
+  .lpp-nav nav,.lpz-nav nav,.lpt-nav nav,.lpe-masthead nav{display:none}
+  .lpp-stats{grid-template-columns:1fr}
+  .lpz-note{display:none}
   .lpc-colonnade{grid-template-columns:repeat(3,1fr)}
   .lpm-work{grid-template-columns:1fr}
   .lps-facts{grid-template-columns:1fr}
