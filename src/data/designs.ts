@@ -1,8 +1,11 @@
 import {
   BentoThumb,
+  BohemianThumb,
   BrutalismThumb,
   ClaymorphismThumb,
+  DarkModeThumb,
   EditorialThumb,
+  EtherealThumb,
   GlassmorphismThumb,
   LuxuryTypeThumb,
   MaximalismThumb,
@@ -15,11 +18,15 @@ import {
   SketchThumb,
   SurrealismThumb,
   SwissThumb,
+  Y2kThumb,
 } from '../components/designThumbs';
 import { BentoLanding } from '../landings/BentoLanding';
+import { BohemianLanding } from '../landings/BohemianLanding';
 import { BrutalismLanding } from '../landings/BrutalismLanding';
 import { ClaymorphismLanding } from '../landings/ClaymorphismLanding';
+import { DarkModeLanding } from '../landings/DarkModeLanding';
 import { EditorialLanding } from '../landings/EditorialLanding';
+import { EtherealLanding } from '../landings/EtherealLanding';
 import { GlassmorphismLanding } from '../landings/GlassmorphismLanding';
 import { LuxuryTypeLanding } from '../landings/LuxuryTypeLanding';
 import { MaximalismLanding } from '../landings/MaximalismLanding';
@@ -32,6 +39,7 @@ import { ScrapbookLanding } from '../landings/ScrapbookLanding';
 import { SketchLanding } from '../landings/SketchLanding';
 import { SurrealismLanding } from '../landings/SurrealismLanding';
 import { SwissLanding } from '../landings/SwissLanding';
+import { Y2kLanding } from '../landings/Y2kLanding';
 import type { DesignStyle } from '../types';
 
 /**
@@ -1794,6 +1802,445 @@ h1 {
 /* real columns — and they MUST collapse, or the phone read is broken */
 .body { columns: 2; column-gap: 3.5rem; }
 @media (max-width: 720px) { .body { columns: 1; } }`,
+    },
+  },
+  {
+    id: 'y2k',
+    name: 'Y2K Aesthetic',
+    era: 'c. 1998–2004 · revived from 2020',
+    use: 'fashion · music',
+    tagline: 'Chrome, bubbles and optimism',
+    desc: 'Liquid chrome type, holographic gradients, translucent plastic and star sparkles. **The last time the future looked like a good idea** — and the whole look is built from gradients.',
+    accent: '#5BE7FF',
+    Thumb: Y2kThumb,
+    Landing: Y2kLanding,
+    detail: {
+      intro:
+        'Y2K is the visual language of the millennium boom: chrome lettering, iridescent gradients, bubble buttons and hardware you could see through. It reads as **techno-optimism** — the belief, briefly universal, that everything was about to get shinier. Where maximalism piles up density, Y2K piles up *shine*, and almost all of it is gradients doing work.',
+      origin:
+        'The window between the iMac G3 in 1998 and roughly 2004 — Apple’s Aqua interface, Windows XP’s Luna theme, chrome logos on flip phones, frosted plastic on everything. It came back around 2020 through fashion, TikTok and album art, carried by people mostly too young to have used any of it the first time.',
+      principles: [
+        {
+          title: 'Chrome is one hard gradient stop',
+          body: 'A light-to-dark ramp with an **abrupt flip at 50%** — white, pale blue, then a sudden dark blue, then white again. That single hard edge is what the eye reads as polished metal.',
+        },
+        {
+          title: 'Everything is translucent plastic',
+          body: 'Semi-transparent fills with a bright `inset` highlight along the top and a darker one at the bottom. The iMac rule: you should feel you could see the components inside.',
+        },
+        {
+          title: 'Bubble, not rectangle',
+          body: 'Full pill radii on buttons, blobby asymmetric radii on shapes. Nothing in this period had a sharp corner if it could avoid one.',
+        },
+        {
+          title: 'Add sparkle, literally',
+          body: 'Star glyphs, lens flares, glows. **Placed at the edges of the composition**, never over text, and always twinkling slightly.',
+        },
+        {
+          title: 'Keep the web-1.0 furniture',
+          body: 'Marquees, visitor counters, “ENTER SITE”, best-viewed-at notices. The jokes are load-bearing — they are what stops it reading as generic gradient design.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'Heavy, wide grotesques with chrome or gradient fills and a dark outline (`-webkit-text-stroke`). Squared techno faces for accents.',
+        },
+        {
+          label: 'Colour',
+          value: 'Electric blue, silver, hot pink, lime and lilac over deep navy. **Iridescent rather than flat** — nearly every fill is a gradient.',
+        },
+        {
+          label: 'Layout',
+          value: 'Centre-weighted, glossy panels, marquee strips, floating product shots with lens flare.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Translucent hardware, bubbles, chrome objects, star fields, low-res webcam and early-digital photography.',
+        },
+        {
+          label: 'Motion',
+          value: 'Twinkles, slow hovers, marquees. Cheerful and slightly gaudy — restraint is off-brand.',
+        },
+        {
+          label: 'Risk',
+          value: 'Contrast. White text on iridescent gradients fails constantly, and the style dates a brand to a very specific joke.',
+        },
+      ],
+      bestFor: [
+        '**Fashion, streetwear and music** aimed at people who find the era funny and beautiful at once.',
+        'Product launches and drops that want to feel like an event.',
+        'Nightlife, festivals and club nights.',
+        'Anniversary, retrospective and archive microsites.',
+      ],
+      avoidWhen: [
+        'The brand needs to be taken literally seriously — Y2K always carries a wink.',
+        'Accessibility is non-negotiable. Gradient-on-gradient text is very hard to get past `4.5:1`.',
+        'The audience has no relationship with the period, in which case it just reads as busy.',
+      ],
+      lang: 'css',
+      code: `/* Y2K: chrome, gel and glass are all just gradients. */
+:root {
+  /* the hard flip at 50% is what reads as polished metal */
+  --chrome: linear-gradient(180deg,
+    #FFFFFF 0%, #C6DAEE 40%, #5F86B4 50%, #F0F7FF 62%, #FFFFFF 100%);
+}
+
+h1 {
+  background: var(--chrome);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 2px #0B1E3D;      /* the outline sells it */
+  filter: drop-shadow(0 4px 5px rgba(4,20,50,.55));
+}
+
+/* the aqua/gel button: an inset white highlight does all the work */
+.btn {
+  border-radius: 999px;
+  background: linear-gradient(180deg, #8AF0FF 0%, #2C9BD6 52%, #1B6FA8 100%);
+  box-shadow:
+    inset 0  8px 12px rgba(255,255,255,.85),
+    inset 0 -5px  8px rgba(4,40,80,.5),
+    0 14px 24px rgba(4,20,50,.5);
+}
+
+/* translucent plastic — you should feel you could see inside it */
+.device {
+  background: linear-gradient(155deg,
+    rgba(255,255,255,.92), rgba(150,215,255,.6) 42%, rgba(60,130,220,.8));
+  box-shadow:
+    inset 0  20px 30px rgba(255,255,255,.9),
+    inset 0 -20px 30px rgba(10,50,110,.5);
+}`,
+    },
+  },
+  {
+    id: 'ethereal',
+    name: 'Ethereal',
+    era: 'Wellness & beauty · web since ~2019',
+    use: 'wellness · beauty',
+    tagline: 'Light, with nothing solid in it',
+    desc: 'Pale gradients, blurred orbs of colour, weightless serif type and a great deal of air. **Nothing on the page has an edge** — the whole effect is atmosphere rather than objects.',
+    accent: '#CDC6FF',
+    Thumb: EtherealThumb,
+    Landing: EtherealLanding,
+    detail: {
+      intro:
+        'Ethereal design builds a mood out of light. Colour arrives as soft blurred fields rather than filled shapes, type is set light and large with generous leading, and there are almost no borders, cards or hard edges anywhere. It is close kin to **Glassmorphism** but the opposite instinct: glass frames content in defined panes, and ethereal dissolves every frame it can.',
+      origin:
+        'It grew out of wellness, skincare and meditation branding in the late 2010s, when those categories moved away from clinical white-and-blue toward something closer to a colour field painting. Technically it was unlocked by cheap large-radius `filter: blur()` and mesh gradients, and it has been the default register for calm ever since.',
+      principles: [
+        {
+          title: 'Blur past the edge',
+          body: 'Every coloured shape gets a blur radius **larger than its own softness needs** — 80–200px. If you can see where a shape ends, it is not ethereal yet.',
+        },
+        {
+          title: 'Keep values close together',
+          body: 'Pale on pale. The palette should sit within a narrow lightness band so nothing snaps forward — with **one exception for text**, which still has to pass contrast.',
+        },
+        {
+          title: 'Let type float',
+          body: 'A light-weight serif at large sizes with `line-height` around 1.6–1.8. Airy leading is what stops large type feeling heavy.',
+        },
+        {
+          title: 'Space is the composition',
+          body: 'Half the page should be empty. Sections are separated by distance rather than by rules, cards or background changes.',
+        },
+        {
+          title: 'Move slowly or not at all',
+          body: '30–45 second breathing loops on the colour fields. Anything you can actually perceive moving breaks the calm instantly.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A light serif for display, a quiet sans for body, letterspaced small caps for labels. **Nothing bold anywhere.**',
+        },
+        {
+          label: 'Colour',
+          value: 'Blush, lilac, pale aqua and cream in a narrow lightness range. Ink is a soft near-black violet, never true black.',
+        },
+        {
+          label: 'Layout',
+          value: 'Centred, wide margins, arch-topped image plates, no cards and no visible dividers.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Overexposed, hazy, soft-focus. Skin, water, silk, light through fabric — texture rather than subject.',
+        },
+        {
+          label: 'Motion',
+          value: 'Very slow scale-and-drift on the blurred fields; long 500–800ms transitions on everything else.',
+        },
+        {
+          label: 'Risk',
+          value: '**Contrast, and vagueness.** Pale-on-pale text fails accessibility easily, and the style can look lovely while saying nothing.',
+        },
+      ],
+      bestFor: [
+        '**Beauty, skincare and fragrance** — the register the category now expects.',
+        'Wellness, meditation, sleep, therapy and retreat brands.',
+        'Fertility, maternity and health services that need to feel gentle rather than clinical.',
+        'Artists, photographers and musicians working in ambient territory.',
+      ],
+      avoidWhen: [
+        'The product is technical, urgent, or bought under pressure.',
+        'You have a lot of information to deliver — the style has almost no capacity for density.',
+        'Contrast cannot be guaranteed. **Text over a moving gradient is the hardest accessibility problem here.**',
+      ],
+      lang: 'css',
+      code: `/* Ethereal: colour as light, never as a filled shape. */
+:root {
+  --ink: #4A4159;         /* soft near-black — never #000 */
+  --deep: #332C42;
+}
+
+body {
+  background: linear-gradient(168deg, #FDF6F8 0%, #F6F1FB 38%, #F0F6FB 68%);
+  color: var(--ink);
+  line-height: 1.8;       /* airy leading is half the effect */
+}
+
+/* the blur is larger than the shape needs — that is the point */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: .7;
+  animation: breathe 34s ease-in-out infinite;
+}
+
+h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 400;                    /* nothing bold anywhere */
+  font-size: clamp(34px, 7.4vw, 102px);
+  line-height: 1.06;
+}
+
+/* slow enough that you never catch it moving */
+@keyframes breathe { 50% { transform: translate(30px,-40px) scale(1.14); } }
+
+@media (prefers-reduced-motion: reduce) { .orb { animation: none; } }`,
+    },
+  },
+  {
+    id: 'bohemian',
+    name: 'Bohemian',
+    era: '1970s revival · web since ~2018',
+    use: 'hospitality · craft',
+    tagline: 'Earth, arches and handwork',
+    desc: 'Terracotta and sage, arch-topped shapes, hand-drawn line art and warm organic curves. **A palette and a shape language** rather than a layout system.',
+    accent: '#C4703F',
+    Thumb: BohemianThumb,
+    Landing: BohemianLanding,
+    detail: {
+      intro:
+        'Bohemian design borrows from craft and landscape: clay, linen, plaster, wood, dried grass. Its signature is the **arch** — image plates, cards and buttons all take a rounded top — combined with an earth palette and drawn line art in place of photography. Where Scrapbook is a collage technique, this is a material palette; the layout underneath is usually quite conventional.',
+      origin:
+        'A direct 1970s revival, filtered through the 2010s interiors world — Moroccan riads, Californian desert houses, ceramics studios and the whole Airbnb-and-Instagram aesthetic of about 2018 onward. Its immediate ancestors are print and interiors rather than any web movement.',
+      principles: [
+        {
+          title: 'Arch everything',
+          body: 'Image plates get a semicircular top: `border-radius: 50% 50% 12px 12px / 34% 34% 12px 12px`. **Repeat that shape at three scales** and the page is instantly coherent.',
+        },
+        {
+          title: 'Pull the palette from materials',
+          body: 'Terracotta, ochre, sage, clay, oat. Every colour should be nameable as a *thing* — if it sounds like a hex code, it is the wrong one.',
+        },
+        {
+          title: 'Draw, do not photograph',
+          body: 'Line-art suns, leaves and hands carry the personality. A single drawn element does more for the style than three photographs.',
+        },
+        {
+          title: 'Texture over gradient',
+          body: 'Weave, grain, plaster and linen — built from repeating gradients or noise. **Smooth gradients read as tech**, which is the wrong century.',
+        },
+        {
+          title: 'Warm the type',
+          body: 'A softer grotesque or a warm serif, generous line-height, and italic for the phrase that carries the feeling. Nothing geometric or cold.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A warm grotesque or humanist serif, medium weights, `line-height` around 1.7. Letterspaced uppercase for small labels.',
+        },
+        {
+          label: 'Colour',
+          value: 'Oat and cream ground; terracotta, clay, sage, ochre and olive. **No pure white and no pure black.**',
+        },
+        {
+          label: 'Layout',
+          value: 'Arch-topped plates, generous gutters, asymmetric two-column blocks. Conventional grid under an organic surface.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Line drawings, ceramics, textiles, plants, sunlight on plaster. Photography is warm and slightly overexposed.',
+        },
+        {
+          label: 'Motion',
+          value: 'Slow and few — a rotating sun, a gentle lift. The style implies unhurriedness.',
+        },
+        {
+          label: 'Risk',
+          value: 'It is now heavily associated with one narrow slice of hospitality, and reads as generic if the palette is the only idea.',
+        },
+      ],
+      bestFor: [
+        '**Hospitality** — retreats, guesthouses, restaurants and wine bars.',
+        'Ceramics, textiles, and makers selling handwork.',
+        'Yoga, herbalism, and small wellness brands that want warmth rather than clinical calm.',
+        'Food producers, markets and slow-travel brands.',
+      ],
+      avoidWhen: [
+        'The product is technical or financial — earth tones actively undercut precision.',
+        'You need high contrast and dense information.',
+        'Your competitors all already use it, which in hospitality is close to all of them.',
+      ],
+      lang: 'css',
+      code: `/* Bohemian: an arch, an earth palette, and a drawn line. */
+:root {
+  --paper: #F6EDE1;      /* oat — never #fff */
+  --ink: #4A382A;        /* warm brown — never #000 */
+  --terra: #C4703F;
+  --sage: #8C9A76;
+  --ochre: #D9B26A;
+}
+
+/* the shape language: one radius, reused at three scales */
+.arch {
+  border-radius: 50% 50% 12px 12px / 34% 34% 12px 12px;
+  background: linear-gradient(170deg, #D98E5F, #A85C33);
+  aspect-ratio: 3 / 4.4;
+}
+
+/* texture from crossed gradients, not from an image file */
+.weave {
+  background:
+    repeating-linear-gradient( 45deg, rgba(196,112,63,.5) 0 12px, transparent 12px 24px),
+    repeating-linear-gradient(-45deg, rgba(140,154,118,.5) 0 12px, transparent 12px 24px),
+    #EFE0CE;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.72;                    /* unhurried */
+}
+
+.cta { background: var(--terra); border-radius: 999px; color: #FFF6EC; }
+em    { font-style: italic; color: var(--terra); }   /* the warm phrase */`,
+    },
+  },
+  {
+    id: 'dark-mode-ui',
+    name: 'Dark Mode UI',
+    era: 'Terminals, then everywhere from 2019',
+    use: 'apps · dashboards',
+    tagline: 'Elevation without shadow',
+    desc: 'Not “a dark background” — a system where **lighter surfaces mean closer**, accents are desaturated, and neither the page nor the text ever reaches pure black or white.',
+    accent: '#8AA0FF',
+    Thumb: DarkModeThumb,
+    Landing: DarkModeLanding,
+    detail: {
+      intro:
+        'Dark mode is the only entry on this page that is a **systems problem rather than a look**. In light interfaces, depth comes from shadows — but in the dark a shadow has nothing to fall on, so elevation has to be carried by surface lightness instead: each layer closer to the viewer is a slightly lighter grey. Get that one idea right and the rest is contrast discipline.',
+      origin:
+        'It starts with terminals and code editors, where it never went away. It became a mainstream expectation between 2018 and 2020 when iOS, Android and macOS all shipped system-level dark modes within about a year, which turned it from a preference into something every design system had to answer for.',
+      principles: [
+        {
+          title: 'Elevation is surface lightness',
+          body: 'Define a ramp — base, `01`, `02`, `03` — each a few percent lighter. **A card is not “base plus a shadow”, it is the next surface up.** Shadows may add depth, but they can never carry it alone.',
+        },
+        {
+          title: 'Never pure black, never pure white',
+          body: 'A `#000` ground with `#FFF` text vibrates, smears in motion, and is exhausting to read. Use a dark grey around `#0C0D10` and an off-white around `#E4E5EA`.',
+        },
+        {
+          title: 'Desaturate every accent',
+          body: 'Colours that look right on white **glow and bleed on black**. Take saturation down and lightness up — a light-mode `#3B5BDB` becomes something nearer `#8AA0FF`.',
+        },
+        {
+          title: 'Invert the weight, not just the colour',
+          body: 'Light text on dark appears heavier than dark on light. Drop body weight a step, and be more generous with letter-spacing on small type.',
+        },
+        {
+          title: 'Dim imagery, do not just place it',
+          body: 'Photographs and illustrations built for light backgrounds glare. Reduce brightness slightly, or give white-heavy images a subtle overlay.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A neutral sans at slightly lighter weights than the light theme. Off-white ink at `#E4E5EA`; secondary text no dimmer than about `#9599A6`.',
+        },
+        {
+          label: 'Colour',
+          value: 'A four-step grey elevation ramp, one desaturated accent, and semantic colours (ok / warn / bad) **also desaturated** to match.',
+        },
+        {
+          label: 'Layout',
+          value: 'Hairline borders at ~8% white to separate surfaces of similar value. Panels, sidebars and popovers each sit at their own elevation.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Dimmed, or chosen dark to begin with. Charts and data viz need their own dark palette, not the light one inverted.',
+        },
+        {
+          label: 'Motion',
+          value: 'Standard. State changes are carried by surface lightness shifting, not by shadow growing.',
+        },
+        {
+          label: 'Risk',
+          value: 'Halation — light text on very dark grounds smears for readers with astigmatism. **Pure black is the main culprit**, which is why it is banned above.',
+        },
+      ],
+      bestFor: [
+        '**Developer tools, terminals, editors and consoles** — the native habitat.',
+        'Dashboards, analytics and monitoring, where charts glow against a dark ground.',
+        'Media and creative apps where the interface should recede behind the content.',
+        'Any product used for long sessions, or at night.',
+      ],
+      avoidWhen: [
+        'It is your *only* theme and the audience is general — **most people still prefer light for reading**, and many find dark harder.',
+        'The content is long-form text. Dark mode is worse, not better, for sustained reading.',
+        'You cannot maintain two themes properly. A half-built dark mode is worse than none.',
+      ],
+      lang: 'css',
+      code: `/* Dark mode: the elevation ramp is the design system. */
+:root {
+  --e0: #0C0D10;   /* base    — never #000, it halates */
+  --e1: #141519;   /* 01: chrome, sidebars */
+  --e2: #1B1D22;   /* 02: cards, panels */
+  --e3: #24262D;   /* 03: popovers, menus */
+
+  --ink:  #E4E5EA; /* never #FFF */
+  --soft: #9599A6;
+  --line: rgba(255,255,255,.08);
+
+  --accent: #8AA0FF;  /* the light-mode #3B5BDB, desaturated and lifted */
+}
+
+body { background: var(--e0); color: var(--ink); }
+
+/* a card is the next surface up — not the base plus a shadow */
+.card    { background: var(--e2); border: 1px solid var(--line); }
+.popover { background: var(--e3); border: 1px solid rgba(255,255,255,.14); }
+
+/* light text on dark looks heavier — take a weight step off */
+body   { font-weight: 400; }
+.dark  { font-weight: 350; }
+
+/* dim imagery built for light backgrounds, or it glares */
+img { filter: brightness(.92); }
+
+@media (prefers-color-scheme: light) {
+  /* the ramp inverts; the accent goes back to saturated */
+  :root { --e0:#FFFFFF; --e1:#F7F7F9; --e2:#FFFFFF; --e3:#FFFFFF;
+          --ink:#16181D; --soft:#5C6270; --accent:#3B5BDB;
+          --line:rgba(0,0,0,.1); }
+}`,
     },
   },
 ];

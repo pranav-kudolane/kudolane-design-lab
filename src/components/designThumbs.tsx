@@ -326,3 +326,80 @@ export function EditorialThumb() {
     </div>
   );
 }
+
+export function Y2kThumb() {
+  return (
+    <div className="dt dt-y2k" role="img" aria-label="Miniature Y2K website: chrome type, holographic gradient, glossy blob">
+      <span className="dt-holo" />
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-btn" />
+      </div>
+      <span className="dt-blob" />
+      <span className="dt-star s1" />
+      <span className="dt-star s2" />
+    </div>
+  );
+}
+
+export function EtherealThumb() {
+  return (
+    <div className="dt dt-ether" role="img" aria-label="Miniature ethereal website: pale gradients, blurred orbs, weightless type">
+      <span className="dt-orb o1" />
+      <span className="dt-orb o2" />
+      <span className="dt-orb o3" />
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-l" />
+      </div>
+      <span className="dt-veil" />
+    </div>
+  );
+}
+
+export function BohemianThumb() {
+  return (
+    <div className="dt dt-boho" role="img" aria-label="Miniature bohemian website: terracotta arch, earthy palette, hand-drawn sun">
+      <span className="dt-sun" />
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <span className="dt-arch" />
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-l" />
+      </div>
+      <div className="dt-boxes">
+        <span className="b1" /> <span className="b2" />
+      </div>
+    </div>
+  );
+}
+
+export function DarkModeThumb() {
+  return (
+    <div className="dt dt-dark" role="img" aria-label="Miniature dark-mode interface: stacked surfaces at rising elevation">
+      <span className="dt-side">
+        <i /> <i /> <i />
+      </span>
+      <div className="dt-main">
+        <span className="dt-bar" />
+        <span className="dt-panel">
+          <i className="row" />
+          <i className="row" />
+          <i className="row accent" />
+        </span>
+        <span className="dt-float" />
+      </div>
+    </div>
+  );
+}

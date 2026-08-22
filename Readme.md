@@ -121,3 +121,17 @@ Change a value there and the whole lab follows.
 
 Reduced motion is honoured in two places: a global CSS `@media` block, and
 `useReducedMotion()`, which makes the pointer-tracking hooks no-op entirely.
+
+**Every sample landing page passes WCAG AA on text contrast** — 4.5:1 for body
+copy, 3:1 for large display type — measured against the pixels actually painted
+behind each glyph, not against a nominal background colour. That matters here
+because several of these styles fail contrast *by nature*: pale-on-pale in
+Ethereal, terracotta text in Bohemian, white on hot pink in Maximalism, gradient
+text in Y2K. Where a style's instinct and the contrast floor disagreed, the floor
+won, and `styles/landings.css` says so in a comment at that spot.
+
+If you add a style, hold it to the same line. The measurement that matters is a
+screenshot of the text's own bounding box with the glyph colour excluded — a
+computed `background-color` lookup will tell you a gradient, a blurred orb or a
+`backdrop-filter` pane is `transparent`, and you will pass a test you should
+have failed.

@@ -336,6 +336,89 @@
 .dt-edit .dt-cols .col .cap{position:absolute;left:0;top:0;width:4cqi;height:4cqi;background:#C0392B}
 .dt-edit .dt-cols .pic{background:linear-gradient(160deg,#C9BFAC,#8A7E68)}
 
+
+/* --- y2k --- */
+.dt-y2k{background:#0B1E3D;overflow:hidden}
+.dt-y2k .dt-holo{position:absolute;inset:-20%;
+  background:
+    radial-gradient(50% 50% at 20% 20%,#FF7AD9 0%,transparent 60%),
+    radial-gradient(50% 50% at 80% 30%,#5BE7FF 0%,transparent 62%),
+    radial-gradient(60% 60% at 55% 95%,#C9A6FF 0%,transparent 60%),
+    linear-gradient(160deg,#1B3A78,#0B1E3D);
+  filter:blur(3cqi)}
+.dt-y2k .dt-mark{position:relative;width:16cqi;height:2.8cqi;border-radius:1px;
+  background:linear-gradient(180deg,#fff 0%,#BBD2E8 42%,#5F86B4 52%,#EAF4FF 62%,#fff 100%)}
+.dt-y2k .dt-nav i{position:relative;width:6cqi;height:2.6cqi;border-radius:100px;
+  background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.28));
+  border:.3cqi solid rgba(255,255,255,.6)}
+.dt-y2k .dt-nav i:first-of-type{margin-left:auto}
+.dt-y2k .dt-hero{position:relative;margin-top:6cqi;gap:2.4cqi}
+.dt-y2k .dt-h{width:56%;height:6cqi;border-radius:1px;
+  background:linear-gradient(180deg,#fff 0%,#C6DAEE 40%,#5F86B4 52%,#F0F7FF 64%,#fff 100%)}
+.dt-y2k .dt-btn{width:21cqi;height:5.4cqi;border-radius:100px;
+  background:linear-gradient(180deg,#8AF0FF,#2C9BD6 52%,#1B6FA8);
+  box-shadow:inset 0 .8cqi 1cqi rgba(255,255,255,.85),0 1.2cqi 2cqi rgba(4,20,50,.5)}
+.dt-y2k .dt-blob{position:absolute;right:7cqi;top:15cqi;width:22cqi;height:22cqi;
+  border-radius:56% 44% 48% 52%/50% 46% 54% 50%;
+  background:linear-gradient(150deg,rgba(255,255,255,.9),rgba(120,200,255,.55) 45%,rgba(60,120,220,.75));
+  box-shadow:inset 0 1.6cqi 2.4cqi rgba(255,255,255,.85),0 2cqi 3.4cqi rgba(4,20,50,.5)}
+.dt-y2k .dt-star{position:absolute;color:#fff;font-size:5cqi;line-height:1;text-shadow:0 0 2cqi #8AF0FF}
+.dt-y2k .dt-star.s1{left:38cqi;top:11cqi}
+.dt-y2k .dt-star.s2{right:5cqi;bottom:8cqi;font-size:3.4cqi}
+.dt-y2k .dt-star.s1::after{content:"✦"}
+.dt-y2k .dt-star.s2::after{content:"✧"}
+
+/* --- ethereal --- */
+.dt-ether{background:linear-gradient(165deg,#FDF6F8 0%,#F4F1FB 46%,#EFF6FB 100%)}
+.dt-ether .dt-orb{position:absolute;border-radius:50%;filter:blur(6cqi)}
+.dt-ether .o1{width:34cqi;height:34cqi;background:#FFC9DC;top:-8cqi;left:-4cqi;opacity:.75}
+.dt-ether .o2{width:30cqi;height:30cqi;background:#CDC6FF;bottom:-8cqi;right:2cqi;opacity:.7}
+.dt-ether .o3{width:26cqi;height:26cqi;background:#BFE6F5;top:24cqi;left:30cqi;opacity:.6}
+.dt-ether .dt-mark{position:relative;width:12cqi;height:1.8cqi;border-radius:100px;background:#6E6480;opacity:.8}
+.dt-ether .dt-nav i{position:relative;width:5cqi;height:.9cqi;border-radius:100px;background:#8A809C;opacity:.5}
+.dt-ether .dt-nav i:first-of-type{margin-left:auto}
+.dt-ether .dt-hero{position:relative;margin-top:9cqi;gap:2.6cqi}
+.dt-ether .dt-h{width:52%;height:4.6cqi;border-radius:100px;background:#5B5170;opacity:.82}
+.dt-ether .dt-l{width:32%;height:1.3cqi;border-radius:100px;background:#8A809C;opacity:.45}
+.dt-ether .dt-veil{position:absolute;left:0;right:0;bottom:0;height:16cqi;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.85))}
+
+/* --- bohemian --- */
+.dt-boho{background:#F6EDE1}
+.dt-boho .dt-sun{position:absolute;right:8cqi;top:7cqi;width:13cqi;height:13cqi;border-radius:50%;
+  border:.5cqi solid #C4703F;
+  box-shadow:0 0 0 .5cqi transparent,0 0 0 2.4cqi rgba(196,112,63,.16)}
+.dt-boho .dt-mark{width:14cqi;height:2.4cqi;background:#5B4636;border-radius:1px}
+.dt-boho .dt-nav i{width:5cqi;height:1cqi;background:#8A7462;border-radius:1px}
+.dt-boho .dt-nav i:first-of-type{margin-left:auto}
+.dt-boho .dt-arch{position:absolute;right:6cqi;bottom:0;width:20cqi;height:26cqi;
+  border-radius:10cqi 10cqi 0 0;background:linear-gradient(170deg,#D98E5F,#A85C33)}
+.dt-boho .dt-hero{margin-top:6cqi;gap:2cqi}
+.dt-boho .dt-h{width:44%;height:4.6cqi;background:#5B4636;border-radius:1px}
+.dt-boho .dt-l{width:30%;height:1.4cqi;background:#8A7462;opacity:.7;border-radius:1px}
+.dt-boho .dt-boxes{position:absolute;left:5.5cqi;bottom:5cqi;display:flex;gap:2.4cqi}
+.dt-boho .dt-boxes span{width:12cqi;height:9cqi;border-radius:6cqi 6cqi 1cqi 1cqi}
+.dt-boho .dt-boxes .b1{background:#8C9A76}
+.dt-boho .dt-boxes .b2{background:#D9B26A}
+
+/* --- dark mode ui --- */
+.dt-dark{background:#0C0D10;display:flex;padding:0}
+.dt-dark .dt-side{width:22%;background:#141519;border-right:1px solid rgba(255,255,255,.07);
+  padding:4cqi 2.6cqi;display:flex;flex-direction:column;gap:2.2cqi}
+.dt-dark .dt-side i{height:1.6cqi;border-radius:100px;background:#33353D}
+.dt-dark .dt-side i:first-child{background:#6E8BFF;width:80%}
+.dt-dark .dt-side i:nth-child(2){width:65%}
+.dt-dark .dt-side i:nth-child(3){width:72%}
+.dt-dark .dt-main{flex:1;position:relative;padding:4cqi 4cqi 0;display:flex;flex-direction:column;gap:2.6cqi}
+.dt-dark .dt-bar{height:2.6cqi;width:46%;border-radius:100px;background:#2A2C33}
+.dt-dark .dt-panel{background:#1B1D22;border:1px solid rgba(255,255,255,.08);border-radius:2cqi;
+  padding:2.6cqi;display:flex;flex-direction:column;gap:1.8cqi}
+.dt-dark .dt-panel .row{height:1.8cqi;border-radius:100px;background:#2E3038}
+.dt-dark .dt-panel .row:nth-child(2){width:74%}
+.dt-dark .dt-panel .row.accent{width:52%;background:#6E8BFF}
+.dt-dark .dt-float{position:absolute;right:5cqi;bottom:5cqi;width:38%;height:11cqi;border-radius:2cqi;
+  background:#24262D;border:1px solid rgba(255,255,255,.12)}
+
 /* ==========================================================================
    DETAIL ROUTE  (#/design/<id>)
    ========================================================================== */
