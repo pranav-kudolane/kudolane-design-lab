@@ -24,7 +24,7 @@
  *                  (also set `base: '/kudolane-design-lab/'` in vite.config.ts)
  *   Custom domain  'https://kudolane.com'
  */
-export const SITE_URL = 'https://design-lab.kudolane.dev';
+export const SITE_URL = 'https://designlab.kudolane.dev';
 
 /** The company the lab belongs to. */
 export const COMPANY = 'Kudolane';
