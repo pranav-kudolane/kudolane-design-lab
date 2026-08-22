@@ -16,15 +16,6 @@ export function DesignLive({ id }: { id: string }) {
     return () => window.removeEventListener('keydown', onKey);
   }, [id]);
 
-  useEffect(() => {
-    if (!design) return;
-    const previous = document.title;
-    document.title = `${design.name} — sample landing page`;
-    return () => {
-      document.title = previous;
-    };
-  }, [design]);
-
   if (!design) {
     return (
       <main className="wrap dd-missing">

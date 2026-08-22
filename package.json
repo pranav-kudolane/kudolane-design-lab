@@ -2,7 +2,7 @@
   "name": "kudolane-design-lab",
   "private": true,
   "version": "0.1.0",
-  "description": "Kudolane Design Lab — live effects, premium palettes, a11y checklist and AI workflow.",
+  "description": "A working toolkit for client-ready sites: live CSS effects, premium palettes by industry, 29 design styles, an accessibility checklist and an AI workflow.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -15,7 +15,7 @@
     "url": "git+https://github.com/pranav-kudolane/kudolane-design-lab.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pranavraja",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/pranav-kudolane/kudolane-design-lab/issues"

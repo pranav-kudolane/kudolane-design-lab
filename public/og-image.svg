@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Kudolane Design Lab — live CSS effects, premium palettes and 29 design styles.">
+  <defs>
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#EDEBF5"/>
+      <stop offset="52%" stop-color="#B9AEFF"/>
+      <stop offset="100%" stop-color="#FF6FB5"/>
+    </linearGradient>
+    <radialGradient id="b1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7C6BFF" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="#7C6BFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF6FB5" stop-opacity=".42"/>
+      <stop offset="100%" stop-color="#FF6FB5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#46E0C8" stop-opacity=".34"/>
+      <stop offset="100%" stop-color="#46E0C8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pane" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".10"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity=".03"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ground -->
+  <rect width="1200" height="630" fill="#0B0A12"/>
+
+  <!-- the hero aurora, flattened to three static blobs -->
+  <ellipse cx="215" cy="120" rx="470" ry="330" fill="url(#b1)"/>
+  <ellipse cx="1040" cy="215" rx="420" ry="300" fill="url(#b2)"/>
+  <ellipse cx="700" cy="640" rx="520" ry="300" fill="url(#b3)"/>
+
+  <!-- glass card -->
+  <rect x="72" y="86" width="1056" height="458" rx="28" fill="url(#pane)"/>
+  <rect x="72.5" y="86.5" width="1055" height="457" rx="27.5" fill="none" stroke="#FFFFFF" stroke-opacity=".16"/>
+
+  <!-- brand lockup -->
+  <circle cx="132" cy="146" r="9" fill="#7C6BFF"/>
+  <text x="154" y="153" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="0.4" fill="#EDEBF5">Kudolane Design Lab</text>
+
+  <!-- eyebrow -->
+  <text x="112" y="228" font-family="JetBrains Mono, Consolas, ui-monospace, monospace" font-size="19" letter-spacing="2.6" fill="#9A97B0">A WORKING TOOLKIT FOR CLIENT-READY SITES</text>
+
+  <!-- headline -->
+  <text x="112" y="316" font-family="Segoe UI, Inter, Helvetica, Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="-1.6" fill="#EDEBF5">Ship websites that make</text>
+  <text x="112" y="398" font-family="Segoe UI, Inter, Helvetica, Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="-1.6" fill="url(#ink)">clients say &#8220;wow.&#8221;</text>
+
+  <!-- chips -->
+  <g font-family="JetBrains Mono, Consolas, ui-monospace, monospace" font-size="20" fill="#EDEBF5">
+    <rect x="112" y="440" width="228" height="50" rx="25" fill="#FFFFFF" fill-opacity=".07" stroke="#FFFFFF" stroke-opacity=".16"/>
+    <text x="226" y="472" text-anchor="middle">live CSS effects</text>
+
+    <rect x="356" y="440" width="264" height="50" rx="25" fill="#FFFFFF" fill-opacity=".07" stroke="#FFFFFF" stroke-opacity=".16"/>
+    <text x="488" y="472" text-anchor="middle">premium palettes</text>
+
+    <rect x="636" y="440" width="236" height="50" rx="25" fill="#FFFFFF" fill-opacity=".07" stroke="#FFFFFF" stroke-opacity=".16"/>
+    <text x="754" y="472" text-anchor="middle">29 design styles</text>
+
+    <rect x="888" y="440" width="196" height="50" rx="25" fill="#FFFFFF" fill-opacity=".07" stroke="#FFFFFF" stroke-opacity=".16"/>
+    <text x="986" y="472" text-anchor="middle">a11y checklist</text>
+  </g>
+
+  <!-- credit -->
+  <text x="1128" y="153" text-anchor="end" font-family="JetBrains Mono, Consolas, ui-monospace, monospace" font-size="18" letter-spacing="1.2" fill="#9A97B0">built by Pranavraja</text>
+</svg>

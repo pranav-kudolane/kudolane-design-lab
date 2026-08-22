@@ -1,6 +1,7 @@
 import { Nav } from './components/Nav';
 import { ToastProvider } from './components/ToastProvider';
 import { useHashRoute } from './hooks/useHashRoute';
+import { useSeo } from './hooks/useSeo';
 import { Accessibility } from './sections/Accessibility';
 import { AiWorkflow } from './sections/AiWorkflow';
 import { DesignDetail } from './sections/DesignDetail';
@@ -39,6 +40,7 @@ function Home() {
 
 export function App() {
   const route = useHashRoute();
+  useSeo(route);
 
   return (
     <ToastProvider>

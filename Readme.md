@@ -30,8 +30,10 @@ src/
   sections/      Hero, Effects, Palettes, Designs, Accessibility, AiWorkflow,
                  Footer, DesignDetail, DesignLive
   hooks/         useTilt, useSpotlight, useCopy, useToast, useReducedMotion,
-                 useHashRoute
+                 useHashRoute, useSeo
   lib/           highlight.tsx — the small CSS/JS syntax highlighter
+                 seo.ts — every URL, title and description the site publishes
+                 seoDom.ts — writes a page's meta into the document head
   styles/        tokens, base, layout, cards, demos, designs, landings
   types.ts       the shape of every data file
 ```
@@ -118,6 +120,61 @@ See `components/RichText.tsx`.
 
 Every colour, font and radius is a CSS custom property in `src/styles/tokens.css`.
 Change a value there and the whole lab follows.
+
+## SEO
+
+Every absolute URL, title and description the site publishes comes from one file,
+`src/lib/seo.ts`. Three consumers read it, so they cannot drift apart:
+
+| consumer | what it produces |
+| --- | --- |
+| `index.html` | the static head — canonical, robots, Open Graph, Twitter card, JSON-LD |
+| `hooks/useSeo.ts` | rewrites that head as the hash route changes |
+| `vite.config.ts` | generates `robots.txt` and `sitemap.xml` at build time |
+
+`index.html` asks for values by name — `%SITE_URL%`, `%SITE_TITLE%`,
+`%SITE_DESCRIPTION%`, `%COMPANY%`, `%AUTHOR%`, `%OG_IMAGE%` and friends. The
+`seo()` plugin in `vite.config.ts` substitutes them in dev and in the build,
+escaping for HTML in markup and for JSON inside the `ld+json` block — the two
+contexts disagree about `&`, so one blanket escape would corrupt one of them.
+
+**Before deploying, set `SITE_URL`** in `src/lib/seo.ts`. It ships as
+`https://kudolane-design-lab.example.com`, a placeholder. A canonical tag naming
+a host that isn't serving the page tells Google the real page is elsewhere, and
+it drops this one rather than ranking it.
+
+On GitHub Pages that means `https://pranav-kudolane.github.io/kudolane-design-lab`
+plus `base: '/kudolane-design-lab/'` in `vite.config.ts`.
+
+### Crawling
+
+`robots.txt` is generated, not committed — a stale committed copy pointing at an
+old domain is the usual way a site gets de-indexed after a move. It allows
+everything, and names the search and AI crawlers explicitly (`GPTBot`,
+`ClaudeBot`, `PerplexityBot`, `Google-Extended`, `Applebot-Extended`, `CCBot`
+and the rest). `User-agent: *` already permits them; a couple are consulted only
+by name, and the list documents the intent.
+
+### What the hash router costs
+
+`sitemap.xml` has one entry, and that is correct rather than lazy. A URL fragment
+is never a separate document to a crawler, so the 29 write-ups behind
+`#/design/<id>` cannot rank separately from the root URL — listing them would
+submit 29 copies of the same `<loc>`.
+
+`useSeo` still rewrites the head per route, which is what makes each one share
+correctly on Slack, LinkedIn, WhatsApp and Discord, and keeps the tab title
+honest. Making the write-ups individually indexable is a different job: real
+History API paths, a server or host rewrite serving `index.html` for unknown
+paths, and sitemap entries generated from `src/data/designs.ts`.
+
+### The social card
+
+`public/og-image.svg` is a 1200×630 card built from the lab's own tokens. X and
+Facebook do not rasterise SVG — export it to `og-image.png`, drop it in
+`public/`, and change `OG_IMAGE` in `src/lib/seo.ts`. That one edit moves the
+tag, its MIME type and its dimensions together. Google does not use `og:image`
+at all, so search visibility does not wait on this; link previews do.
 
 ## Accessibility
 

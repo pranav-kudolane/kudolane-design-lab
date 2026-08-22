@@ -3,13 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A working toolkit for client-ready sites: live CSS effects, premium palettes by industry, an accessibility checklist and an AI build workflow." />
+
+  <!--
+    The percent-delimited names below are tokens. The seo() plugin in
+    vite.config.ts fills them, at dev time and at build time, from the constants
+    in src/lib/seo.ts. Do not hard-code the domain, title or description here:
+    robots.txt, sitemap.xml and the runtime head all read those same constants,
+    and they have to agree or the canonical tag is self-defeating.
+  -->
+
+  <title>%SITE_TITLE%</title>
+  <meta name="description" content="%SITE_DESCRIPTION%" />
+  <meta name="author" content="%AUTHOR%" />
+  <meta name="generator" content="%COMPANY%" />
+  <link rel="canonical" href="%SITE_URL%/" />
+
+  <!--
+    The crawl permission. `index, follow` is the default, but stating it means a
+    stray header or plugin can't quietly flip it. The max-* directives opt into
+    full-length snippets and large image previews — without them Google caps the
+    snippet short and shows a thumbnail.
+  -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+  <!-- Open Graph — Facebook, LinkedIn, Slack, WhatsApp, Discord -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="%SITE_NAME%" />
+  <meta property="og:title" content="%SITE_TITLE%" />
+  <meta property="og:description" content="%SITE_DESCRIPTION%" />
+  <meta property="og:url" content="%SITE_URL%/" />
+  <meta property="og:locale" content="en_US" />
+  <!-- SVG: crisp everywhere that renders it, invisible on X and Facebook.
+       Export public/og-image.svg to a 1200x630 PNG and switch OG_IMAGE in
+       src/lib/seo.ts plus the three lines below to /og-image.png. -->
+  <meta property="og:image" content="%SITE_URL%%OG_IMAGE%" />
+  <meta property="og:image:type" content="%OG_IMAGE_TYPE%" />
+  <meta property="og:image:width" content="%OG_IMAGE_WIDTH%" />
+  <meta property="og:image:height" content="%OG_IMAGE_HEIGHT%" />
+  <meta property="og:image:alt" content="Kudolane Design Lab — live CSS effects, premium palettes and 29 design styles." />
+
+  <!-- X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="%SITE_TITLE%" />
+  <meta name="twitter:description" content="%SITE_DESCRIPTION%" />
+  <meta name="twitter:image" content="%SITE_URL%%OG_IMAGE%" />
+  <meta name="twitter:image:alt" content="Kudolane Design Lab — live CSS effects, premium palettes and 29 design styles." />
+
   <meta name="theme-color" content="#0B0A12" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <title>Kudolane Design Lab — Effects, Palettes &amp; Craft</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400&family=Press+Start+2P&family=Pirata+One&family=Rye&display=swap" rel="stylesheet" />
+
+  <!--
+    Static structured data: who publishes the lab and who built it. The @id
+    values are stable anchors so the per-route JSON-LD written by useSeo.ts can
+    point back at these nodes instead of repeating them.
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "%SITE_URL%/#organization",
+        "name": "%COMPANY%",
+        "url": "%SITE_URL%/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "%SITE_URL%/favicon.svg"
+        },
+        "description": "Kudolane builds client-ready websites and publishes the Design Lab, an open reference of effects, palettes and design styles.",
+        "founder": { "@id": "%SITE_URL%/#pranavraja" },
+        "sameAs": ["https://github.com/pranav-kudolane"]
+      },
+      {
+        "@type": "Person",
+        "@id": "%SITE_URL%/#pranavraja",
+        "name": "%AUTHOR%",
+        "jobTitle": "Developer",
+        "worksFor": { "@id": "%SITE_URL%/#organization" },
+        "sameAs": ["https://github.com/pranav-kudolane"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "%SITE_URL%/#website",
+        "name": "%SITE_NAME%",
+        "alternateName": "%SITE_NAME%",
+        "url": "%SITE_URL%/",
+        "description": "%SITE_DESCRIPTION%",
+        "inLanguage": "en",
+        "publisher": { "@id": "%SITE_URL%/#organization" },
+        "creator": { "@id": "%SITE_URL%/#pranavraja" },
+        "author": { "@id": "%SITE_URL%/#pranavraja" },
+        "copyrightHolder": { "@id": "%SITE_URL%/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div id="root"></div>

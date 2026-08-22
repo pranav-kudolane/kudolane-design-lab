@@ -1,5 +1,4 @@
 import type { CSSProperties } from 'react';
-import { useEffect } from 'react';
 import { CodeBlock } from '../components/CodeBlock';
 import { RichText } from '../components/RichText';
 import { findDesign } from '../data/designs';
@@ -19,15 +18,6 @@ function NotFound({ id }: { id: string }) {
 
 export function DesignDetail({ id }: { id: string }) {
   const design = findDesign(id);
-
-  useEffect(() => {
-    if (!design) return;
-    const previous = document.title;
-    document.title = `${design.name} — Kudolane Design Lab`;
-    return () => {
-      document.title = previous;
-    };
-  }, [design]);
 
   if (!design) return <NotFound id={id} />;
 
