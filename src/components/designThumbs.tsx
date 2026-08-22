@@ -403,3 +403,85 @@ export function DarkModeThumb() {
     </div>
   );
 }
+
+export function CyberpunkThumb() {
+  return (
+    <div className="dt dt-cyber" role="img" aria-label="Miniature cyberpunk website: neon magenta and cyan on wet black, vertical signage">
+      <span className="dt-glowa" />
+      <span className="dt-glowb" />
+      <span className="dt-sign" />
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-h alt" />
+        <span className="dt-btn" />
+      </div>
+      <span className="dt-scan" />
+    </div>
+  );
+}
+
+export function AnthropomorphicThumb() {
+  return (
+    <div className="dt dt-anthro" role="img" aria-label="Miniature anthropomorphic website: a character face as the hero">
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <span className="dt-face">
+        <i className="eye l" />
+        <i className="eye r" />
+        <i className="smile" />
+      </span>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-btn" />
+      </div>
+      <div className="dt-boxes">
+        <span className="b1" /> <span className="b2" />
+      </div>
+    </div>
+  );
+}
+
+export function VictorianThumb() {
+  return (
+    <div className="dt dt-vict" role="img" aria-label="Miniature Victorian website: gold engraved frame and ornament on deep green">
+      <span className="dt-frame" />
+      <span className="dt-orn t">❦</span>
+      <div className="dt-hero">
+        <span className="dt-rule" />
+        <span className="dt-h" />
+        <span className="dt-h alt" />
+        <span className="dt-rule" />
+        <span className="dt-btn" />
+      </div>
+      <span className="dt-orn b">⁂</span>
+    </div>
+  );
+}
+
+export function CyberCoreThumb() {
+  return (
+    <div className="dt dt-core" role="img" aria-label="Miniature cybercore website: HUD brackets, wireframe globe and telemetry readouts">
+      <span className="dt-bracket tl" />
+      <span className="dt-bracket br" />
+      <span className="dt-globe" />
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-l" />
+      </div>
+      <div className="dt-readout">
+        <i /> <i /> <i /> <i /> <i /> <i /> <i /> <i />
+      </div>
+      <span className="dt-scan" />
+    </div>
+  );
+}

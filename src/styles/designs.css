@@ -419,6 +419,96 @@
 .dt-dark .dt-float{position:absolute;right:5cqi;bottom:5cqi;width:38%;height:11cqi;border-radius:2cqi;
   background:#24262D;border:1px solid rgba(255,255,255,.12)}
 
+
+/* --- cyberpunk --- */
+.dt-cyber{background:#07060F;overflow:hidden}
+.dt-cyber .dt-glowa{position:absolute;width:32cqi;height:32cqi;border-radius:50%;filter:blur(7cqi);
+  background:#FF2D95;top:-6cqi;left:-4cqi;opacity:.75}
+.dt-cyber .dt-glowb{position:absolute;width:28cqi;height:28cqi;border-radius:50%;filter:blur(6cqi);
+  background:#12E5FF;bottom:-6cqi;right:2cqi;opacity:.7}
+.dt-cyber .dt-sign{position:absolute;right:7cqi;top:8cqi;width:4.4cqi;height:30cqi;
+  background:linear-gradient(180deg,#FF2D95,#7A0F52);
+  box-shadow:0 0 3cqi #FF2D95,inset 0 0 1cqi rgba(255,255,255,.7)}
+.dt-cyber .dt-mark{position:relative;width:14cqi;height:2.4cqi;background:#12E5FF;box-shadow:0 0 2.4cqi #12E5FF}
+.dt-cyber .dt-nav i{position:relative;width:5cqi;height:1cqi;background:#8E7FB8}
+.dt-cyber .dt-nav i:first-of-type{margin-left:auto}
+.dt-cyber .dt-hero{position:relative;margin-top:6cqi;gap:1.6cqi}
+.dt-cyber .dt-h{width:54%;height:5cqi;background:#F2E9FF;box-shadow:.7cqi 0 0 rgba(255,45,149,.85),-.7cqi 0 0 rgba(18,229,255,.7)}
+.dt-cyber .dt-h.alt{width:36%;height:4cqi}
+.dt-cyber .dt-btn{width:20cqi;height:5cqi;margin-top:1.4cqi;background:transparent;
+  border:.4cqi solid #12E5FF;box-shadow:0 0 2.4cqi #12E5FF,inset 0 0 1.6cqi rgba(18,229,255,.4)}
+.dt-cyber .dt-scan{position:absolute;inset:0;pointer-events:none;opacity:.4;
+  background:repeating-linear-gradient(180deg,rgba(0,0,0,.55) 0 .4cqi,transparent .4cqi 1.4cqi)}
+
+/* --- anthropomorphic --- */
+.dt-anthro{background:#FFF3DA}
+.dt-anthro .dt-mark{width:12cqi;height:2.6cqi;border-radius:100px;background:#2E2013}
+.dt-anthro .dt-nav i{width:5.4cqi;height:2.2cqi;border-radius:100px;background:#F2C57C}
+.dt-anthro .dt-nav i:first-of-type{margin-left:auto}
+.dt-anthro .dt-face{position:absolute;right:8cqi;top:12cqi;width:28cqi;height:24cqi;
+  border-radius:50%;background:#B08556;box-shadow:0 1.6cqi 2.6cqi rgba(80,55,25,.28)}
+.dt-anthro .dt-face .eye{position:absolute;top:34%;width:3.4cqi;height:3.4cqi;border-radius:50%;background:#2E2013}
+.dt-anthro .dt-face .eye.l{left:24%}
+.dt-anthro .dt-face .eye.r{right:24%}
+.dt-anthro .dt-face .smile{position:absolute;left:32%;right:32%;top:60%;height:4cqi;
+  border-bottom:.7cqi solid #2E2013;border-radius:0 0 50% 50%}
+.dt-anthro .dt-hero{margin-top:8cqi;gap:2.4cqi}
+.dt-anthro .dt-h{width:42%;height:5cqi;border-radius:1.4cqi;background:#2E2013}
+.dt-anthro .dt-btn{width:19cqi;height:5.4cqi;border-radius:100px;background:#F0803C;
+  box-shadow:0 1.2cqi 0 #B85517}
+.dt-anthro .dt-boxes{position:absolute;left:5.5cqi;bottom:4.5cqi;display:flex;gap:2.4cqi}
+.dt-anthro .dt-boxes span{position:relative;width:12cqi;height:8cqi;border-radius:2.4cqi}
+.dt-anthro .dt-boxes .b1{background:#9ED9B4}
+.dt-anthro .dt-boxes .b2{background:#F2C57C}
+.dt-anthro .dt-boxes span::before,.dt-anthro .dt-boxes span::after{content:"";position:absolute;top:32%;
+  width:1.4cqi;height:1.4cqi;border-radius:50%;background:#2E2013}
+.dt-anthro .dt-boxes span::before{left:28%}
+.dt-anthro .dt-boxes span::after{right:28%}
+
+/* --- victorian --- */
+.dt-vict{background:#14261F;padding:0}
+.dt-vict .dt-frame{position:absolute;inset:4cqi;border:.5cqi double #C9A24B;
+  box-shadow:inset 0 0 0 1.4cqi #14261F,inset 0 0 0 1.7cqi rgba(201,162,75,.55)}
+.dt-vict .dt-orn{position:absolute;left:50%;translate:-50% 0;color:#C9A24B;line-height:1}
+.dt-vict .dt-orn.t{top:8.5cqi;font-size:4.4cqi}
+.dt-vict .dt-orn.b{bottom:7.5cqi;font-size:4cqi;opacity:.8}
+.dt-vict .dt-hero{position:relative;padding:0 12cqi;margin-top:16cqi;align-items:center;gap:2cqi}
+.dt-vict .dt-rule{width:22cqi;height:.5cqi;border-top:1px solid #C9A24B;border-bottom:1px solid #C9A24B;height:.9cqi}
+.dt-vict .dt-h{width:60%;height:4.4cqi;background:#F1E4C3}
+.dt-vict .dt-h.alt{width:42%;height:3.4cqi;background:#C9A24B}
+.dt-vict .dt-btn{width:20cqi;height:4.4cqi;border:1px solid #C9A24B;background:transparent;margin-top:1cqi}
+
+/* --- cybercore --- */
+.dt-core{background:#04070A}
+.dt-core .dt-grid{position:absolute;inset:0}
+.dt-core .dt-bracket{position:absolute;width:7cqi;height:7cqi;border:.5cqi solid #39FF88}
+.dt-core .dt-bracket.tl{top:3cqi;left:3cqi;border-right:0;border-bottom:0}
+.dt-core .dt-bracket.br{bottom:3cqi;right:3cqi;border-left:0;border-top:0}
+.dt-core .dt-globe{position:absolute;right:9cqi;top:14cqi;width:22cqi;height:22cqi;border-radius:50%;
+  border:.35cqi solid rgba(57,255,136,.85);box-shadow:0 0 3cqi rgba(57,255,136,.45);
+  background:
+    radial-gradient(circle,transparent 62%,rgba(57,255,136,.12) 63%),
+    repeating-linear-gradient(0deg,rgba(57,255,136,.32) 0 .18cqi,transparent .18cqi 3cqi),
+    repeating-linear-gradient(90deg,rgba(57,255,136,.22) 0 .18cqi,transparent .18cqi 3.4cqi)}
+.dt-core .dt-mark{width:13cqi;height:2.2cqi;background:#39FF88;box-shadow:0 0 1.6cqi rgba(57,255,136,.6)}
+.dt-core .dt-nav i{width:5cqi;height:.9cqi;background:#2E7A54}
+.dt-core .dt-nav i:first-of-type{margin-left:auto}
+.dt-core .dt-hero{margin-top:6cqi;gap:1.8cqi}
+.dt-core .dt-h{width:46%;height:4.4cqi;background:#D9FFE9}
+.dt-core .dt-l{width:30%;height:1.2cqi;background:#39FF88;opacity:.6}
+.dt-core .dt-readout{position:absolute;left:5.5cqi;bottom:5cqi;display:flex;align-items:flex-end;gap:1.2cqi;height:9cqi}
+.dt-core .dt-readout i{width:2.4cqi;background:#39FF88;opacity:.8}
+.dt-core .dt-readout i:nth-child(1){height:38%}
+.dt-core .dt-readout i:nth-child(2){height:62%}
+.dt-core .dt-readout i:nth-child(3){height:48%}
+.dt-core .dt-readout i:nth-child(4){height:84%}
+.dt-core .dt-readout i:nth-child(5){height:70%}
+.dt-core .dt-readout i:nth-child(6){height:96%}
+.dt-core .dt-readout i:nth-child(7){height:56%}
+.dt-core .dt-readout i:nth-child(8){height:44%}
+.dt-core .dt-scan{position:absolute;inset:0;pointer-events:none;opacity:.45;
+  background:repeating-linear-gradient(180deg,rgba(0,0,0,.6) 0 .35cqi,transparent .35cqi 1.3cqi)}
+
 /* ==========================================================================
    DETAIL ROUTE  (#/design/<id>)
    ========================================================================== */

@@ -1,8 +1,11 @@
 import {
+  AnthropomorphicThumb,
   BentoThumb,
   BohemianThumb,
   BrutalismThumb,
   ClaymorphismThumb,
+  CyberCoreThumb,
+  CyberpunkThumb,
   DarkModeThumb,
   EditorialThumb,
   EtherealThumb,
@@ -18,12 +21,16 @@ import {
   SketchThumb,
   SurrealismThumb,
   SwissThumb,
+  VictorianThumb,
   Y2kThumb,
 } from '../components/designThumbs';
+import { AnthropomorphicLanding } from '../landings/AnthropomorphicLanding';
 import { BentoLanding } from '../landings/BentoLanding';
 import { BohemianLanding } from '../landings/BohemianLanding';
 import { BrutalismLanding } from '../landings/BrutalismLanding';
 import { ClaymorphismLanding } from '../landings/ClaymorphismLanding';
+import { CyberCoreLanding } from '../landings/CyberCoreLanding';
+import { CyberpunkLanding } from '../landings/CyberpunkLanding';
 import { DarkModeLanding } from '../landings/DarkModeLanding';
 import { EditorialLanding } from '../landings/EditorialLanding';
 import { EtherealLanding } from '../landings/EtherealLanding';
@@ -39,6 +46,7 @@ import { ScrapbookLanding } from '../landings/ScrapbookLanding';
 import { SketchLanding } from '../landings/SketchLanding';
 import { SurrealismLanding } from '../landings/SurrealismLanding';
 import { SwissLanding } from '../landings/SwissLanding';
+import { VictorianLanding } from '../landings/VictorianLanding';
 import { Y2kLanding } from '../landings/Y2kLanding';
 import type { DesignStyle } from '../types';
 
@@ -2241,6 +2249,435 @@ img { filter: brightness(.92); }
           --ink:#16181D; --soft:#5C6270; --accent:#3B5BDB;
           --line:rgba(0,0,0,.1); }
 }`,
+    },
+  },
+  {
+    id: 'cyberpunk',
+    name: 'Cyberpunk',
+    era: 'Blade Runner 1982 · Neuromancer 1984',
+    use: 'games · nightlife',
+    tagline: 'High tech, low life',
+    desc: 'Magenta and cyan neon bleeding into wet black, glitched type, vertical signage and rain. **A place before it is a palette** — the atmosphere is doing the work.',
+    accent: '#FF2D95',
+    Thumb: CyberpunkThumb,
+    Landing: CyberpunkLanding,
+    detail: {
+      intro:
+        'Cyberpunk is a *setting*, not a colour scheme. Its grammar comes from film: a rain-slicked street at night, signage in three languages, corporate cheerfulness laid over obvious decay. Get the neon right and you still have nothing — what sells it is the **implied world**, which on a web page means the copy, the fictional prices and the small print carry as much of it as the CSS. Compare **CyberCore**, which is the machine rather than the street.',
+      origin:
+        'Bruce Bethke coined the word in 1983, Gibson’s *Neuromancer* codified the fiction in 1984, and Ridley Scott’s *Blade Runner* (1982) fixed the look before either. Everything since — *Ghost in the Shell*, *Akira*, Deus Ex, Cyberpunk 2077 — reads as commentary on that same rain-lit street.',
+      principles: [
+        {
+          title: 'Two neons and a black, nothing else',
+          body: 'Magenta and cyan is the canonical pair. **The black must be blue-black or purple-black**, never neutral grey — a flat grey background kills the wet-street effect instantly.',
+        },
+        {
+          title: 'Light bleeds',
+          body: 'Neon needs `box-shadow` and `text-shadow` at large blur radii, plus a soft glow behind. A neon sign that does not spill onto its surroundings just looks like coloured text.',
+        },
+        {
+          title: 'Glitch sparingly and on a timer',
+          body: 'Two offset copies in the two hues, clipped to horizontal bands, displaced for a couple of frames every few seconds. **Constant glitch reads as a broken page**, not a stylistic choice.',
+        },
+        {
+          title: 'Break the horizontal',
+          body: 'Vertical signage, corner-cut panels (`clip-path`), diagonal rain. The rectangle is the enemy — every straight edge you cut adds a decade of decay.',
+        },
+        {
+          title: 'Write the world, not just the page',
+          body: 'Fictional currency, a sector number, a warranty clause with menace in it. **The copy is half the style** — the same layout with ordinary marketing text stops being cyberpunk.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A heavy condensed grotesque for display, monospace for everything technical. Uppercase, tight, with glitch offsets on the headline only.',
+        },
+        {
+          label: 'Colour',
+          value: 'Blue-black ground, magenta and cyan neon, one amber for warnings. **Saturation stays at maximum** — this is the one style where that is correct.',
+        },
+        {
+          label: 'Layout',
+          value: 'Corner-cut panels, hard rules, vertical text, HUD-ish spec readouts. Asymmetric and slightly crowded.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Night city, rain, reflections, chrome and skin. Heavy grain, chromatic aberration, blown-out highlights.',
+        },
+        {
+          label: 'Motion',
+          value: 'Flicker, scanline drift, tickers. Occasional and mechanical rather than smooth.',
+        },
+        {
+          label: 'Risk',
+          value: 'Contrast and cliché. Neon on black fails easily at small sizes, and the visual shorthand is so well worn that only the writing distinguishes one from another.',
+        },
+      ],
+      bestFor: [
+        '**Games, mods and game studios** — the audience reads every cue fluently.',
+        'Nightlife, techno labels, festivals and club nights.',
+        'Hardware, esports and hacker-adjacent products with an appetite for menace.',
+        'Fiction, ARGs and campaign sites that need a world rather than a message.',
+      ],
+      avoidWhen: [
+        'The product is real and the customer needs to trust it with money.',
+        'Accessibility matters — the palette and the glow both fight legibility.',
+        'You have no writer. **Cyberpunk without the fiction is just purple gradients.**',
+      ],
+      lang: 'css',
+      code: `/* Cyberpunk: light that bleeds, edges that are cut, glitch on a timer. */
+:root {
+  --night: #07060F;    /* blue-black, never neutral grey */
+  --mag: #FF2D95;
+  --cyan: #12E5FF;
+}
+
+/* neon spills onto everything near it */
+.sign {
+  color: var(--cyan);
+  text-shadow: 0 0 14px var(--cyan), 0 0 40px var(--cyan);
+  box-shadow: 0 0 30px rgba(18,229,255,.55);
+}
+
+/* the corner cut is what makes a panel look like equipment */
+.panel { clip-path: polygon(0 0, 100% 0, 100% 86%, 94% 100%, 0 100%); }
+
+/* glitch: two coloured copies, clipped to bands, displaced for two frames */
+.glitch { position: relative; }
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute; inset: 0;
+}
+.glitch::before { color: var(--mag);  clip-path: inset(0 0 58% 0); }
+.glitch::after  { color: var(--cyan); clip-path: inset(58% 0 0 0); }
+.glitch::before,
+.glitch::after { animation: shift 3.4s steps(2) infinite; }
+
+/* 92% of the loop is perfectly still — that is what makes the 8% land */
+@keyframes shift {
+  0%, 92% { transform: translate(0); }
+  94%     { transform: translate(-4px, 1px); }
+  96%     { transform: translate(4px, -1px); }
+}`,
+    },
+  },
+  {
+    id: 'anthropomorphic',
+    name: 'Anthropomorphic',
+    era: 'Mascot branding · web mascots since ~2010',
+    use: 'consumer · dev tools',
+    tagline: 'Give the product a face',
+    desc: 'A character with eyes, moods and opinions, carrying the brand. **The test is whether it reacts** — a mascot that holds one expression is a sticker, not a character.',
+    accent: '#F0803C',
+    Thumb: AnthropomorphicThumb,
+    Landing: AnthropomorphicLanding,
+    detail: {
+      intro:
+        'Anthropomorphic design puts a creature between the product and the person. We are relentless at reading faces — two dots and a curve is enough — and a well-drawn character does emotional work no amount of copy can. The discipline is not in the drawing. It is in making the character **respond to real state**, so it is telling you something rather than just standing there being cute.',
+      origin:
+        'Mascot branding is a century old — Michelin, Kellogg’s, the Esso tiger — but the web version has its own lineage: Mailchimp’s Freddie, GitHub’s Octocat, the MongoDB leaf, and above all Duolingo’s owl, which turned a mascot into a retention mechanism intense enough to become an internet joke in its own right.',
+      principles: [
+        {
+          title: 'It has to react to something real',
+          body: 'Bind the expression to actual state — status, progress, an error, a streak. **A character with one face is decoration**; a character that changes is an interface.',
+        },
+        {
+          title: 'Two dots and a curve',
+          body: 'Faces are cheap. Resist detail: simple eyes and a single mouth line read at 24px and at 400px, and they animate without a rig.',
+        },
+        {
+          title: 'Give it one trait, not a personality',
+          body: 'Calm. Anxious. Over-eager. One adjective, applied consistently, is legible. A character with a full backstory reads as an in-joke you are outside of.',
+        },
+        {
+          title: 'Never let it block the task',
+          body: 'The character sits *beside* the work, never in front of it. **Clippy failed on this one point** and the whole discipline has been apologising ever since.',
+        },
+        {
+          title: 'Motion is the personality',
+          body: 'A slow breathe when idle, a blink, a small fret when something is wrong. Two or three loops of a few seconds do more characterisation than the artwork.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A rounded or soft geometric sans with heavy weights. Nothing austere — the type has to belong to the same world as the face.',
+        },
+        {
+          label: 'Colour',
+          value: 'Warm and saturated but not neon; a friendly ground with two or three supporting fills. Semantic colours read as the character’s moods.',
+        },
+        {
+          label: 'Layout',
+          value: 'Generous, rounded, uncrowded. The character needs empty space around it or it reads as clip-art dropped into a template.',
+        },
+        {
+          label: 'Imagery',
+          value: 'The character, in several poses, at several sizes — plus small facial cues on cards and empty states.',
+        },
+        {
+          label: 'Motion',
+          value: 'Idle breathing, blinking, reaction states. Springy easing, 200–500ms, always looping gently rather than demanding attention.',
+        },
+        {
+          label: 'Risk',
+          value: 'Condescension and cost. It can infantilise a serious product, and a character needs *many* drawings to stay convincing across a whole product.',
+        },
+      ],
+      bestFor: [
+        '**Products people avoid** — finance, admin, learning, health. A character lowers the activation energy.',
+        'Developer tools and infrastructure, where a mascot is a long-running convention.',
+        'Onboarding, empty states, errors and 404s inside otherwise neutral interfaces.',
+        'Children’s products, and anything sold to a household rather than a buyer.',
+      ],
+      avoidWhen: [
+        'The moment is serious — a failed payment, a medical result, a security incident.',
+        'The audience is enterprise and the buyer has to justify the choice to a committee.',
+        'You cannot commission enough artwork. **One reused pose is worse than none.**',
+      ],
+      lang: 'css',
+      code: `/* Anthropomorphic: the face is bound to state, and it is always breathing. */
+
+/* two dots and a curve — legible at 24px and at 400px */
+.eye  { fill: #fff; stroke: #2E2013; stroke-width: 2; }
+.pupil{ fill: #2E2013; }
+.mouth{ fill: none; stroke: #2E2013; stroke-width: 3.4; stroke-linecap: round; }
+
+/* the expression is driven by real status, not by decoration */
+.capy[data-mood="calm"]     { animation: breathe 5s ease-in-out infinite; }
+.capy[data-mood="watching"] .pupil { animation: look 4s ease-in-out infinite; }
+.capy[data-mood="alert"]    { animation: fret .5s ease-in-out infinite; }
+
+@keyframes breathe { 50% { transform: translateY(-1.5%) scale(1.015); } }
+@keyframes look    { 25% { transform: translateX(-3px); }
+                     75% { transform: translateX(3px); } }
+@keyframes fret    { 25% { transform: rotate(-1.6deg); }
+                     75% { transform: rotate(1.6deg); } }
+
+/* it sits beside the task and never in front of it — the Clippy rule */
+.stage { display: grid; place-items: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .capy { animation: none !important; }      /* the face still changes, it just stops moving */
+}`,
+    },
+  },
+  {
+    id: 'victorian',
+    name: 'Victorian',
+    era: '1837–1901 · engraved print and showcard',
+    use: 'apothecary · heritage',
+    tagline: 'Ornament as abundance',
+    desc: 'Engraved frames within frames, gold on bottle green, showcard display faces and small caps everywhere. **Where Neo-Classical restrains, this accumulates.**',
+    accent: '#C9A24B',
+    Thumb: VictorianThumb,
+    Landing: VictorianLanding,
+    detail: {
+      intro:
+        'Victorian design is the aesthetic of industrial abundance: if a border could be doubled it was doubled, if a corner could carry a flourish it carried one. It shares symmetry with **Neo-Classical** and almost nothing else — where that style proves taste by removing, this one proves prosperity by adding. The web version lives in apothecary labels, playbills and trade cards rather than in architecture.',
+      origin:
+        'The long reign, and the printing technology under it: steel engraving, chromolithography and the wood-type showcard made dense ornament cheap for the first time. Every high street ended up with layered frames, fat tuscan display faces and eleven typographic sizes on one label. William Morris spent the 1880s objecting, which is its own kind of tribute.',
+      principles: [
+        {
+          title: 'Frame the frame',
+          body: 'A border, an inset gap, then a second finer border. `box-shadow: inset` does this in one declaration and is **the single highest-value move** in the whole style.',
+        },
+        {
+          title: 'Hierarchy by ornament, not just size',
+          body: 'A fleuron above a heading, a hairline under it, a rule between registers. Each ornament announces a change of rank — that is why so many sizes can coexist without chaos.',
+        },
+        {
+          title: 'Jewel tones and one metal',
+          body: 'Bottle green, oxblood, navy, aubergine — with gold. **Never gold on cream**, which is Neo-Classical; the Victorian version needs the dark ground to glint against.',
+        },
+        {
+          title: 'Small caps, letterspaced, everywhere',
+          body: 'Labels, prices, addresses, hours. The period set almost all secondary information this way, and it does more for authenticity than any ornament.',
+        },
+        {
+          title: 'Centre everything, then centre it again',
+          body: 'Stacked centred blocks of decreasing size, each divided by a rule. Asymmetry belongs to the century afterwards.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A showcard or tuscan display face (`Rye`, `Playfair Display` at a push) with a high-contrast serif for text and italics for latin names. Many sizes, deliberately.',
+        },
+        {
+          label: 'Colour',
+          value: 'Deep bottle green or oxblood ground, aged gold, warm off-white ink. **Two darks and one metal**, no more.',
+        },
+        {
+          label: 'Layout',
+          value: 'Centred and stacked, framed panels, hairlines dividing registers. Product cards read as apothecary labels.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Engravings, botanical plates, hatched line art. Photography, if any, is duotoned into the palette.',
+        },
+        { label: 'Motion', value: 'Almost none. A slow lift on hover at most — the period had no motion and it shows.' },
+        {
+          label: 'Risk',
+          value: 'Pastiche, and density. It slides into theme-pub territory quickly, and the ornament eats space that content needed.',
+        },
+      ],
+      bestFor: [
+        '**Apothecary, herbal, perfumery and spirits** — the label conventions transfer directly.',
+        'Heritage brands with a genuine 19th-century founding date.',
+        'Bookshops, museums, theatres and anything trading on curiosity.',
+        'Board games, fiction and period projects that want the whole world.',
+      ],
+      avoidWhen: [
+        'The brand has no history and is claiming one. **The style reads as costume very fast.**',
+        'The site is content-heavy or transactional — the frames leave nowhere for real content to go.',
+        'You need a modern, efficient or approachable read.',
+      ],
+      lang: 'css',
+      code: `/* Victorian: frame the frame, and let gold glint off a dark ground. */
+:root {
+  --bottle: #14261F;    /* the dark is not optional — gold on cream is Neo-Classical */
+  --gold: #C9A24B;
+  --ink: #F1E4C3;
+}
+
+/* border, gap, second finer border — one declaration */
+.frame {
+  border: 1px solid rgba(201,162,75,.5);
+  background: #1B3329;
+  box-shadow:
+    inset 0 0 0 6px #1B3329,                  /* the gap */
+    inset 0 0 0 7px rgba(201,162,75,.4),      /* the inner rule */
+    0 30px 70px rgba(0,0,0,.35);
+}
+
+/* the engraved rule: a hairline over a doubled line */
+.rule {
+  height: 9px;
+  border-top: 1px solid var(--gold);
+  border-bottom: 3px double var(--gold);
+}
+
+/* secondary information was set like this on every label of the period */
+.label, .price, address {
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+h1 { font-family: "Rye", "Playfair Display", serif; color: var(--gold); }
+body { background: var(--bottle); color: var(--ink); text-align: center; }`,
+    },
+  },
+  {
+    id: 'cybercore',
+    name: 'CyberCore',
+    era: 'HUD and terminal culture · “-core” era, 2020s',
+    use: 'infra · crypto',
+    tagline: 'The machine’s own display',
+    desc: 'Corner brackets, wireframe geometry, telemetry readouts and acid green on void black. **An instrument, not a street** — the page is dressed as the thing reading the data.',
+    accent: '#39FF88',
+    Thumb: CyberCoreThumb,
+    Landing: CyberCoreLanding,
+    detail: {
+      intro:
+        'CyberCore borrows the visual language of instruments — heads-up displays, oscilloscopes, terminals, mission control — and wears it as brand costume. Everything is monospace, everything is measured, and the page reports on itself. It is the sibling of **Cyberpunk** with the fiction removed: no rain, no street, no dystopia, just the readout. It is also **not Dark Mode UI** — that has to be genuinely usable, whereas this is a marketing page in a HUD costume, and admitting that is what keeps it honest.',
+      origin:
+        'Its ancestors are real: NASA mission displays, oscilloscope phosphor, `curses` terminals, the Alien and Star Trek graphic packages. The current wave arrived with the 2020s “-core” internet taxonomy and the aesthetics of crypto, AI infra and open-hardware projects, where looking like a machine reads as looking competent.',
+      principles: [
+        {
+          title: 'Monospace as the whole voice',
+          body: 'Body copy included. **The tabular rhythm is the aesthetic** — one proportional paragraph and the machine illusion collapses.',
+        },
+        {
+          title: 'Brackets, not boxes',
+          body: 'Corner marks at the page edges and around key elements. A HUD frames things by implying a rectangle, never by drawing all four sides.',
+        },
+        {
+          title: 'Report on yourself',
+          body: 'Node counts, latency, sweep timers, boot logs. **Numbers that are irrelevant to the sale but true to the fiction** are what makes it read as an instrument.',
+        },
+        {
+          title: 'Wireframe over render',
+          body: 'Geometry drawn in lines — globes, grids, orbits, contours. A shaded 3D render moves you into product-marketing territory and out of this style.',
+        },
+        {
+          title: 'One phosphor colour',
+          body: 'Acid green, or amber, or cyan — pick one and hold it. A second accent may appear on data points only. Full colour is the enemy.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'Monospace throughout, uppercase for display, wide letter-spacing on labels. Numerals get prominence over words wherever possible.',
+        },
+        {
+          label: 'Colour',
+          value: 'Void black or near-black, one phosphor accent, a dim variant of it for secondary text, one amber for data points.',
+        },
+        {
+          label: 'Layout',
+          value: 'A faint measurement grid, corner brackets, bordered panels at low opacity, telemetry strips with hairline dividers.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Wireframe geometry, bar readouts, ASCII, scanlines and CRT glow. Never a photograph.',
+        },
+        {
+          label: 'Motion',
+          value: 'Pulsing LEDs, slow rotation, stepped scanline drift. Mechanical timing — `steps()` rather than easing.',
+        },
+        {
+          label: 'Risk',
+          value: 'Monospace body copy is genuinely harder to read, the glow hurts contrast, and the style is now standard-issue for crypto — which carries its own associations.',
+        },
+      ],
+      bestFor: [
+        '**Infrastructure, protocols, observability and open hardware.**',
+        'AI, robotics and space-adjacent products where instrumentation is literal.',
+        'Hackathons, CTFs, security research and developer events.',
+        'Launch and status pages that benefit from looking like a live readout.',
+      ],
+      avoidWhen: [
+        'The reader has to get through real prose — monospace at length is tiring.',
+        'You need warmth, trust or approachability from a non-technical audience.',
+        'The product is an actual interface. **Use Dark Mode UI for that**; this styling would fight every task in it.',
+      ],
+      lang: 'css',
+      code: `/* CyberCore: brackets not boxes, one phosphor, and report on yourself. */
+:root {
+  --void: #04070A;
+  --acid: #39FF88;     /* one phosphor colour, held throughout */
+  --dim:  #5FBF8C;
+  --amber:#FFD53D;     /* data points only */
+}
+
+body {
+  background: var(--void);
+  color: #D9FFE9;
+  font-family: "JetBrains Mono", ui-monospace, monospace;  /* body copy included */
+}
+
+/* the faint measurement grid the whole page sits on */
+.hud {
+  background:
+    repeating-linear-gradient(0deg,  rgba(57,255,136,.09) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(90deg, rgba(57,255,136,.09) 0 1px, transparent 1px 56px);
+}
+
+/* a HUD implies the rectangle, it does not draw it */
+.bracket        { width: 60px; height: 60px; border: 3px solid var(--acid); }
+.bracket.top-l  { border-right: 0; border-bottom: 0; }
+.bracket.bot-r  { border-left: 0;  border-top: 0; }
+
+/* wireframe, never a render: latitude rings are just squashed ellipses */
+.globe .wire { fill: none; stroke: rgba(57,255,136,.45); stroke-width: .9; }
+
+/* mechanical timing — steps(), not ease */
+.led { animation: pulse 2s steps(2) infinite; }
+@keyframes pulse { 50% { opacity: .3; } }`,
     },
   },
 ];

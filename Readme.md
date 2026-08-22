@@ -98,6 +98,7 @@ Fonts are loaded once in `index.html` and exposed as tokens in `tokens.css`:
 | `--hand` | Caveat | scrapbook captions, sketch annotations |
 | `--serif` | Playfair Display | luxury typography, editorial |
 | `--pixel` | Press Start 2P | pixel art headings only — never body copy |
+| `--showcard` | Rye | victorian display only |
 
 Adding a style that needs a new face means one more family on that existing
 link, not a second request. Weigh it anyway: a style whose whole identity is its
