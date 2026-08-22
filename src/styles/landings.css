@@ -2039,6 +2039,514 @@
 .lpf-foot span:last-child{margin-left:auto}
 
 /* ==========================================================================
+   25 — SYNTHWAVE  ·  Night Drive FM
+   A sunset, not rain. Compare Cyberpunk: same decade of borrowed technology,
+   opposite mood — this one is nostalgic and the sun is always setting.
+   ========================================================================== */
+.lp-synth{
+  --ink:#FDEBFF;
+  --dim:#C9A6E8;
+  --deep:#150625;
+  --mag:#FF3D7F;
+  --cyan:#12E5FF;
+  --violet:#8B5CD6;
+  --gold:#FFE45C;
+  --chrome:linear-gradient(180deg,#FFFFFF 0%,#E4D4FF 40%,#8B5CD6 50%,#FFF3FF 62%,#FFFFFF 100%);
+  background:var(--deep);color:var(--ink);overflow:hidden;
+  font-family:"Inter",system-ui,sans-serif;font-size:clamp(12px,1.3cqi,17px);line-height:1.6;
+}
+.lps2-sky{position:absolute;inset:0 0 auto 0;height:96cqi;z-index:0;overflow:hidden;
+  background:linear-gradient(180deg,#1B0B3B 0%,#4A0F63 26%,#9E1F6E 40%,#FF5C5C 48%,#FF9A3C 51%,#2A0A2E 52%,#150625 100%)}
+/* the banded sun: one gradient circle, masked into horizontal slats */
+.lps2-sun{position:absolute;left:50%;translate:-50% 0;top:7cqi;width:34cqi;height:34cqi;border-radius:50%;
+  background:linear-gradient(180deg,var(--gold) 0%,#FF7A3D 46%,var(--mag) 100%);
+  -webkit-mask-image:linear-gradient(180deg,#000 100%,transparent 100%),
+    repeating-linear-gradient(180deg,#000 0 2.6cqi,transparent 2.6cqi 3.9cqi);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(180deg,#000 100%,transparent 100%),
+    repeating-linear-gradient(180deg,#000 0 2.6cqi,transparent 2.6cqi 3.9cqi);
+  mask-composite:intersect;
+  filter:drop-shadow(0 0 6cqi rgba(255,61,127,.5))}
+.lps2-stars{position:absolute;inset:0 0 52% 0;opacity:.7;
+  background:
+    radial-gradient(1px 1px at 14% 22%,#fff,transparent),
+    radial-gradient(1px 1px at 34% 12%,#fff,transparent),
+    radial-gradient(1.4px 1.4px at 62% 26%,#fff,transparent),
+    radial-gradient(1px 1px at 78% 14%,#fff,transparent),
+    radial-gradient(1px 1px at 88% 32%,#fff,transparent)}
+.lps2-mtn{position:absolute;left:-4%;right:-4%;top:44cqi;height:8cqi;
+  background:linear-gradient(180deg,#2A0A3E,#150625);
+  clip-path:polygon(0 100%,9% 34%,18% 74%,29% 12%,42% 66%,54% 26%,66% 70%,78% 30%,90% 62%,100% 20%,100% 100%)}
+.lps2-horizon{position:absolute;left:0;right:0;top:50cqi;height:.3cqi;background:var(--cyan);
+  box-shadow:0 0 3cqi var(--cyan),0 0 6cqi var(--cyan)}
+/* the grid: a flat plane rotated in 3D toward a vanishing point */
+.lps2-floor{position:absolute;left:-60%;right:-60%;top:50cqi;bottom:0;
+  background:
+    repeating-linear-gradient(90deg,rgba(255,61,127,.85) 0 .18cqi,transparent .18cqi 5cqi),
+    repeating-linear-gradient(0deg,rgba(18,229,255,.6) 0 .18cqi,transparent .18cqi 3cqi);
+  transform:perspective(30cqi) rotateX(76deg);transform-origin:top;
+  animation:lps2-roll 3.6s linear infinite}
+@keyframes lps2-roll{to{background-position:0 3cqi,0 3cqi}}
+.lps2-vhs{position:absolute;inset:0;opacity:.3;
+  background:repeating-linear-gradient(180deg,rgba(0,0,0,.5) 0 1px,transparent 1px 3px)}
+
+.lps2-chrome{background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:.18cqi #2A0A3E;
+  filter:drop-shadow(0 .3cqi 0 var(--mag)) drop-shadow(0 0 3cqi rgba(255,61,127,.5));
+  font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;letter-spacing:-.02em}
+
+.lps2-nav{position:relative;z-index:3;display:flex;align-items:center;gap:2.6cqi;padding:3cqi 5cqi}
+.lps2-brand{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(14px,1.8cqi,25px);letter-spacing:.12em;color:var(--cyan);
+  text-shadow:0 0 2cqi var(--cyan)}
+.lps2-nav nav{margin-left:auto;display:flex;gap:2.4cqi}
+.lps2-nav nav a{font-size:clamp(10px,1.05cqi,14px);letter-spacing:.16em;color:var(--dim);transition:.2s}
+.lps2-nav nav a:hover{color:var(--gold);text-shadow:0 0 1.6cqi var(--gold)}
+.lps2-btn{display:inline-block;font-weight:800;font-size:clamp(11px,1.25cqi,17px);letter-spacing:.08em;
+  color:#2A0A3E;background:linear-gradient(180deg,#FFC4E4,var(--mag) 52%,#B2205A);padding:1.4cqi 3cqi;
+  border-radius:100px;box-shadow:0 0 3cqi rgba(255,61,127,.6),inset 0 .5cqi .8cqi rgba(255,255,255,.5);
+  transition:transform .16s}
+.lps2-btn:hover{transform:translateY(-.4cqi)}
+.lps2-btn.sm{padding:1cqi 2.2cqi;font-size:clamp(10px,1.1cqi,14px)}
+.lps2-btn.ghost{background:rgba(18,229,255,.2);color:var(--cyan);
+  box-shadow:inset 0 0 0 .18cqi var(--cyan);text-transform:lowercase}
+
+.lps2-hero{position:relative;z-index:2;text-align:center;padding:4cqi 5cqi 10cqi}
+.lps2-eyebrow{font-family:"JetBrains Mono",monospace;font-size:clamp(9px,1cqi,13px);
+  letter-spacing:.24em;text-transform:uppercase;color:#FFFFFF;margin-bottom:3cqi;
+  text-shadow:0 .2cqi .8cqi rgba(20,4,30,.95),0 0 2cqi rgba(20,4,30,.9)}
+.lp-synth h1{font-size:clamp(28px,8cqi,112px);line-height:1;margin-bottom:3cqi}
+.lps2-lede{max-width:44cqi;margin:0 auto 3.4cqi;color:#FFFFFF;font-size:clamp(12px,1.4cqi,18px);
+  text-shadow:0 .2cqi .8cqi rgba(20,4,30,.95),0 0 2cqi rgba(20,4,30,.85)}
+.lps2-ctas{display:flex;gap:2cqi;justify-content:center;flex-wrap:wrap;margin-bottom:6cqi}
+
+.lps2-now{display:flex;align-items:center;gap:2.4cqi;max-width:46cqi;margin:0 auto;text-align:left;
+  padding:2.2cqi 2.6cqi;border-radius:2cqi;background:rgba(20,6,40,.7);
+  border:1px solid rgba(18,229,255,.4);box-shadow:0 0 4cqi rgba(18,229,255,.2)}
+.lps2-now-l{font-family:"JetBrains Mono",monospace;font-size:clamp(8px,.95cqi,12px);letter-spacing:.2em;
+  color:var(--mag);flex:none}
+.lps2-now-t{display:grid;gap:.3cqi;min-width:0}
+.lps2-now-t b{font-size:clamp(12px,1.5cqi,20px);font-weight:700}
+.lps2-now-t i{font-style:normal;color:var(--dim);font-size:clamp(9px,1.05cqi,14px)}
+.lps2-eq{display:flex;align-items:flex-end;gap:.6cqi;height:4cqi;margin-left:auto;flex:none}
+.lps2-eq i{width:.9cqi;background:var(--cyan);box-shadow:0 0 1.2cqi var(--cyan);
+  animation:lps2-bounce 1.1s ease-in-out infinite}
+.lps2-eq i:nth-child(1){height:40%;animation-delay:-.1s}
+.lps2-eq i:nth-child(2){height:80%;animation-delay:-.4s}
+.lps2-eq i:nth-child(3){height:55%;animation-delay:-.7s}
+.lps2-eq i:nth-child(4){height:95%;animation-delay:-.25s}
+.lps2-eq i:nth-child(5){height:62%;animation-delay:-.55s}
+@keyframes lps2-bounce{50%{height:22%}}
+
+.lps2-shows{position:relative;z-index:2;text-align:center;padding:0 5cqi 8cqi}
+.lp-synth h2{font-size:clamp(22px,4.6cqi,64px);margin-bottom:3.4cqi}
+.lps2-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.6cqi;text-align:left}
+.lps2-card{padding:3cqi;border-radius:2cqi;background:rgba(28,10,52,.66);
+  border:1px solid rgba(139,92,214,.5);transition:transform .2s,box-shadow .2s}
+.lps2-card:hover{transform:translateY(-1cqi);box-shadow:0 0 4cqi rgba(255,61,127,.3)}
+.lps2-time{display:block;font-family:"JetBrains Mono",monospace;font-size:clamp(11px,1.4cqi,19px);
+  color:var(--gold);margin-bottom:1.2cqi}
+.lps2-card h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(14px,1.8cqi,25px);margin-bottom:1cqi}
+.lps2-card p{color:var(--dim);font-size:clamp(11px,1.2cqi,16px)}
+
+.lps2-tapes{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:5cqi;
+  padding:0 5cqi 8cqi;align-items:center}
+.lps2-tape-copy p{color:var(--dim);max-width:34cqi;margin-bottom:3cqi}
+.lps2-rack{display:flex;gap:2.4cqi;justify-content:center}
+.lps2-tape{width:10cqi;height:16cqi;border-radius:1cqi;position:relative;
+  box-shadow:0 2cqi 3.4cqi rgba(0,0,0,.5)}
+.lps2-tape.t1{background:linear-gradient(160deg,#FF3D7F,#8B5CD6);rotate:-6deg}
+.lps2-tape.t2{background:linear-gradient(160deg,#12E5FF,#2B4CD6);rotate:2deg}
+.lps2-tape.t3{background:linear-gradient(160deg,#FFE45C,#FF7A3D);rotate:8deg}
+.lps2-tape::after{content:"";position:absolute;inset:22% 14% auto;height:32%;border-radius:.5cqi;
+  background:rgba(20,6,40,.6)}
+
+.lps2-foot{position:relative;z-index:2;text-align:center;padding:0 5cqi 8cqi}
+.lps2-foot p{font-family:"JetBrains Mono",monospace;font-size:clamp(9px,1cqi,13px);
+  letter-spacing:.18em;color:var(--dim);margin-top:2cqi}
+
+/* ==========================================================================
+   26 — GRAFFITI  ·  Walls Up, a street art festival
+   ========================================================================== */
+.lp-graff{
+  --ink:#15150F;
+  --paper:#8E8B84;
+  --wall:#9A968E;
+  --spray:#FF3DAE;
+  --yellow:#FFE100;
+  --cyan:#12E5FF;
+  background:var(--wall);color:#F5F1E4;overflow:hidden;
+  font-family:"Inter",system-ui,sans-serif;font-size:clamp(13px,1.35cqi,18px);line-height:1.55;
+}
+/* the surface is a wall, and everything is applied to it */
+.lpg2-wall{position:absolute;inset:0;z-index:0}
+.lpg2-grime{position:absolute;inset:0;opacity:.55;
+  background:
+    radial-gradient(60% 40% at 18% 22%,rgba(0,0,0,.22),transparent 70%),
+    radial-gradient(50% 40% at 82% 70%,rgba(255,255,255,.14),transparent 70%),
+    repeating-linear-gradient(96deg,rgba(0,0,0,.05) 0 3cqi,transparent 3cqi 8cqi),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+/* a buff patch: where the council painted over somebody else's piece */
+.lpg2-buff{position:absolute;left:6%;top:34%;width:34%;height:18%;background:rgba(120,124,116,.55);rotate:-1deg}
+
+.lpg2-nav{position:relative;z-index:3;display:flex;align-items:center;gap:2.6cqi;padding:3cqi 5cqi}
+.lpg2-brand{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(15px,2cqi,28px);letter-spacing:-.02em;color:#15150F;background:#F5F1E4;
+  padding:.5cqi 1.6cqi;rotate:-1.6deg;clip-path:polygon(2% 0,100% 5%,98% 100%,0 94%)}
+.lpg2-nav nav{margin-left:auto;display:flex;gap:2cqi}
+.lpg2-nav nav a{font-weight:700;font-size:clamp(10px,1.1cqi,15px);letter-spacing:.1em;color:#15150F;
+  background:rgba(245,241,228,.85);padding:.7cqi 1.6cqi;rotate:1deg;transition:.15s}
+.lpg2-nav nav a:hover{background:var(--yellow);rotate:-1.5deg}
+.lpg2-btn{display:inline-block;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(12px,1.35cqi,18px);letter-spacing:.02em;color:#15150F;background:var(--yellow);
+  padding:1.5cqi 3.2cqi;border:.32cqi solid #15150F;box-shadow:.8cqi .8cqi 0 rgba(0,0,0,.45);
+  rotate:-1.2deg;transition:transform .12s}
+.lpg2-btn:hover{transform:translate(.3cqi,.3cqi) rotate(0deg)}
+.lpg2-btn.sm{padding:.9cqi 2cqi;font-size:clamp(10px,1.1cqi,15px);box-shadow:.5cqi .5cqi 0 rgba(0,0,0,.45)}
+.lpg2-btn.ghost{background:var(--cyan);text-transform:lowercase}
+.lpg2-btn.big{padding:2.2cqi 4.4cqi;font-size:clamp(14px,1.9cqi,26px)}
+
+.lpg2-hero{position:relative;z-index:2;padding:6cqi 5cqi 9cqi;max-width:62cqi}
+.lpg2-stencil{display:inline-block;font-family:"JetBrains Mono",monospace;font-weight:700;
+  font-size:clamp(9px,1.05cqi,14px);letter-spacing:.24em;color:#15150F;background:rgba(245,241,228,.9);
+  padding:.7cqi 1.6cqi;margin-bottom:3cqi;
+  -webkit-mask-image:repeating-linear-gradient(90deg,#000 0 8cqi,transparent 8cqi 8.28cqi);
+  mask-image:repeating-linear-gradient(90deg,#000 0 8cqi,transparent 8cqi 8.28cqi)}
+/* the throw-up: fat letters, hard black outline, no fine detail */
+.lpg2-throw{display:grid;line-height:.82;margin-bottom:2cqi;
+  font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;text-transform:uppercase;
+  font-size:clamp(44px,14cqi,196px);letter-spacing:-.04em}
+.lpg2-throw .l1{color:var(--spray);rotate:-2.5deg;
+  text-shadow:.5cqi .5cqi 0 #15150F,-.18cqi -.18cqi 0 #15150F,.18cqi -.18cqi 0 #15150F,
+              -.18cqi .18cqi 0 #15150F,1.4cqi 1.6cqi 0 rgba(0,0,0,.35)}
+.lpg2-throw .l2{color:var(--yellow);rotate:1.5deg;margin-left:14cqi;
+  text-shadow:.5cqi .5cqi 0 #15150F,-.18cqi -.18cqi 0 #15150F,.18cqi -.18cqi 0 #15150F,
+              -.18cqi .18cqi 0 #15150F,1.4cqi 1.6cqi 0 rgba(0,0,0,.35)}
+.lpg2-throw.sm{font-size:clamp(26px,6cqi,84px);margin-bottom:3.4cqi}
+.lpg2-throw.sm .l1{margin-left:0}
+.lpg2-tag{display:block;font-family:var(--hand);font-size:clamp(16px,2.4cqi,34px);color:#15150F;
+  rotate:-2deg;margin:4cqi 0 2.6cqi}
+.lpg2-lede{max-width:38cqi;margin-bottom:3.4cqi;color:#F5F1E4;
+  text-shadow:0 .2cqi .4cqi rgba(0,0,0,.55)}
+.lpg2-ctas{display:flex;gap:2cqi;flex-wrap:wrap}
+/* paint runs, because it always does */
+.lpg2-drip{position:absolute;width:1.1cqi;border-radius:0 0 100px 100px;background:var(--spray);opacity:.9}
+.lpg2-drip.d1{left:17cqi;top:27cqi;height:6cqi}
+.lpg2-drip.d2{left:24cqi;top:26.5cqi;height:3.6cqi}
+.lpg2-drip.d3{left:30cqi;top:27.5cqi;height:4.8cqi;background:var(--yellow)}
+
+.lpg2-strip{position:relative;z-index:3;background:#15150F;color:var(--yellow);padding:1.1cqi 0;
+  overflow:hidden;rotate:-1deg;margin:0 -2cqi}
+.lpg2-track{display:flex;width:max-content;animation:lpg2-slide 20s linear infinite}
+.lpg2-track span{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(13px,1.9cqi,26px);letter-spacing:.04em;padding-right:2cqi;white-space:nowrap}
+@keyframes lpg2-slide{to{transform:translateX(-50%)}}
+
+.lpg2-lineup{position:relative;z-index:2;padding:8cqi 5cqi}
+.lpg2-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3cqi}
+/* sticker slaps: pasted on at whatever angle they landed */
+.lpg2-slap{background:#F5F1E4;color:#15150F;padding:3cqi 2.6cqi;border:.32cqi solid #15150F;
+  box-shadow:1cqi 1cqi 0 rgba(0,0,0,.4);transition:transform .18s}
+.lpg2-slap.s1{rotate:-2deg}
+.lpg2-slap.s2{rotate:1.4deg;background:var(--cyan)}
+.lpg2-slap.s3{rotate:-1deg;background:var(--yellow)}
+.lpg2-slap:hover{transform:rotate(0deg) translateY(-.8cqi)}
+.lpg2-crew{display:block;font-family:"JetBrains Mono",monospace;font-size:clamp(9px,1cqi,13px);
+  letter-spacing:.18em;margin-bottom:1.2cqi}
+.lpg2-slap h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(20px,3cqi,42px);letter-spacing:-.03em;margin-bottom:1.2cqi}
+.lpg2-slap p{font-size:clamp(11px,1.2cqi,16px)}
+
+.lpg2-map{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:5cqi;padding:0 5cqi 8cqi;align-items:center}
+.lpg2-map-copy p{max-width:36cqi;margin-bottom:2.6cqi;text-shadow:0 .2cqi .4cqi rgba(0,0,0,.5)}
+.lpg2-map-copy ul{list-style:none;margin:0;padding:0;display:grid;gap:1.2cqi}
+.lpg2-map-copy li{display:flex;gap:1.4cqi;font-size:clamp(11px,1.25cqi,16px);
+  text-shadow:0 .2cqi .4cqi rgba(0,0,0,.5)}
+.lpg2-map-copy li::before{content:"▸";color:var(--yellow)}
+.lpg2-pinboard{position:relative;aspect-ratio:4/3;background:rgba(245,241,228,.14);
+  border:.32cqi solid #15150F}
+.lpg2-pin{position:absolute;width:2.4cqi;height:2.4cqi;border-radius:50%;background:var(--spray);
+  box-shadow:0 0 0 .5cqi rgba(21,21,15,.7)}
+.lpg2-pin.p1{left:18%;top:24%}
+.lpg2-pin.p2{left:52%;top:16%;background:var(--yellow)}
+.lpg2-pin.p3{left:34%;top:58%;background:var(--cyan)}
+.lpg2-pin.p4{left:72%;top:48%}
+.lpg2-pin.p5{left:60%;top:76%;background:var(--yellow)}
+
+.lpg2-foot{position:relative;z-index:2;text-align:center;padding:0 5cqi 9cqi;display:grid;justify-items:center;gap:3cqi}
+.lpg2-foot .lpg2-throw{justify-items:center}
+.lpg2-foot p{font-family:"JetBrains Mono",monospace;font-size:clamp(9px,1.05cqi,14px);
+  letter-spacing:.16em;color:#15150F;background:rgba(245,241,228,.9);padding:.7cqi 1.6cqi;rotate:-.6deg}
+
+/* ==========================================================================
+   27 — GOTHIC  ·  St. Augustine's, a deconsecrated hall
+   ========================================================================== */
+.lp-goth{
+  --ink:#E8E2D6;
+  --soft:#A79E92;
+  --stone:#0B0A0C;
+  --stone-2:#151317;
+  --mortar:#2A2529;
+  --gold:#C9A24B;
+  --blood:#8E1F2B;
+  background:var(--stone);color:var(--ink);
+  font-family:"Playfair Display",Georgia,serif;font-size:clamp(13px,1.3cqi,17px);line-height:1.8;
+}
+.lph-nav{display:flex;align-items:baseline;gap:4cqi;padding:4cqi 6cqi 2.4cqi}
+.lph-brand{font-family:var(--black-letter);font-size:clamp(20px,2.8cqi,40px);color:var(--gold);
+  letter-spacing:.02em;line-height:1}
+.lph-brand.small{font-size:clamp(16px,2.2cqi,30px)}
+.lph-nav nav{margin-left:auto;display:flex;gap:3cqi}
+.lph-nav nav a{color:var(--soft);font-size:clamp(10px,1.1cqi,14px);letter-spacing:.2em;
+  text-transform:uppercase;transition:color .3s}
+.lph-nav nav a:hover{color:var(--gold)}
+.lph-rule{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:0 6cqi;opacity:.6}
+
+/* the pointed arch is the whole style in one shape */
+.lph-hero{display:grid;grid-template-columns:auto 1fr auto;gap:5cqi;padding:7cqi 6cqi 8cqi;align-items:center}
+.lph-lancet{width:16cqi;height:auto;display:block}
+.lph-lancet .stone{fill:none;stroke:var(--mortar);stroke-width:5}
+.lph-lancet .mullion{fill:none;stroke:var(--mortar);stroke-width:3}
+.lph-lancet .lead line{stroke:rgba(11,10,12,.75);stroke-width:2}
+.lph-lancet .glass-a{fill:#1F3E6E}
+.lph-lancet .glass-b{fill:#8E1F2B}
+.lph-lancet .glass-c{fill:#7A5E14}
+.lph-lancet .glass-d{fill:#C9A24B;opacity:.9}
+.lph-hero-copy{text-align:center}
+.lph-kicker{font-size:clamp(9px,1cqi,13px);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--soft);margin-bottom:2.6cqi}
+.lp-goth h1{font-family:var(--black-letter);font-weight:400;font-size:clamp(28px,5.4cqi,76px);
+  line-height:1.14;color:var(--ink);margin-bottom:2.6cqi}
+.lph-lede{max-width:40cqi;margin:0 auto 3.4cqi;color:var(--soft);font-size:clamp(12px,1.4cqi,18px)}
+.lph-cta{display:inline-block;border:1px solid var(--gold);color:var(--gold);
+  font-family:"Playfair Display",serif;font-size:clamp(10px,1.15cqi,15px);letter-spacing:.2em;
+  text-transform:uppercase;padding:1.5cqi 3.4cqi;transition:background .3s,color .3s}
+.lph-cta:hover{background:var(--gold);color:var(--stone)}
+
+.lph-programme{padding:0 6cqi 8cqi;max-width:74cqi;margin-inline:auto}
+.lp-goth h2{font-family:var(--black-letter);font-weight:400;font-size:clamp(22px,3.6cqi,50px);
+  color:var(--gold);margin-bottom:3.4cqi;text-align:center}
+.lph-drop{font-family:var(--black-letter);font-size:1.5em;line-height:0;color:var(--blood)}
+.lph-list{list-style:none;margin:0;padding:0}
+.lph-list li{display:flex;align-items:baseline;gap:3cqi;padding:2.4cqi 0;
+  border-top:1px solid rgba(201,162,75,.22)}
+.lph-list li:last-child{border-bottom:1px solid rgba(201,162,75,.22)}
+.lph-date{flex:none;width:8cqi;text-align:center}
+.lph-date b{display:block;font-size:clamp(16px,2.2cqi,30px);color:var(--gold);line-height:1}
+.lph-date i{font-style:normal;font-size:clamp(9px,1cqi,13px);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--soft)}
+.lph-what{flex:1;min-width:0}
+.lph-what b{display:block;font-size:clamp(13px,1.6cqi,22px);font-weight:400;margin-bottom:.4cqi}
+.lph-what i{font-style:italic;color:var(--soft);font-size:clamp(10px,1.15cqi,15px)}
+.lph-price{flex:none;color:var(--gold);font-size:clamp(11px,1.3cqi,17px)}
+
+/* an arcade of pointed arches, drawn as five piers with arched tops */
+.lph-hall{padding:0 6cqi 8cqi;text-align:center}
+.lph-arcade{display:grid;grid-template-columns:repeat(5,1fr);gap:2cqi;height:20cqi;
+  align-items:end;margin-bottom:4cqi}
+.lph-pier{height:100%;border-radius:50% 50% 0 0/28% 28% 0 0;
+  background:linear-gradient(180deg,#1F1B21,var(--stone-2));
+  box-shadow:inset 0 0 0 1px rgba(201,162,75,.16)}
+.lph-pier:nth-child(even){height:86%}
+.lph-verse{max-width:48cqi;margin-inline:auto;font-size:clamp(15px,2.4cqi,34px);font-style:italic;
+  line-height:1.4;color:var(--gold)}
+
+.lph-foot{padding:0 6cqi 7cqi;text-align:center}
+.lph-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:4cqi;
+  border-top:1px solid rgba(201,162,75,.22);padding-top:4cqi;margin-bottom:4cqi}
+.lph-foot h4{font-size:clamp(10px,1.1cqi,14px);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);font-weight:400;margin-bottom:1.2cqi}
+.lph-foot p{color:var(--soft);font-size:clamp(11px,1.2cqi,16px)}
+
+/* ==========================================================================
+   28 — MIXED MEDIA  ·  Cut/Paste, a studio
+   ========================================================================== */
+.lp-mixed{
+  --ink:#16161A;
+  --soft:#55555F;
+  --paper:#F4F1EA;
+  --blue:#2B4CD6;
+  --red:#E33E2B;        /* blocks and marks */
+  --red-ink:#B82412;    /* the same hue dark enough to set small text in */
+  --yellow:#F0E24A;
+  background:var(--paper);color:var(--ink);overflow:hidden;
+  font-family:"Inter",system-ui,sans-serif;font-size:clamp(13px,1.35cqi,18px);line-height:1.6;
+}
+.lp-mixed :where(h1,h2,h3){font-family:"Bricolage Grotesque",system-ui,sans-serif;
+  font-weight:800;letter-spacing:-.04em}
+/* four media, each staying obviously itself */
+.lpm2-block{position:absolute;background:var(--blue);z-index:0}
+.lpm2-block.b1{right:0;top:0;width:42%;height:60%}
+.lpm2-block.b2{left:0;bottom:0;width:34%;height:46%;background:var(--yellow)}
+.lpm2-photo{position:absolute;z-index:1;
+  background:linear-gradient(150deg,#9AA7B4,#3E4A57);
+  -webkit-mask-image:radial-gradient(circle at 1px 1px,#000 .8px,transparent .9px);
+  -webkit-mask-size:4px 4px;
+  mask-image:radial-gradient(circle at 1px 1px,#000 .8px,transparent .9px);mask-size:4px 4px}
+.lpm2-photo.p1{right:8cqi;top:8cqi;width:30cqi;height:24cqi;rotate:-4deg;
+  box-shadow:0 2cqi 4cqi rgba(0,0,0,.28)}
+.lpm2-torn{position:absolute;z-index:1;background:var(--red);
+  -webkit-mask-image:repeating-linear-gradient(90deg,#000 0 1.6cqi,transparent 1.6cqi 2.1cqi);
+  mask-image:repeating-linear-gradient(90deg,#000 0 1.6cqi,transparent 1.6cqi 2.1cqi)}
+.lpm2-torn.t1{left:0;top:62%;width:26%;height:3cqi;rotate:-1.4deg}
+.lpm2-halftone{position:absolute;z-index:0;right:2cqi;bottom:4cqi;width:26cqi;height:26cqi;
+  border-radius:50%;background:var(--red);opacity:.16;
+  -webkit-mask-image:radial-gradient(circle at 1px 1px,#000 1px,transparent 1.2px);
+  -webkit-mask-size:6px 6px;mask-image:radial-gradient(circle at 1px 1px,#000 1px,transparent 1.2px);
+  mask-size:6px 6px}
+.lpm2-stamp{position:absolute;z-index:3;right:5cqi;bottom:8cqi;rotate:-11deg;
+  font-family:"JetBrains Mono",monospace;font-weight:700;font-size:clamp(10px,1.2cqi,16px);
+  letter-spacing:.18em;color:var(--red-ink);border:.28cqi solid var(--red-ink);padding:.8cqi 1.6cqi}
+
+.lpm2-nav{position:relative;z-index:4;display:flex;align-items:center;gap:3cqi;padding:3.4cqi 5cqi}
+.lpm2-brand{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;
+  font-size:clamp(16px,2.1cqi,30px);letter-spacing:-.04em}
+.lpm2-brand .slash{color:var(--red)}
+.lpm2-nav nav{margin-left:auto;display:flex;gap:2.6cqi}
+.lpm2-nav nav a{color:var(--soft);font-size:clamp(11px,1.2cqi,16px);font-weight:600;transition:.2s}
+.lpm2-nav nav a:hover{color:var(--red)}
+
+.lpm2-hero{position:relative;z-index:2;padding:5cqi 5cqi 10cqi;min-height:56cqi}
+.lpm2-hero-copy{position:relative;z-index:3;max-width:46cqi}
+.lpm2-kicker{font-family:"JetBrains Mono",monospace;font-size:clamp(9px,1cqi,13px);
+  letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-bottom:2.6cqi}
+/* type as an object: each word gets its own treatment */
+.lp-mixed h1{display:grid;justify-items:start;gap:.4cqi;line-height:.92;margin-bottom:1cqi;
+  font-size:clamp(30px,7cqi,98px)}
+.lp-mixed h1 .w1{background:var(--ink);color:var(--paper);padding:0 .12em}
+.lp-mixed h1 .w2{color:var(--ink);margin-left:3cqi}
+.lp-mixed h1 .w3{color:var(--red);font-style:italic;margin-left:1cqi;
+  text-decoration:underline;text-decoration-thickness:.1em;text-underline-offset:.08em}
+.lpm2-scrawl{display:block;color:var(--red)}
+.lpm2-scrawl.under{width:26cqi;height:6cqi;margin:0 0 2.4cqi 6cqi}
+.lpm2-scrawl.over{position:absolute;z-index:4;width:22cqi;height:6cqi;left:22%;top:44%;rotate:-6deg}
+.lpm2-lede{max-width:34cqi;color:var(--soft);margin-bottom:3.4cqi}
+.lpm2-cta{display:inline-block;background:var(--ink);color:var(--paper);font-weight:700;
+  font-size:clamp(12px,1.3cqi,17px);padding:1.5cqi 3.2cqi;transition:background .18s}
+.lpm2-cta:hover{background:var(--red)}
+
+.lpm2-work{position:relative;z-index:2;padding:0 5cqi 8cqi;background:var(--paper)}
+.lp-mixed h2{font-size:clamp(24px,4.2cqi,58px);margin-bottom:4cqi;display:flex;align-items:center;gap:1.6cqi}
+.lpm2-inline-block{width:5cqi;height:2.6cqi;background:var(--blue);display:inline-block;rotate:-3deg}
+.lpm2-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3.4cqi}
+.lpm2-case{position:relative;padding-top:2cqi}
+.lpm2-media{display:block;position:relative}
+.lpm2-media.photo{aspect-ratio:4/3;background:linear-gradient(150deg,#9AA7B4,#3E4A57);
+  -webkit-mask-image:radial-gradient(circle at 1px 1px,#000 .8px,transparent .9px);
+  -webkit-mask-size:4px 4px;mask-image:radial-gradient(circle at 1px 1px,#000 .8px,transparent .9px);
+  mask-size:4px 4px}
+.lpm2-media.photo.alt{background:linear-gradient(150deg,#C0A99A,#5E4A3E)}
+.lpm2-media.photo.alt2{background:linear-gradient(150deg,#A8B8A0,#41523E)}
+.lpm2-media.swatch{position:absolute;right:-1.4cqi;top:-1cqi;width:8cqi;height:8cqi;background:var(--yellow);rotate:6deg}
+.lpm2-media.swatch.alt{background:var(--red)}
+.lpm2-media.swatch.alt2{background:var(--blue)}
+.lpm2-case h3{font-size:clamp(16px,2.2cqi,30px);margin:2cqi 0 1cqi}
+.lpm2-case p{color:var(--soft);font-size:clamp(11px,1.25cqi,16px);margin-bottom:1.2cqi}
+.lpm2-meta{font-family:"JetBrains Mono",monospace;font-size:clamp(9px,1cqi,13px);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--red-ink)}
+
+.lpm2-how{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:5cqi;
+  padding:0 5cqi 8cqi;align-items:center;background:var(--paper)}
+.lpm2-how-copy p{color:var(--soft);max-width:36cqi;margin-bottom:2.6cqi}
+.lpm2-how-copy ol{margin:0;padding-left:1.6em;display:grid;gap:1.2cqi}
+.lpm2-how-copy li{font-size:clamp(11px,1.25cqi,16px);color:var(--soft)}
+.lpm2-how-copy li b{color:var(--ink)}
+.lpm2-collage{position:relative;aspect-ratio:1/1}
+.lpm2-layer{position:absolute}
+.lpm2-layer.l1{left:4%;top:6%;width:56%;height:52%;background:var(--blue)}
+.lpm2-layer.l2{right:2%;top:20%;width:46%;height:40%;
+  background:linear-gradient(150deg,#C0A99A,#5E4A3E);rotate:5deg;
+  -webkit-mask-image:radial-gradient(circle at 1px 1px,#000 .8px,transparent .9px);
+  -webkit-mask-size:4px 4px;mask-image:radial-gradient(circle at 1px 1px,#000 .8px,transparent .9px);
+  mask-size:4px 4px}
+.lpm2-layer.l3{left:14%;bottom:8%;width:52%;height:6cqi;background:var(--yellow);rotate:-2deg;
+  -webkit-mask-image:repeating-linear-gradient(90deg,#000 0 1.6cqi,transparent 1.6cqi 2.1cqi);
+  mask-image:repeating-linear-gradient(90deg,#000 0 1.6cqi,transparent 1.6cqi 2.1cqi)}
+.lpm2-layer.l4{right:10%;bottom:14%;width:16%;height:16%;background:var(--red);border-radius:50%}
+
+.lpm2-foot{position:relative;z-index:2;padding:6cqi 5cqi 8cqi;text-align:center}
+.lpm2-foot h2{justify-content:center;margin-bottom:1.6cqi}
+.lpm2-foot p{color:var(--soft);font-size:clamp(11px,1.2cqi,16px);position:relative;z-index:2}
+
+/* ==========================================================================
+   29 — WABI SABI  ·  Seto, hand-thrown teaware
+   Minimalism removes until the page is perfect. This leaves the flaw in.
+   ========================================================================== */
+.lp-wabi{
+  --ink:#3A352C;
+  --soft:#5E5648;
+  --paper:#E7E2D8;
+  --paper-2:#DED8CB;
+  --clay:#8A7A64;       /* forms and rules */
+  --clay-ink:#6B5C46;   /* the same clay, dark enough for the small notes */
+  --gold:#B08A3C;
+  background:var(--paper);color:var(--ink);
+  font-family:"Inter",system-ui,sans-serif;font-size:clamp(13px,1.35cqi,18px);line-height:1.9;
+}
+.lp-wabi :where(h1,h2,h3){font-family:"Playfair Display",Georgia,serif;font-weight:400;letter-spacing:-.01em}
+.lpw2-nav{display:flex;align-items:baseline;gap:4cqi;padding:5cqi 7cqi 3cqi}
+.lpw2-brand{font-family:"Playfair Display",Georgia,serif;font-size:clamp(15px,1.9cqi,26px);letter-spacing:.06em}
+.lpw2-nav nav{margin-left:auto;display:flex;gap:3.4cqi}
+.lpw2-nav nav a{color:var(--soft);font-size:clamp(10px,1.1cqi,14px);letter-spacing:.14em;
+  text-transform:uppercase;transition:color .4s}
+.lpw2-nav nav a:hover{color:var(--ink)}
+
+/* the asymmetry is the composition: 7/5 columns, not 6/6 */
+.lpw2-hero{display:grid;grid-template-columns:1.35fr 1fr;gap:6cqi;padding:8cqi 7cqi 12cqi;align-items:center}
+.lpw2-kicker{font-size:clamp(9px,1cqi,13px);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--soft);margin-bottom:3.4cqi}
+.lp-wabi h1{font-size:clamp(30px,5.6cqi,78px);line-height:1.12;margin-bottom:3cqi}
+.lpw2-lede{max-width:34cqi;color:var(--soft);margin-bottom:4cqi;font-size:clamp(12px,1.4cqi,18px)}
+.lpw2-cta{display:inline-block;color:var(--ink);font-size:clamp(10px,1.15cqi,15px);letter-spacing:.18em;
+  text-transform:uppercase;border-bottom:1px solid var(--clay);padding-bottom:.6cqi;
+  transition:border-color .4s,color .4s}
+.lpw2-cta:hover{border-bottom-color:var(--gold);color:var(--gold)}
+
+.lpw2-vessel-wrap{position:relative;display:grid;place-items:center;min-height:34cqi}
+/* not a circle: uneven radii, an off-centre glaze pool, one repaired seam */
+.lpw2-vessel{position:relative;width:26cqi;height:24cqi;
+  border-radius:54% 46% 42% 58%/60% 56% 44% 40%;
+  background:radial-gradient(circle at 34% 28%,#A5947C,#6E6252 78%)}
+.lpw2-vessel .glaze{position:absolute;left:14%;top:12%;width:56%;height:44%;
+  border-radius:60% 40% 52% 48%/58% 46% 54% 42%;
+  background:radial-gradient(circle at 40% 34%,rgba(255,252,244,.5),rgba(255,252,244,0) 72%)}
+.lpw2-vessel .seam{position:absolute;left:47%;top:8%;width:.5cqi;height:62%;
+  background:linear-gradient(180deg,var(--gold),#D8BC7C);rotate:6deg;border-radius:100px;
+  box-shadow:0 0 1.4cqi rgba(176,138,60,.45)}
+.lpw2-shadow{position:absolute;bottom:3cqi;width:22cqi;height:2cqi;border-radius:50%;
+  background:rgba(90,80,64,.16);filter:blur(1.2cqi)}
+
+.lpw2-kiln{padding:0 7cqi 12cqi;display:grid;justify-items:end}
+.lpw2-ma{max-width:38cqi;font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(16px,2.6cqi,36px);line-height:1.45}
+
+/* the pieces are not on a grid line — each sits at its own height */
+.lpw2-pieces{display:grid;grid-template-columns:repeat(3,1fr);gap:5cqi;padding:0 7cqi 12cqi;align-items:start}
+.lpw2-piece.a{margin-top:0}
+.lpw2-piece.b{margin-top:7cqi}
+.lpw2-piece.c{margin-top:2.4cqi}
+.lpw2-form{display:block;margin-bottom:2.6cqi}
+.lpw2-form.f1{width:76%;aspect-ratio:1/.86;border-radius:56% 44% 48% 52%/52% 58% 42% 48%;
+  background:radial-gradient(circle at 36% 30%,#B5A48C,#857761)}
+.lpw2-form.f2{width:88%;aspect-ratio:1/.72;border-radius:48% 52% 56% 44%/62% 48% 52% 38%;
+  background:radial-gradient(circle at 40% 26%,#A99A82,#6F6454)}
+.lpw2-form.f3{width:70%;aspect-ratio:1/1.05;border-radius:52% 48% 44% 56%/46% 54% 46% 54%;
+  background:radial-gradient(circle at 34% 32%,#BCAE97,#7A6E5C)}
+.lpw2-piece h3{font-size:clamp(15px,2cqi,28px);margin-bottom:1.2cqi}
+.lpw2-piece p{color:var(--soft);font-size:clamp(11px,1.25cqi,16px);margin-bottom:1.6cqi}
+.lpw2-note{font-size:clamp(9px,1.05cqi,14px);letter-spacing:.14em;text-transform:uppercase;color:var(--clay-ink)}
+
+.lpw2-quiet{padding:0 7cqi 12cqi;max-width:52cqi}
+.lpw2-quiet p{font-family:"Playfair Display",Georgia,serif;font-size:clamp(16px,2.6cqi,36px);
+  line-height:1.44;font-style:italic}
+
+.lpw2-foot{padding:0 7cqi 9cqi;display:grid;gap:3cqi}
+.lpw2-mark{width:4cqi;height:4cqi;border-radius:58% 42% 46% 54%/50% 56% 44% 50%;background:var(--clay);opacity:.8}
+.lpw2-fine{color:var(--soft);font-size:clamp(10px,1.15cqi,15px);letter-spacing:.04em;max-width:40cqi}
+
+/* ==========================================================================
    NARROW CONTAINERS — the only breakpoints in here are container queries,
    so they fire inside the detail frame exactly as they do full screen.
    ========================================================================== */
@@ -2101,6 +2609,10 @@
   .lpf-telemetry{grid-template-columns:1fr}
   .lpf-telemetry span{border-left:0;border-top:1px solid rgba(57,255,136,.18)}
   .lpf-telemetry span:first-child{border-top:0}
+  .lps2-nav nav,.lpg2-nav nav,.lph-nav nav,.lpm2-nav nav,.lpw2-nav nav{display:none}
+  .lpg2-throw .l2{margin-left:0}
+  .lph-lancet.side{display:none}
+  .lpm2-stamp,.lpm2-scrawl.over{display:none}
   .lpc-colonnade{grid-template-columns:repeat(3,1fr)}
   .lpm-work{grid-template-columns:1fr}
   .lps-facts{grid-template-columns:1fr}

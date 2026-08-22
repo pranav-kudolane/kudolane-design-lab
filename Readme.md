@@ -99,6 +99,7 @@ Fonts are loaded once in `index.html` and exposed as tokens in `tokens.css`:
 | `--serif` | Playfair Display | luxury typography, editorial |
 | `--pixel` | Press Start 2P | pixel art headings only — never body copy |
 | `--showcard` | Rye | victorian display only |
+| `--black-letter` | Pirata One | gothic display only — never a paragraph |
 
 Adding a style that needs a new face means one more family on that existing
 link, not a second request. Weigh it anyway: a style whose whole identity is its

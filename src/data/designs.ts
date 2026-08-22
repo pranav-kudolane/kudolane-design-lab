@@ -10,9 +10,12 @@ import {
   EditorialThumb,
   EtherealThumb,
   GlassmorphismThumb,
+  GothicThumb,
+  GraffitiThumb,
   LuxuryTypeThumb,
   MaximalismThumb,
   MinimalismThumb,
+  MixedMediaThumb,
   NeoBrutalismThumb,
   NeoClassicalThumb,
   NeumorphismThumb,
@@ -21,7 +24,9 @@ import {
   SketchThumb,
   SurrealismThumb,
   SwissThumb,
+  SynthwaveThumb,
   VictorianThumb,
+  WabiSabiThumb,
   Y2kThumb,
 } from '../components/designThumbs';
 import { AnthropomorphicLanding } from '../landings/AnthropomorphicLanding';
@@ -35,9 +40,12 @@ import { DarkModeLanding } from '../landings/DarkModeLanding';
 import { EditorialLanding } from '../landings/EditorialLanding';
 import { EtherealLanding } from '../landings/EtherealLanding';
 import { GlassmorphismLanding } from '../landings/GlassmorphismLanding';
+import { GothicLanding } from '../landings/GothicLanding';
+import { GraffitiLanding } from '../landings/GraffitiLanding';
 import { LuxuryTypeLanding } from '../landings/LuxuryTypeLanding';
 import { MaximalismLanding } from '../landings/MaximalismLanding';
 import { MinimalismLanding } from '../landings/MinimalismLanding';
+import { MixedMediaLanding } from '../landings/MixedMediaLanding';
 import { NeoBrutalismLanding } from '../landings/NeoBrutalismLanding';
 import { NeoClassicalLanding } from '../landings/NeoClassicalLanding';
 import { NeumorphismLanding } from '../landings/NeumorphismLanding';
@@ -46,7 +54,9 @@ import { ScrapbookLanding } from '../landings/ScrapbookLanding';
 import { SketchLanding } from '../landings/SketchLanding';
 import { SurrealismLanding } from '../landings/SurrealismLanding';
 import { SwissLanding } from '../landings/SwissLanding';
+import { SynthwaveLanding } from '../landings/SynthwaveLanding';
 import { VictorianLanding } from '../landings/VictorianLanding';
+import { WabiSabiLanding } from '../landings/WabiSabiLanding';
 import { Y2kLanding } from '../landings/Y2kLanding';
 import type { DesignStyle } from '../types';
 
@@ -2678,6 +2688,550 @@ body {
 /* mechanical timing — steps(), not ease */
 .led { animation: pulse 2s steps(2) infinite; }
 @keyframes pulse { 50% { opacity: .3; } }`,
+    },
+  },
+  {
+    id: 'synthwave',
+    name: 'Synthwave',
+    era: 'An imagined 1984 · web since ~2015',
+    use: 'music · gaming',
+    tagline: 'A sunset, not rain',
+    desc: 'A banded sun on the horizon, a neon grid receding to a vanishing point, chrome type and VHS noise. **Cyberpunk’s optimistic twin** — same borrowed decade, opposite mood.',
+    accent: '#FF3D7F',
+    Thumb: SynthwaveThumb,
+    Landing: SynthwaveLanding,
+    detail: {
+      intro:
+        'Synthwave is nostalgia for a 1984 that never quite happened — the future as imagined by an airbrushed VHS sleeve. It shares hardware and palette with **Cyberpunk** and almost nothing else emotionally: cyberpunk is rain, decay and menace at street level, and this is a sunset seen from a car doing 90 with nowhere to be. **Two devices carry the whole style** — the banded sun and the perspective grid — and everything else is decoration on top of them.',
+      origin:
+        'The music came first: Kavinsky, College and Com Truise in the late 2000s, scoring an imaginary 1980s. The visual language was assembled from the same sources those records sampled — *Miami Vice*, *Tron*, Patrick Nagel, airbrushed van art, the OutRun cabinet — and *Drive* (2011) plus *Hotline Miami* (2012) fixed it as a coherent look.',
+      principles: [
+        {
+          title: 'The sun is banded, and it sits on the horizon',
+          body: 'A gradient circle masked into horizontal slats, cut off halfway. **This one element identifies the style instantly** and costs nothing but a repeating mask.',
+        },
+        {
+          title: 'The grid must have a vanishing point',
+          body: 'A flat plane in `perspective` with `rotateX` around 75°. A flat un-rotated grid reads as CyberCore instead — the recession *is* the road.',
+        },
+        {
+          title: 'Sunset order, top to bottom',
+          body: 'Deep indigo, violet, magenta, orange. Always in that order and always vertical — the gradient is a sky, so inverting it looks immediately wrong.',
+        },
+        {
+          title: 'Chrome type with a coloured drop',
+          body: 'A hard light-to-dark flip for the metal, then a solid magenta shadow directly beneath. The offset shadow is what makes it read as an eighties title card rather than as Y2K chrome.',
+        },
+        {
+          title: 'Add wear',
+          body: 'Scanlines, VHS noise, a slight bloom. **The nostalgia depends on the medium looking degraded** — a clean render loses fifteen years of implied age.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'Heavy geometric or wide grotesque display with chrome or gradient fills, letterspaced. Mono for timings and metadata.',
+        },
+        {
+          label: 'Colour',
+          value: 'Indigo through magenta to orange for the sky, cyan for the grid and glow, gold for the sun. **Saturated throughout.**',
+        },
+        {
+          label: 'Layout',
+          value: 'Centred and symmetrical around the vanishing point. Content sits above the horizon line; the grid owns everything below it.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Palms, cars, cassettes, chrome, mountains in silhouette. Airbrush gradients rather than photography.',
+        },
+        {
+          label: 'Motion',
+          value: 'The grid scrolls toward you on a loop; equalisers bounce; glow pulses. Everything is continuous rather than triggered.',
+        },
+        {
+          label: 'Risk',
+          value: 'It is a costume with a fixed size. Extremely recognisable, almost impossible to adapt, and dated to a specific internet moment.',
+        },
+      ],
+      bestFor: [
+        '**Music** — labels, radio, releases, anything electronic.',
+        'Games, especially retro racers, shooters and anything with a soundtrack to sell.',
+        'Events, club nights and festivals in the same cultural register.',
+        'Streamer, podcast and channel branding.',
+      ],
+      avoidWhen: [
+        'The brand needs to be current — this is explicitly a period costume.',
+        'The site is information-dense; the sky gradient leaves nowhere neutral to put text.',
+        'Your audience has no relationship with the reference, in which case it just reads as a purple gradient.',
+      ],
+      lang: 'css',
+      code: `/* Synthwave: a banded sun and a grid with a vanishing point. */
+:root {
+  --mag: #FF3D7F;
+  --cyan: #12E5FF;
+  --gold: #FFE45C;
+}
+
+/* the sky is always in this order, always vertical */
+.sky {
+  background: linear-gradient(180deg,
+    #1B0B3B 0%, #4A0F63 30%, #9E1F6E 48%, #FF5C5C 58%, #FF9A3C 63%, #150625 64%);
+}
+
+/* the sun: a gradient circle, cut off at the horizon, masked into slats */
+.sun {
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--gold), #FF7A3D 46%, var(--mag));
+  mask-image:
+    linear-gradient(180deg, #000 46%, transparent 46%),
+    repeating-linear-gradient(180deg, #000 0 14px, transparent 14px 21px);
+  mask-composite: add;
+}
+
+/* the grid: a flat plane rotated away from you — the recession is the road */
+.floor {
+  background:
+    repeating-linear-gradient(90deg, rgba(255,61,127,.85) 0 1px, transparent 1px 60px),
+    repeating-linear-gradient(0deg,  rgba(18,229,255,.6)  0 1px, transparent 1px 36px);
+  transform: perspective(360px) rotateX(76deg);
+  transform-origin: top;
+  animation: roll 3.6s linear infinite;
+}
+@keyframes roll { to { background-position: 0 36px, 0 36px; } }
+
+/* chrome with a solid coloured drop — that offset is the eighties part */
+h1 {
+  background: linear-gradient(180deg, #FFF 0%, #E4D4FF 40%, #8B5CD6 50%, #FFF 62%);
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 0 var(--mag));
+}`,
+    },
+  },
+  {
+    id: 'graffiti',
+    name: 'Graffiti',
+    era: 'New York, early 1970s · street art since',
+    use: 'festival · streetwear',
+    tagline: 'The surface is a wall',
+    desc: 'Sprayed throw-ups with hard outlines, drips, stencils and sticker slaps on concrete. **Everything is applied to a surface** rather than laid out on a page.',
+    accent: '#FFE100',
+    Thumb: GraffitiThumb,
+    Landing: GraffitiLanding,
+    detail: {
+      intro:
+        'Graffiti design starts from a wall, not a canvas. The page is a *surface with history* — grime, a buff patch, previous layers — and every element is something applied on top of it: sprayed, stencilled, pasted, marked. That distinguishes it from **Scrapbook**, where things are stuck into a keepsake, and from **Maximalism**, where density is composed rather than accumulated by different hands at different times.',
+      origin:
+        'Tagging in Philadelphia and New York around 1970, subway pieces through the seventies, and the codified vocabulary that followed: the tag, the throw-up, the piece, the slap. Stencil and wheatpaste arrived through Blek le Rat and later Banksy, and the whole language was absorbed into skate, streetwear and music branding.',
+      principles: [
+        {
+          title: 'Build the wall first',
+          body: 'Concrete grey with grime, uneven light and a buffed rectangle where something used to be. **A flat background is the single biggest tell** that this is a website pretending.',
+        },
+        {
+          title: 'Fat letters, hard outline',
+          body: 'A throw-up is bulk and a black keyline, not fine detail. Stack `text-shadow` offsets in four directions for the outline, then one large soft one for the wall shadow.',
+        },
+        {
+          title: 'Let the paint run',
+          body: 'Two or three drips from the underside of a fill, of different lengths. Perfectly clean spray reads as vector art, which is the opposite of the point.',
+        },
+        {
+          title: 'Rotate everything a little, differently',
+          body: 'Nothing was applied square. One to three degrees, alternating direction — and stickers get the most because nobody lines up a slap.',
+        },
+        {
+          title: 'Three hands, not one',
+          body: 'A sprayed piece, a stencil, a marker tag: **different tools that clearly did not come from the same person**. That layering is what a real wall looks like.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A heavy grotesque doing duty as a throw-up, a stencil-masked mono for official notices, and a handwriting face for tags.',
+        },
+        {
+          label: 'Colour',
+          value: 'Concrete grey ground, then high-key spray — magenta, acid yellow, cyan — over a black outline that holds it all together.',
+        },
+        {
+          label: 'Layout',
+          value: 'Layered rather than gridded. Elements overlap, rotate slightly and cast shadows onto the wall behind them.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Spray texture, drips, stencil cuts, sticker slaps, torn wheatpaste, chain-link and shutters.',
+        },
+        {
+          label: 'Motion',
+          value: 'Rotation-to-straight on hover, as if you were lifting a corner. Tickers for dates. Nothing smooth.',
+        },
+        {
+          label: 'Risk',
+          value: 'Appropriation, and legibility. It is a real subculture with real rules, and a heavy outline plus a busy wall is hard on text.',
+        },
+      ],
+      bestFor: [
+        '**Street art and mural festivals** — the native use.',
+        'Skate, streetwear and sneaker brands.',
+        'Hip-hop labels, club nights and independent venues.',
+        'Youth and community projects with a genuine connection to the culture.',
+      ],
+      avoidWhen: [
+        'The brand has no relationship to the culture it is borrowing from.',
+        'The page carries a lot of copy — the wall fights every paragraph.',
+        'You need a formal or trustworthy read. This style is designed to look unsanctioned.',
+      ],
+      lang: 'css',
+      code: `/* Graffiti: build the wall, then apply things to it. */
+.wall {
+  background: #9A968E;
+  background-image:
+    radial-gradient(60% 40% at 18% 22%, rgba(0,0,0,.22), transparent 70%),
+    radial-gradient(50% 40% at 82% 70%, rgba(255,255,255,.14), transparent 70%),
+    repeating-linear-gradient(96deg, rgba(0,0,0,.05) 0 32px, transparent 32px 84px);
+}
+/* the buff: where the council painted over somebody else's piece */
+.buff { background: rgba(120,124,116,.55); rotate: -1deg; }
+
+/* the throw-up: bulk plus a hard keyline, then a soft shadow on the wall */
+.throw {
+  color: #FF3DAE;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-shadow:
+    -2px -2px 0 #15150F,  2px -2px 0 #15150F,
+    -2px  2px 0 #15150F,  2px  2px 0 #15150F,   /* the outline */
+     16px 18px 0 rgba(0,0,0,.35);               /* the wall shadow */
+  rotate: -2.5deg;
+}
+
+/* paint runs, because it always does */
+.drip { width: 12px; border-radius: 0 0 99px 99px; background: #FF3DAE; }
+
+/* a stencil is a mask with gaps where the bridges were */
+.stencil { mask-image: repeating-linear-gradient(90deg, #000 0 44px, transparent 44px 48px); }
+
+/* nobody lines up a sticker */
+.slap { rotate: -2deg; box-shadow: 11px 11px 0 rgba(0,0,0,.4); }
+.slap:hover { transform: rotate(0deg) translateY(-8px); }`,
+    },
+  },
+  {
+    id: 'gothic',
+    name: 'Gothic',
+    era: '12th–16th century · revived ever since',
+    use: 'culture · music',
+    tagline: 'Everything points upward',
+    desc: 'Pointed arches, blackletter, stained glass and stone. **Vertical before it is dark** — the height is the argument, and the colour scheme is a consequence.',
+    accent: '#8E1F2B',
+    Thumb: GothicThumb,
+    Landing: GothicLanding,
+    detail: {
+      intro:
+        'Gothic is architectural before it is atmospheric. The pointed arch let medieval builders put weight on fewer, thinner supports, so walls became windows and everything grew *upward* — and the visual language follows from that engineering. On a page it means the arch shape, blackletter, stained-glass colour and a strong vertical emphasis. It shares darkness with **Victorian** but nothing else: Victorian is 19th-century commercial ornament, and this is 14th-century structure.',
+      origin:
+        'Saint-Denis in the 1140s, then Chartres, Cologne and York. Blackletter — Gutenberg’s own type — is the writing of the same centuries. The 18th- and 19th-century Gothic Revival brought it back as a *style* rather than a structural necessity, and every use since, including the 1980s subculture that took the name, descends from that revival rather than from the buildings.',
+      principles: [
+        {
+          title: 'The pointed arch, repeated at three scales',
+          body: 'Window, doorway, card. A single `border-radius: 50% 50% 0 0 / 28% 28% 0 0` gives you the lancet — **repeat it and the page is coherent** before you have chosen a colour.',
+        },
+        {
+          title: 'Emphasise the vertical',
+          body: 'Tall narrow columns, generous line-height, elements that reach. Wide short blocks read Romanesque, which is the century before and looks it.',
+        },
+        {
+          title: 'Blackletter for display only',
+          body: 'A headline, a wordmark, a drop cap. **Never body copy and never a paragraph** — the texture that makes it beautiful is the same texture that makes it unreadable at length.',
+        },
+        {
+          title: 'Stained glass is your only saturation',
+          body: 'Deep blue, blood red, gold — as glass, leaded into segments. Everything not glass is stone: near-black, warm grey, and no colour at all.',
+        },
+        {
+          title: 'Light comes from behind',
+          body: 'Glass glows, stone does not. A faint bloom behind the window and nothing anywhere else keeps the whole page reading as an interior.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A blackletter (`Pirata One`, `UnifrakturMaguntia`) for display, a high-contrast serif for text, letterspaced small caps for labels.',
+        },
+        {
+          label: 'Colour',
+          value: 'Near-black stone, warm grey mortar, aged gold — plus stained-glass blue, red and amber used only as glass.',
+        },
+        {
+          label: 'Layout',
+          value: 'Symmetrical, vertical, arch-topped. Long lists rather than grids; rules and arcades dividing registers.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Tracery, vaulting, stone texture, candlelight, leaded glass. Photography is high-contrast and mostly dark.',
+        },
+        {
+          label: 'Motion',
+          value: 'Almost none. A slow warm-up on the glass at most — the subject is a building that has not moved in six hundred years.',
+        },
+        {
+          label: 'Risk',
+          value: 'Blackletter legibility, and the metal-album problem: without restraint it stops reading as architecture and starts reading as a genre.',
+        },
+      ],
+      bestFor: [
+        '**Cathedrals, historic venues, museums** and anything housed in an actual old building.',
+        'Classical, choral and early-music programming.',
+        'Rare books, archives, universities and libraries.',
+        'Metal, dark folk and the subculture that took the name — used knowingly.',
+      ],
+      avoidWhen: [
+        'The product is modern, fast or friendly.',
+        'You need to communicate a lot quickly — the whole style slows a reader down deliberately.',
+        'The blackletter cannot be confined to display. **A paragraph of it is unreadable for everybody, not just some people.**',
+      ],
+      lang: 'css',
+      code: `/* Gothic: one arch, repeated, and light only where the glass is. */
+:root {
+  --stone: #0B0A0C;      /* everything that is not glass is stone */
+  --mortar: #2A2529;
+  --gold: #C9A24B;
+  --blood: #8E1F2B;
+}
+
+/* the lancet — the whole style in one declaration */
+.arch { border-radius: 50% 50% 0 0 / 28% 28% 0 0; }
+
+/* stained glass is the only saturated thing on the page, and it glows */
+.window {
+  box-shadow: 0 0 0 6px var(--mortar), 0 0 48px rgba(190,40,50,.35);
+}
+.glass-blue { fill: #1F3E6E; }
+.glass-red  { fill: var(--blood); }
+.glass-gold { fill: #7A5E14; }
+
+/* blackletter is display only — never a paragraph */
+h1, .wordmark { font-family: "Pirata One", "Playfair Display", serif; font-weight: 400; }
+body          { font-family: "Playfair Display", Georgia, serif; line-height: 1.8; }
+
+/* the drop cap is the one place blackletter meets running text */
+.drop { font-family: "Pirata One", serif; font-size: 1.5em; line-height: 0; color: var(--blood); }
+
+/* an arcade: five piers, alternating height, all arch-topped */
+.pier { border-radius: 50% 50% 0 0 / 28% 28% 0 0; background: linear-gradient(180deg,#1F1B21,#151317); }
+.pier:nth-child(even) { height: 86%; }`,
+    },
+  },
+  {
+    id: 'mixed-media',
+    name: 'Mixed Media',
+    era: 'Collage since 1912 · art direction now',
+    use: 'studio · culture',
+    tagline: 'Four media, one page',
+    desc: 'Halftone photography, a drawn mark, a flat colour block and a piece of real material, colliding on one surface. **Art-directed collision** — not a keepsake.',
+    accent: '#E33E2B',
+    Thumb: MixedMediaThumb,
+    Landing: MixedMediaLanding,
+    detail: {
+      intro:
+        'Mixed media puts several *different media* in one composition and refuses to reconcile them. A photograph stays photographic, a drawn line stays hand-drawn, a colour block stays flat vector — and the friction between them is the design. It is close to **Scrapbook** and worth separating carefully: scrapbook is one medium (paper) maintaining the fiction of a keepsake, while this is art direction with no fiction at all, usually on clean modern colour.',
+      origin:
+        'Braque and Picasso’s papier collé in 1912, then Dada photomontage, Hannah Höch, the Bauhaus, and Warhol. Punk and *Ray Gun* dragged it through the photocopier. Contemporary studios rebuilt it as an identity system — the moment a brand needs to look made rather than generated, this is where it goes.',
+      principles: [
+        {
+          title: 'Pick four media and use all four',
+          body: 'Photograph, drawn mark, flat block, real material. **If one is missing the page looks like everything else** — three media is just a layout with a texture on it.',
+        },
+        {
+          title: 'Never blend the seams',
+          body: 'No drop shadows harmonising the layers, no shared colour grade. The photograph should look cut out with scissors and the line should look drawn on top afterwards.',
+        },
+        {
+          title: 'Halftone the photography',
+          body: 'A dot mask turns a photograph into *print*, which is what lets it sit beside flat vector without one looking more real than the other.',
+        },
+        {
+          title: 'Type is an object',
+          body: 'Each word can take its own treatment — knocked out of a block, italicised, underlined, rotated. The headline becomes a collage element rather than a caption to one.',
+        },
+        {
+          title: 'One flat colour does structural work',
+          body: 'A big block anchoring the composition so the collage has something to sit against. **Without it the layers float** and the page reads as clutter.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A heavy grotesque for display with per-word treatments, a plain sans for reading, mono for metadata and stamps.',
+        },
+        {
+          label: 'Colour',
+          value: 'Off-white paper plus two or three flat primaries used at full strength — the flatness is what distinguishes them from the photography.',
+        },
+        {
+          label: 'Layout',
+          value: 'Overlapping layers with deliberate misalignment, over an underlying grid that keeps the text readable.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Halftone or xeroxed photography, cut-outs, drawn marks, torn edges, stamps, scanned material.',
+        },
+        {
+          label: 'Motion',
+          value: 'Layers shifting slightly on scroll, as if the collage were not quite glued down.',
+        },
+        {
+          label: 'Risk',
+          value: 'Very easy to make incoherent. Without one structural block and a real grid underneath, four media just becomes noise.',
+        },
+      ],
+      bestFor: [
+        '**Design studios, agencies and art directors** — it demonstrates the skill it is selling.',
+        'Cultural programming: festivals, galleries, record labels, publishers.',
+        'Editorial features and campaign work that needs a distinct visual argument.',
+        'Brands deliberately positioning against generated or templated design.',
+      ],
+      avoidWhen: [
+        'Nobody is art-directing. **This style has no safe default** — it is either composed or it is a mess.',
+        'The site is an interface or a shop with hundreds of items.',
+        'The brand needs to look consistent across many pages made by many people.',
+      ],
+      lang: 'css',
+      code: `/* Mixed media: four media, and never blend the seams. */
+:root { --paper:#F4F1EA; --blue:#2B4CD6; --red:#E33E2B; --yellow:#F0E24A; }
+
+/* 1 — photograph, halftoned so it reads as print rather than as a photo */
+.photo {
+  background: linear-gradient(150deg, #9AA7B4, #3E4A57);
+  mask-image: radial-gradient(circle at 1px 1px, #000 .8px, transparent .9px);
+  mask-size: 4px 4px;
+  rotate: -4deg;                    /* cut out with scissors, not placed */
+}
+
+/* 2 — a drawn mark, obviously from a different hand */
+.scrawl { stroke: var(--red); stroke-width: 4; stroke-linecap: round; fill: none; }
+
+/* 3 — one flat block doing structural work, or the layers float */
+.block { background: var(--blue); }
+
+/* 4 — real material: a torn edge, cut with a mask */
+.torn {
+  background: var(--red);
+  mask-image: repeating-linear-gradient(90deg, #000 0 18px, transparent 18px 24px);
+}
+
+/* type is an object — each word gets its own treatment */
+h1 span.knock  { background: #16161A; color: var(--paper); padding: 0 .12em; }
+h1 span.italic { color: var(--red); font-style: italic; text-decoration: underline; }`,
+    },
+  },
+  {
+    id: 'wabi-sabi',
+    name: 'Wabi Sabi',
+    era: '15th-century tea ceremony · web recently',
+    use: 'craft · slow retail',
+    tagline: 'The flaw stays in',
+    desc: 'Asymmetry, muted earth, handmade irregularity and a repair left visible in gold. **Minimalism removes until it is perfect; this leaves the imperfection in.**',
+    accent: '#B08A3C',
+    Thumb: WabiSabiThumb,
+    Landing: WabiSabiLanding,
+    detail: {
+      intro:
+        'Wabi-sabi is the Japanese aesthetic of imperfection, impermanence and incompleteness. On a page it looks superficially like **Minimalism** and is philosophically its opposite: minimalism subtracts until what remains is *perfect*, and wabi-sabi keeps the crack, the uneven edge and the off-centre placement because they are the evidence that something was made and has lasted. One is about control. The other is about acceptance.',
+      origin:
+        'The 15th- and 16th-century tea ceremony, and Sen no Rikyū in particular, who preferred a rough local bowl to an imported perfect one. *Kintsugi* — repairing a break with lacquer and gold rather than disguising it — is the same idea made literal. Western design absorbed it slowly through mid-century ceramics and much faster through 2010s slow-craft retail.',
+      principles: [
+        {
+          title: 'Asymmetry, deliberately',
+          body: 'Never 50/50. A 7/5 split, an off-centre focal point, cards that do not start at the same height. **Symmetry is the thing being avoided**, so a centred layout undoes the whole style.',
+        },
+        {
+          title: 'Nothing is a perfect shape',
+          body: 'Uneven `border-radius` on every form — `54% 46% 42% 58% / 60% 56% 44% 40%`. A true circle reads as manufactured, which is precisely the wrong association.',
+        },
+        {
+          title: 'Ma — let the emptiness be the composition',
+          body: 'Large negative space that is not waiting to be filled. The interval between two elements is doing as much work as either of them.',
+        },
+        {
+          title: 'Materials, muted',
+          body: 'Clay, stone, unbleached paper, ash glaze. Low-chroma greige and brown — **no pure white and no pure black**, both of which are industrial.',
+        },
+        {
+          title: 'Show the repair',
+          body: 'One gold seam, one visible mend, one place where the making shows. It should be the highest-contrast thing on the page, and there should be exactly one of it.',
+        },
+      ],
+      traits: [
+        {
+          label: 'Typography',
+          value: 'A quiet serif for display and a plain sans for text, both at generous line-height. Nothing bold; nothing tightly tracked.',
+        },
+        {
+          label: 'Colour',
+          value: 'Unbleached paper, clay, ash, stone. One muted gold for the repair and nothing else saturated anywhere.',
+        },
+        {
+          label: 'Layout',
+          value: 'Asymmetric columns, staggered vertical rhythm, very wide margins. Content deliberately off the centre line.',
+        },
+        {
+          label: 'Imagery',
+          value: 'Objects photographed in daylight against a plain ground, with the marks of making left in. Irregular organic forms.',
+        },
+        {
+          label: 'Motion',
+          value: 'Almost none, and slow where it exists. Movement implies urgency, which is the wrong register entirely.',
+        },
+        {
+          label: 'Risk',
+          value: 'Two failure modes: read as unfinished by people who do not know the reference, or as expensive-beige lifestyle branding by people who do.',
+        },
+      ],
+      bestFor: [
+        '**Ceramics, textiles and makers** selling objects with visible handwork.',
+        'Tea, food and slow-craft retail.',
+        'Architecture and interiors practices working with natural materials.',
+        'Wellness and hospitality that want quiet rather than luxury.',
+      ],
+      avoidWhen: [
+        'The product is mass-manufactured — the aesthetic makes a claim about how things were made, and it is checkable.',
+        'You need urgency, clarity or conversion. The style is built to slow a reader down.',
+        'The site is dense or functional. Ma needs room, and an interface has none to give.',
+      ],
+      lang: 'css',
+      code: `/* Wabi sabi: asymmetry, irregular form, and one visible repair. */
+:root {
+  --paper: #E7E2D8;    /* unbleached — never #fff */
+  --ink: #3A352C;      /* warm near-black — never #000 */
+  --clay: #8A7A64;
+  --gold: #B08A3C;     /* the repair, and the only saturated thing here */
+}
+
+/* 7/5, not 6/6 — the asymmetry is the composition */
+.hero { display: grid; grid-template-columns: 1.35fr 1fr; gap: 6rem; }
+
+/* nothing is a perfect shape */
+.vessel {
+  border-radius: 54% 46% 42% 58% / 60% 56% 44% 40%;
+  background: radial-gradient(circle at 34% 28%, #A5947C, #6E6252 78%);
+}
+
+/* kintsugi: the break is repaired in gold, not hidden */
+.seam {
+  width: 5px;
+  background: linear-gradient(180deg, var(--gold), #D8BC7C);
+  rotate: 6deg;
+  box-shadow: 0 0 14px rgba(176,138,60,.45);
+}
+
+/* ma — the interval is doing as much work as the objects */
+section { padding-block: 12vw; }
+.pieces > :nth-child(2) { margin-top: 7rem; }   /* nothing starts on the same line */
+.pieces > :nth-child(3) { margin-top: 2.4rem; }
+
+body { background: var(--paper); color: var(--ink); line-height: 1.9; }`,
     },
   },
 ];

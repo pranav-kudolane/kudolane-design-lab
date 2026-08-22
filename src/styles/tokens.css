@@ -21,4 +21,5 @@
   --serif:"Playfair Display",Georgia,serif;    /* luxury + editorial display */
   --pixel:"Press Start 2P",ui-monospace,monospace; /* pixel-art headings only */
   --showcard:"Rye","Playfair Display",serif;       /* victorian display only */
+  --black-letter:"Pirata One","Playfair Display",serif; /* gothic display only */
 }

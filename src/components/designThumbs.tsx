@@ -485,3 +485,100 @@ export function CyberCoreThumb() {
     </div>
   );
 }
+
+export function SynthwaveThumb() {
+  return (
+    <div className="dt dt-synth" role="img" aria-label="Miniature synthwave website: sunset gradient, banded sun and a receding horizon grid">
+      <span className="dt-sun" />
+      <span className="dt-floor" />
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-l" />
+      </div>
+      <span className="dt-scan" />
+    </div>
+  );
+}
+
+export function GraffitiThumb() {
+  return (
+    <div className="dt dt-graff" role="img" aria-label="Miniature graffiti website: sprayed throw-up and stencil on a concrete wall">
+      <span className="dt-throw" />
+      <span className="dt-drip d1" />
+      <span className="dt-drip d2" />
+      <span className="dt-stencil" />
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-tag" />
+      </div>
+      <span className="dt-slap" />
+    </div>
+  );
+}
+
+export function GothicThumb() {
+  return (
+    <div className="dt dt-goth" role="img" aria-label="Miniature gothic website: pointed arch window with stained glass on near-black stone">
+      <span className="dt-arch">
+        <i className="pane p1" />
+        <i className="pane p2" />
+        <i className="pane p3" />
+        <i className="mullion" />
+      </span>
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-l" />
+      </div>
+      <span className="dt-tracery" />
+    </div>
+  );
+}
+
+export function MixedMediaThumb() {
+  return (
+    <div className="dt dt-mixed" role="img" aria-label="Miniature mixed-media website: halftone photo, flat colour block, drawn line and torn paper collided">
+      <span className="dt-block" />
+      <span className="dt-photo" />
+      <span className="dt-torn" />
+      <span className="dt-scrawl" />
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i /> <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-h alt" />
+      </div>
+    </div>
+  );
+}
+
+export function WabiSabiThumb() {
+  return (
+    <div className="dt dt-wabi" role="img" aria-label="Miniature wabi-sabi website: one irregular clay form, a gold repair seam and a great deal of empty space">
+      <span className="dt-vessel">
+        <i className="seam" />
+      </span>
+      <div className="dt-nav">
+        <span className="dt-mark" />
+        <i />
+      </div>
+      <div className="dt-hero">
+        <span className="dt-h" />
+        <span className="dt-l" />
+      </div>
+    </div>
+  );
+}
